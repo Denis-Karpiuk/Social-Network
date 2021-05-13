@@ -1,0 +1,12 @@
+.navbarRight {
+    grid-column-start: 4;
+    align-self: start;
+
+    background-color: white;
+    border-radius: 3px;
+    padding: 10px;
+}
+
+.navbarRight a {
+    color: black;
+}

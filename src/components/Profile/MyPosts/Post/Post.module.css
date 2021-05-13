@@ -1,0 +1,15 @@
+.post img {
+    height: 70px;
+    width: 70px;
+    padding-right: 10px;
+    border-radius: 50%;
+}
+
+.post .item {
+    display: flex;
+    align-items: flex-end;
+}
+
+.post {
+    margin-top: 10px;
+}

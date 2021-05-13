@@ -1,0 +1,14 @@
+.textItems {
+    display: flex;
+    flex-direction: column;
+}
+
+.answer {
+    color: red;
+    font-weight: bold;
+}
+
+.message {
+    align-self: flex-end;
+    color: blue;
+}

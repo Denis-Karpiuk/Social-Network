@@ -1,0 +1,28 @@
+.myPosts {
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: white;
+    border-radius: 5px;
+}
+h3 {
+    color: red;
+    text-align: center;
+}
+
+.button,
+.textarea,
+.h3 {
+    text-align: center;
+}
+
+.button {
+    margin-top: 10px;
+}
+
+.textarea textarea {
+    width: 70%;
+}
+
+::placeholder {
+    text-align: center;
+}

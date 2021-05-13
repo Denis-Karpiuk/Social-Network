@@ -1,0 +1,73 @@
+.profilePage {
+	display: grid;
+	grid-template-columns: 200px 1fr;
+	grid-template-rows: repeat(2, auto);
+	grid-template-areas:
+		'user info'
+		'user photos';
+	gap: 5px;
+}
+
+.user {
+	padding: 10px;
+	background-color: white;
+	grid-area: user;
+}
+
+.info {
+	padding: 5px;
+	background-color: white;
+	grid-area: info;
+}
+
+.photos {
+	background-color: white;
+	grid-area: photos;
+	padding: 10px;
+}
+
+.avatar {
+	padding: 0px 0px 85% 0px;
+	position: relative;
+}
+.avatar img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.buttons button {
+	background-color: blue;
+	color: white;
+	margin-top: 10px;
+	width: 100%;
+	height: 30px;
+}
+
+.userName,
+.userId,
+.country,
+.about {
+	padding: 5px;
+}
+.userName,
+.about {
+	font-weight: bold;
+	font-style: italic;
+	padding: 5px;
+}
+.userId,
+.country {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	font-style: italic;
+}
+
+.status {
+	font-style: italic;
+	color: gold;
+}

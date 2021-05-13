@@ -1,0 +1,12 @@
+.navbar {
+    grid-column-start: 2;
+    align-self: start;
+
+    background-color: #edeef0;
+    padding: 10px 0px 10px 0px;
+    font-size: 15px;
+}
+
+.navbar a {
+    color: black;
+}

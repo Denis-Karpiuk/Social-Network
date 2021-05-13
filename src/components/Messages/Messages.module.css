@@ -1,0 +1,20 @@
+.messages {
+    display: grid;
+    grid-template-columns: 2fr 10fr;
+    padding: 10px;
+    background-color: white;
+}
+
+.messageItem a.active {
+    font-weight: bold;
+    color: red;
+}
+
+.messagesTexts {
+    border-left: black solid 2px;
+    padding-left: 10px;
+}
+
+.answer {
+    text-align: center;
+}
