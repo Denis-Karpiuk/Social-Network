@@ -1,35 +1,33 @@
-import { applyMiddleware, combineReducers, createStore } from "redux";
-import thunMiddleWare from 'redux-thunk';
-import authReducer from "./Auth-Reducer";
-import messageReduce from './messageReducer';
-import musicReducer from "./Music-Recucer";
-import navbarReducer from './navbarReducer';
-import newsReducer from "./newsReducer";
-import photoReducer from "./photoReducer";
-import profileReducer from "./Profile-Reducer";
-import usersReducer from "./Users-Reducer";
-import testReducer from "./Test-Reducer";
-import videoUsersReducer from "./Video-Reducer";
-
+import { applyMiddleware, combineReducers, createStore } from 'redux'
+import thunMiddleWare from 'redux-thunk'
+import authReducer from './Auth-Reducer'
+import messageReduce from './messageReducer'
+import musicReducer from './Music-Recucer'
+import navbarReducer from './navbarReducer'
+import newsReducer from './newsReducer'
+import photoReducer from './photoReducer'
+import profileReducer from './Profile-Reducer'
+import usersReducer from './Users-Reducer'
+import testReducer from './Test-Reducer'
+import videoUsersReducer from './Video-Reducer'
+import { reducer as formReducer } from 'redux-form'
 
 let reducers = combineReducers({
-    profilePage: profileReducer,
-    messagesPage: messageReduce,
-    newsPage: newsReducer,
-    photosPage: photoReducer,
-    navbar: navbarReducer,
-    usersPage: usersReducer,
-    musicPage: musicReducer,
-    auth: authReducer,
-    videoPage: videoUsersReducer,
-    testPage: testReducer
+	profilePage: profileReducer,
+	messagesPage: messageReduce,
+	newsPage: newsReducer,
+	photosPage: photoReducer,
+	navbar: navbarReducer,
+	usersPage: usersReducer,
+	musicPage: musicReducer,
+	auth: authReducer,
+	videoPage: videoUsersReducer,
+	testPage: testReducer,
+	form: formReducer,
+})
 
+let store = createStore(reducers, applyMiddleware(thunMiddleWare))
 
-});
+window.store = store
 
-let store = createStore(reducers, applyMiddleware(thunMiddleWare));
-
-window.store = store;
-
-export default store;
-
+export default store
