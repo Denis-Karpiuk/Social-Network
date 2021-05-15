@@ -1,16 +1,16 @@
 .header {
-    display: grid;
-    grid-template-columns: 1fr 165px 230px 48px 370px 96px 1fr;
-    column-gap: 10px;
-    align-items: center;
-    background-color: white;
-    font-weight: bold;
+	display: grid;
+	grid-template-columns: 1fr 165px 230px 48px 370px 96px 1fr;
+	column-gap: 10px;
+	align-items: center;
+	background-color: white;
+	font-weight: bold;
 }
 
 .login {
-    color: red;
+	color: red;
 }
 
 .loginBlock a {
-    color: red;
+	color: red;
 }
