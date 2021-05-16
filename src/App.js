@@ -4,7 +4,7 @@ import './App.css'
 import Comments from './components/Comments/Comments'
 import Friends from './components/Friends/Friends'
 import HeaderContainer from './components/Header/Header'
-import LogIn from './components/Header/LogIn/LogIn'
+import LoginContainer from './components/Header/LogIn/LoginContainer'
 import Likes from './components/Likes/Likes'
 import MessagesContainer from './components/Messages/Messages-Container'
 import Music_Container from './components/Music/Music-Container'
@@ -26,7 +26,7 @@ const App = () => {
 				<NavbarContainer />
 				<div className='content'>
 					<Route path='/test' render={() => <TestContainer />} />
-					<Route path='/login' render={() => <LogIn />} />
+					<Route path='/login' render={() => <LoginContainer />} />
 					<Route path='/profile/:userId?' render={() => <ProfileContainer />} />
 					<Route path='/music' render={() => <Music_Container />} />
 					<Route path='/news' render={() => <NewsContainer />} />

@@ -1,5 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
+import { loginUser } from '../../../redux/Auth-Reducer'
 import s from './LogIn.module.css'
 
 const LogInForm = props => {
@@ -16,7 +17,6 @@ const LogInForm = props => {
 					<Field name='rememberMe' component='input' type='checkbox' />
 					remember me
 				</div>
-
 				<div className={s.loginButton}>
 					<button>LogIn</button>
 				</div>
@@ -27,9 +27,7 @@ const LogInForm = props => {
 
 const LogInReduxForm = reduxForm({ form: 'login' })(LogInForm)
 
-const onSubmitText = data => {
-	console.log(data)
-}
+const onSubmit = loginData => loginUser(loginData)
 
 const LogIn = props => {
 	return (
@@ -38,7 +36,7 @@ const LogIn = props => {
 				<h2>LogIn</h2>
 			</div>
 			<div className={s.form}>
-				<LogInReduxForm onSubmit={onSubmitText} />
+				<LogInReduxForm onSubmit={props.onSubmit} />
 			</div>
 		</div>
 	)

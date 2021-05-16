@@ -29,6 +29,9 @@ export const authAPI = {
 	login(loginData) {
 		return instance.post('auth/login', loginData)
 	},
+	logout() {
+		return instance.post('auth/logout')
+	},
 }
 
 export const profileAPI = {
