@@ -2,7 +2,6 @@ import { authAPI, userAPI } from '../api/api'
 
 const SET_USER_LOGIN_DATA = 'SET_USER_LOGIN_DATA'
 const SET_USER_PROFILE = 'SET_USER_PROFILE'
-const LOGIN_USER = 'LOGIN_USER'
 const LOGOUT_USER = 'LOGOUT_USER'
 
 const initialState = {
@@ -30,11 +29,11 @@ const authReducer = (state = initialState, action) => {
 				login: action.profile.fullName,
 			}
 		}
-		case LOGIN_USER: {
-			return {}
-		}
 		case LOGOUT_USER: {
-			return {}
+			return {
+				...state,
+				isAuth: false,
+			}
 		}
 		default:
 			return state
@@ -50,6 +49,11 @@ const setUserProfile = profile => {
 	return {
 		type: SET_USER_PROFILE,
 		profile,
+	}
+}
+const logOutUser = () => {
+	return {
+		type: LOGOUT_USER,
 	}
 }
 export const getUserLoginData = () => {
@@ -72,6 +76,16 @@ export const loginUser = loginData => {
 				userAPI.getProfile(response.data.data.userId).then(response => {
 					dispatch(setUserProfile(response.data))
 				})
+			}
+		})
+	}
+}
+
+export const logoutUser = () => {
+	return dispatch => {
+		authAPI.logout().then(response => {
+			if (response.data.resultCode === 0) {
+				dispatch(logOutUser())
 			}
 		})
 	}

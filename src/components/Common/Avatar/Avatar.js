@@ -10,6 +10,7 @@ const Avatar = props => {
 			</div>
 			<div>
 				<img
+					onDoubleClick={props.logout}
 					src={
 						!props.profile || !props.profile.photos.small
 							? userPhoto
