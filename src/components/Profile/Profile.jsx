@@ -2,7 +2,7 @@ import React from 'react'
 import userPhoto from '../../assets/images/user.png'
 import Preloader from '../Common/Preloader/Preloader'
 import s from './Profile.module.css'
-import ProfileStatus from './ProfileInfo/ProfileStatus/ProfileStatus'
+import ProfileStatus from './ProfileStatus/ProfileStatus'
 
 const Profile = props => {
 	if (!props.profilePage.profile) {

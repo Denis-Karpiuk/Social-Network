@@ -1,19 +1,6 @@
 import React from 'react'
-import { Field, reduxForm } from 'redux-form'
 import Dialogs from './Dialogs/Dialogs'
 import s from './Messages.module.css'
-
-const MessageForm = props => {
-	return (
-		<div>
-			<form onSubmit={props.handleSubmit}>
-				<Field name='message' component='textarea' />
-				<button>Send Message</button>
-			</form>
-		</div>
-	)
-}
-const MessageReduxForm = reduxForm({ form: 'message' })(MessageForm)
 
 const Messages = props => {
 	let sendMessage = messageData => props.addMessage(messageData.message)
@@ -28,9 +15,6 @@ const Messages = props => {
 				{props.messages.map(message => (
 					<div key={message.id}>{message.text}</div>
 				))}
-			</div>
-			<div className={s.messageSend}>
-				<MessageReduxForm onSubmit={sendMessage} />
 			</div>
 		</div>
 	)

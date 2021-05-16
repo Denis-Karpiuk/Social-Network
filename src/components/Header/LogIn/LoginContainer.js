@@ -10,13 +10,14 @@ class LoginClassContainer extends React.Component {
 			this.props.loginUser(loginData)
 		}
 		if (this.props.isAuth) return <Redirect to='/profile' />
-		return <LogIn onSubmit={onSubmit} />
+		return <LogIn isFetching={this.props.isFetching} onSubmit={onSubmit} />
 	}
 }
 
 const mapStateToProps = state => {
 	return {
 		isAuth: state.auth.isAuth,
+		isFetching: state.auth.isFetching,
 	}
 }
 const LoginContainer = connect(mapStateToProps, { loginUser })(
