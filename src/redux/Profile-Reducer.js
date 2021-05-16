@@ -1,4 +1,3 @@
-import { useDebugValue } from 'react'
 import { profileAPI } from '../api/api'
 
 const SET_PROFILE_USER = 'SET_PROFILE_USER'

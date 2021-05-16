@@ -7,13 +7,13 @@ const LogInForm = props => {
 		<div className={s.loginForm}>
 			<form onSubmit={props.handleSubmit}>
 				<div>
-					<Field name='login' placeholder='login' component='input' />
+					<Field name='email' placeholder='email' component='input' />
 				</div>
 				<div>
 					<Field name='password' placeholder='password' component='input' />
 				</div>
 				<div>
-					<Field name='remember' component='input' type='checkbox' />
+					<Field name='rememberMe' component='input' type='checkbox' />
 					remember me
 				</div>
 
