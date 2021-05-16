@@ -3,6 +3,7 @@ import userPhoto from '../../assets/images/user.png'
 import Preloader from '../Common/Preloader/Preloader'
 import s from './Profile.module.css'
 import ProfileStatus from './ProfileInfo/ProfileStatus/ProfileStatus'
+import MyPostsContainer from '../Profile/MyPosts/MyPostsContainer'
 
 const Profile = props => {
 	if (!props.profilePage.profile) {
@@ -49,6 +50,9 @@ const Profile = props => {
 			</div>
 			<div className={s.photos}>
 				<h2>Здесь в будущем будут отображены фотографии поьзователей</h2>
+			</div>
+			<div>
+				<MyPostsContainer />
 			</div>
 		</div>
 	)

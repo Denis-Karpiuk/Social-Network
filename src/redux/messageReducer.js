@@ -1,48 +1,38 @@
-const UPDATEMESSAGESTEXTAREA = 'UPDATEMESSAGESTEXTAREA';
-const ADDMESSAGE = 'ADDMESSAGE';
-
+const ADDMESSAGE = 'ADDMESSAGE'
 
 let initialState = {
-    textAreaMessagesValue: ' ',
-    usersData: [
-        { id: 1, name: 'Denis' },
-        { id: 2, name: 'Katy' },
-        { id: 3, name: 'Ivan' }
-    ],
-    messagesData:
-    {
-        id: 1,
-        message: ['Hello!', 'How are you?', 'You are the best'],
-        answer: ['Hi', 'Best']
-    }
+	dialogs: [
+		{ id: 1, name: 'Denis' },
+		{ id: 2, name: 'Katy' },
+		{ id: 3, name: 'Ivan' },
+	],
+	messages: [
+		{ id: 1, text: 'Hello' },
+		{ id: 2, text: 'How are you ?' },
+		{ id: 3, text: 'What do you do ?' },
+	],
 }
 
 const messageReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case UPDATEMESSAGESTEXTAREA:
-            return {
-                ...state,
-                textAreaMessagesValue: action.text
-            }
-        case ADDMESSAGE:
-            let stateCopy = { ...state };
-            stateCopy.messagesData.answer.push(state.textAreaMessagesValue);
-            stateCopy.textAreaMessagesValue = '';
-            return stateCopy;
-        default:
-            return state;
-    }
+	switch (action.type) {
+		case ADDMESSAGE: {
+			return {
+				...state,
+				messages: [
+					...state.messages,
+					{ id: state.messages.length + 1, text: action.message },
+				],
+			}
+		}
+		default:
+			return state
+	}
 }
 
-export const updateMessagesTextareaActionCreate = (text) => {
-    return {
-        type: UPDATEMESSAGESTEXTAREA,
-        text: text
-    }
-};
-export const addMessageActionCreate = () => {
-    return {
-        type: ADDMESSAGE
-    }
-};
-export default messageReducer;
+export const addMessage = message => {
+	return {
+		type: ADDMESSAGE,
+		message,
+	}
+}
+export default messageReducer

@@ -1,25 +1,13 @@
-import Messages from "./Messages";
-import { addMessageActionCreate, updateMessagesTextareaActionCreate } from '../../redux/messageReducer';
-import { connect } from 'react-redux';
+import Messages from './Messages'
+import { addMessage } from '../../redux/messageReducer'
+import { connect } from 'react-redux'
 
-let mapStateToProps = (state) => {
-    return {
-        usersData: state.messagesPage.usersData,
-        textAreaMessagesValue: state.messagesPage.textAreaMessagesValue,
-        messagesData: state.messagesPage.messagesData
-    }
+let mapStateToProps = state => {
+	return {
+		dialogs: state.messagesPage.dialogs,
+		messages: state.messagesPage.messages,
+	}
 }
-let mapDispatchToProps = (dispatch) => {
-    return {
-        sendMessage: () => {
-            dispatch(addMessageActionCreate())
-        },
-        changeTextareaValue: (text) => {
-            dispatch(updateMessagesTextareaActionCreate(text))
-        }
-    }
-}
+const MessagesContainer = connect(mapStateToProps, { addMessage })(Messages)
 
-const MessagesContainer = connect(mapStateToProps, mapDispatchToProps)(Messages);
-
-export default MessagesContainer;
+export default MessagesContainer
