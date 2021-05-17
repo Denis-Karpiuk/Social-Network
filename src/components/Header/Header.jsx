@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import { getUserLoginData, logoutUser } from '../../redux/Auth-Reducer'
-import Avatar from '../Common/Avatar/Avatar'
+import { getUserLoginData, logout } from '../../redux/Auth-Reducer'
 import s from './Header.module.css'
 import Logotype from './Logotype/Logotype'
 import Notyfication from './Notyfication/Notyfication'
@@ -14,9 +13,6 @@ class Header extends React.Component {
 		this.props.getUserLoginData()
 	}
 	render() {
-		let logout = () => {
-			this.props.logoutUser()
-		}
 		return (
 			<div className={s.header}>
 				<Logotype />
@@ -25,11 +21,16 @@ class Header extends React.Component {
 				<Player />
 				<div className={s.loginBlock}>
 					{this.props.auth.isAuth ? (
-						<Avatar
-							login={this.props.auth.login}
-							logout={logout}
-							profile={this.props.auth.profile}
-						/>
+						<div className={s.userName}>
+							{this.props.login}
+							<button
+								onClick={() => {
+									this.props.logout()
+								}}
+							>
+								Log out
+							</button>
+						</div>
 					) : (
 						<NavLink to='/login'>LogIn</NavLink>
 					)}
@@ -41,10 +42,11 @@ class Header extends React.Component {
 const mapStateToProps = state => {
 	return {
 		auth: state.auth,
+		login: state.auth.login,
 	}
 }
 const HeaderContainer = connect(mapStateToProps, {
 	getUserLoginData,
-	logoutUser,
+	logout,
 })(Header)
 export default HeaderContainer

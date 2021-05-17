@@ -1,8 +1,6 @@
-import { authAPI, userAPI } from '../api/api'
+import { authAPI } from '../api/api'
 
 const SET_USER_LOGIN_DATA = 'SET_USER_LOGIN_DATA'
-const SET_USER_PROFILE = 'SET_USER_PROFILE'
-const LOGOUT_USER = 'LOGOUT_USER'
 const TOOGLE_FETCHING = 'TOOGLE_FETCHING'
 
 const initialState = {
@@ -10,7 +8,6 @@ const initialState = {
 	login: null,
 	userId: null,
 	email: null,
-	profile: null,
 	isFetching: false,
 }
 const authReducer = (state = initialState, action) => {
@@ -18,23 +15,7 @@ const authReducer = (state = initialState, action) => {
 		case SET_USER_LOGIN_DATA: {
 			return {
 				...state,
-				...action.userData,
-				isAuth: true,
-			}
-		}
-		case SET_USER_PROFILE: {
-			return {
-				...state,
-				profile: action.profile,
-				isAuth: true,
-				userId: action.profile.userId,
-				login: action.profile.fullName,
-			}
-		}
-		case LOGOUT_USER: {
-			return {
-				...state,
-				isAuth: false,
+				...action.payload,
 			}
 		}
 		case TOOGLE_FETCHING: {
@@ -54,58 +35,41 @@ const isFetching = fetching => {
 		fetching,
 	}
 }
-const setUserLoginData = (userId, email, login) => {
+const setUserLoginData = (userId, email, login, isAuth) => {
 	return {
 		type: SET_USER_LOGIN_DATA,
-		userData: { userId, email, login },
+		payload: { userId, email, login, isAuth },
 	}
 }
-const setUserProfile = profile => {
-	return {
-		type: SET_USER_PROFILE,
-		profile,
-	}
-}
-const logOutUser = () => {
-	return {
-		type: LOGOUT_USER,
-	}
-}
+
 export const getUserLoginData = () => {
 	return dispatch => {
 		authAPI.me().then(response => {
 			if (response.data.resultCode === 0) {
 				let { id, email, login } = response.data.data
-				dispatch(setUserLoginData(id, email, login))
-				userAPI.getProfile(id).then(response => {
-					dispatch(setUserProfile(response.data))
-				})
+				dispatch(setUserLoginData(id, email, login, true))
 			}
 		})
 	}
 }
-export const loginUser = loginData => {
+export const login = (email, password, rememberMe) => {
 	return dispatch => {
 		dispatch(isFetching(true))
-		authAPI.login(loginData).then(response => {
+		authAPI.login(email, password, rememberMe).then(response => {
 			if (response.data.resultCode === 0) {
-				userAPI.getProfile(response.data.data.userId).then(response => {
-					dispatch(setUserProfile(response.data))
-					dispatch(isFetching(false))
-				})
+				dispatch(getUserLoginData())
+				dispatch(isFetching(false))
 			}
 		})
 	}
 }
-
-export const logoutUser = () => {
+export const logout = () => {
 	return dispatch => {
 		authAPI.logout().then(response => {
 			if (response.data.resultCode === 0) {
-				dispatch(logOutUser())
+				dispatch(setUserLoginData(null, null, null, false))
 			}
 		})
 	}
 }
-
 export default authReducer

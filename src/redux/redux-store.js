@@ -1,4 +1,5 @@
 import { applyMiddleware, combineReducers, createStore } from 'redux'
+import { reducer as formReducer } from 'redux-form'
 import thunMiddleWare from 'redux-thunk'
 import authReducer from './Auth-Reducer'
 import messageReduce from './messageReducer'
@@ -7,10 +8,8 @@ import navbarReducer from './navbarReducer'
 import newsReducer from './newsReducer'
 import photoReducer from './photoReducer'
 import profileReducer from './Profile-Reducer'
-import testReducer from './Test-Reducer'
 import usersReducer from './Users-Reducer'
 import videoUsersReducer from './Video-Reducer'
-import { reducer as formReducer } from 'redux-form'
 
 let reducers = combineReducers({
 	profilePage: profileReducer,
@@ -22,7 +21,6 @@ let reducers = combineReducers({
 	musicPage: musicReducer,
 	auth: authReducer,
 	videoPage: videoUsersReducer,
-	testPage: testReducer,
 	form: formReducer,
 })
 
