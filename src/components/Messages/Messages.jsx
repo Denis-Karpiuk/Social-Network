@@ -1,5 +1,7 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
+import { required, maxLength15 } from '../../util/Validators'
+import { Textarea } from '../Common/FormsControl/FormsControl'
 import Dialogs from './Dialogs/Dialogs'
 import s from './Messages.module.css'
 
@@ -8,7 +10,12 @@ const FormMessages = props => {
 		<div>
 			<form onSubmit={props.handleSubmit}>
 				<div>
-					<Field name='message' component='textarea' />
+					<Field
+						name='message'
+						placeholder='enter your message'
+						validate={[required, maxLength15]}
+						component={Textarea}
+					/>
 				</div>
 				<button>Отправить сообщение</button>
 			</form>
@@ -17,9 +24,6 @@ const FormMessages = props => {
 }
 
 const FormReduxMessages = reduxForm({ form: 'messages' })(FormMessages)
-const onSendMessage = message => {
-	console.log(message)
-}
 const Messages = props => {
 	let sendMessage = messageData => props.addMessage(messageData.message)
 	return (
@@ -34,7 +38,7 @@ const Messages = props => {
 					<div key={message.id}>{message.text}</div>
 				))}
 				<div className={s.formMessage}>
-					<FormReduxMessages onSubmit={onSendMessage} />
+					<FormReduxMessages onSubmit={sendMessage} />
 				</div>
 			</div>
 		</div>

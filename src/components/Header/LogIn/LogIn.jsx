@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
 import { Field, reduxForm } from 'redux-form'
 import { login } from '../../../redux/Auth-Reducer'
+import { required } from '../../../util/Validators'
+import { Input } from '../../Common/FormsControl/FormsControl'
 import Preloader from '../../Common/Preloader/Preloader'
 import s from './LogIn.module.css'
 
@@ -11,13 +13,19 @@ const LoginForm = props => {
 		<div>
 			<form onSubmit={props.handleSubmit}>
 				<div>
-					<Field name='email' placeholder='email' component='input' />
+					<Field
+						name='email'
+						placeholder='email'
+						validate={[required]}
+						component={Input}
+					/>
 				</div>
 				<div>
 					<Field
 						name='password'
 						placeholder='password'
-						component='input'
+						validate={[required]}
+						component={Input}
 						type='password'
 					/>
 				</div>
