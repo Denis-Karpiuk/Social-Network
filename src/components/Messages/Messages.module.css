@@ -1,0 +1,15 @@
+.messagesPage {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.messagesPage {
+	background-color: white;
+	padding: 15px;
+}
+
+.messages {
+	display: flex;
+	flex-direction: column;
+}
