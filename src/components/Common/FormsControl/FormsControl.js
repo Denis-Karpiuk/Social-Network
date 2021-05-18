@@ -12,7 +12,6 @@ export const Textarea = ({ input, meta, ...props }) => {
 }
 
 export const Input = ({ input, meta, ...props }) => {
-	debugger
 	let hasError = meta.touched && meta.error
 	return (
 		<div className={hasError ? s.error : s.input}>

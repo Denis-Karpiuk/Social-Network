@@ -23,13 +23,7 @@ class Header extends React.Component {
 					{this.props.auth.isAuth ? (
 						<div className={s.userName}>
 							{this.props.login}
-							<button
-								onClick={() => {
-									this.props.logout()
-								}}
-							>
-								Log out
-							</button>
+							<button onClick={this.props.logout}>Log out</button>
 						</div>
 					) : (
 						<NavLink to='/login'>LogIn</NavLink>
