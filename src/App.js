@@ -15,7 +15,7 @@ import PhotosContainer from './components/Photos/PhotosContainer'
 import ProfileContainer from './components/Profile/ProfileContainer'
 import Recommend from './components/Recommend/Recommend'
 import UsersContainer from './components/Users/UsersContainer'
-import VideoContainer from './components/VideoUsers/VideoContainer'
+import Video from './components/Video/Video'
 
 const App = () => {
 	return (
@@ -32,7 +32,7 @@ const App = () => {
 					<Route path='/friends' render={() => <Friends />} />
 					<Route path='/photos' render={() => <PhotosContainer />} />
 					<Route path='/users' render={() => <UsersContainer />} />
-					<Route path='/video' render={() => <VideoContainer />} />
+					<Route path='/video' render={() => <Video />} />
 					<Route path='/recommend' render={() => <Recommend />} />
 					<Route path='/likes' render={() => <Likes />} />
 					<Route path='/comments' render={() => <Comments />} />
