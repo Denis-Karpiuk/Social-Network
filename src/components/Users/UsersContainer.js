@@ -67,7 +67,6 @@ class UsersComponentContainer extends React.Component {
 	}
 }
 
-let AuthRedirectContainer = withAuthRedirect(UsersComponentContainer)
 const mapStateToProps = state => {
 	return {
 		pageName: state.usersPage.pageName,
@@ -87,5 +86,5 @@ const UsersContainer = connect(mapStateToProps, {
 	changePages,
 	activePage,
 	getUsers,
-})(AuthRedirectContainer)
+})(UsersComponentContainer)
 export default UsersContainer
