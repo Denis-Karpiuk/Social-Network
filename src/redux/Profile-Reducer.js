@@ -4,6 +4,7 @@ const SET_PROFILE_USER = 'SET_PROFILE_USER'
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 const SET_STATUS = 'SET_STATUS'
 const UPDATE_STATUS = 'UPDATE_STATUS'
+const FAKE = 'FAKE'
 
 const initialState = {
 	profile: null,
@@ -11,6 +12,7 @@ const initialState = {
 	isFetching: false,
 	followingProgress: false,
 	status: '',
+	fake: 1,
 }
 const profileReducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -36,6 +38,12 @@ const profileReducer = (state = initialState, action) => {
 			return {
 				...state,
 				status: action.status,
+			}
+		}
+		case FAKE: {
+			return {
+				...state,
+				fake: state.fake + 1,
 			}
 		}
 		default:
@@ -68,6 +76,7 @@ const updateStatus = status => {
 		status,
 	}
 }
+
 export const getProfile = userId => {
 	return dispatch => {
 		dispatch(isFetching(true))

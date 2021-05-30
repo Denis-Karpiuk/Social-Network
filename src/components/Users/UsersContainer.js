@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { withAuthRedirect } from '../../hoc/withAuthRedirect'
 import {
 	activePage,
 	changePages,
@@ -16,7 +15,7 @@ import {
 	takePageSize,
 	takePageStart,
 	takeTotalCount,
-	takeUsers,
+	takeUsersSelector,
 } from '../../redux/Users-Selectors'
 import Preloader from '../Common/Preloader/Preloader'
 import Users from './Users'
@@ -25,6 +24,7 @@ class UsersComponentContainer extends React.Component {
 	componentDidMount() {
 		this.props.getUsers(this.props.pageNumber, this.props.pageSize)
 	}
+
 	render() {
 		let onPageNubmer = pageNumber => {
 			this.props.activePage(pageNumber)
@@ -80,7 +80,7 @@ class UsersComponentContainer extends React.Component {
 const mapStateToProps = state => {
 	return {
 		pageName: takePageName(state),
-		users: takeUsers(state),
+		users: takeUsersSelector(state),
 		totalCount: takeTotalCount(state),
 		pageSize: takePageSize(state),
 		pageNumber: takePageNumber(state),
