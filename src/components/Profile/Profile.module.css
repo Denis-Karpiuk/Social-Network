@@ -69,5 +69,6 @@
 
 .status {
 	font-style: italic;
-	color: gold;
+	color: red;
+	padding: 5px;
 }

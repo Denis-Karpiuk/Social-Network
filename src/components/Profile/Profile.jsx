@@ -2,7 +2,7 @@ import React from 'react'
 import userPhoto from '../../assets/images/user.png'
 import Preloader from '../Common/Preloader/Preloader'
 import s from './Profile.module.css'
-import ProfileStatus from './ProfileStatus/ProfileStatus'
+import ProfileStatusWithHook from './ProfileStatus/ProfileStatus-HOOK'
 
 const Profile = props => {
 	if (!props.profilePage.profile) {
@@ -31,17 +31,17 @@ const Profile = props => {
 			</div>
 			<div className={s.info}>
 				<div className={s.userName}>{props.profilePage.profile.fullName}</div>
-				<div className={s.status}></div>
-				<div className={s.userId}>
-					<div>Id пользователя:</div>
-					<div>{props.profilePage.profile.userId}</div>
-				</div>
-				<div className={s.about}>
-					<ProfileStatus
+				<div className={s.status}>
+					<ProfileStatusWithHook
 						status={props.profilePage.status}
 						updateStatus={props.updateStatusProfile}
 					/>
 				</div>
+				<div className={s.userId}>
+					<div>Id пользователя:</div>
+					<div>{props.profilePage.profile.userId}</div>
+				</div>
+				<div className={s.about}></div>
 				<div className={s.country}>
 					<div>Страна проживания:</div>
 					<div>{props.profilePage.country}</div>
