@@ -5,20 +5,14 @@ import s from './Profile.module.css'
 import ProfileStatusWithHook from './ProfileStatus/ProfileStatus-HOOK'
 
 const Profile = props => {
-	if (!props.profilePage.profile) {
+	if (!props.profile) {
 		return <Preloader />
 	}
 	return (
 		<div className={s.profilePage}>
 			<div className={s.user}>
 				<div className={s.avatar}>
-					<img
-						src={
-							!props.profilePage.profile.photos.small
-								? userPhoto
-								: props.profilePage.profile.photos.small
-						}
-					/>
+					<img src={!props.profilePhoto ? userPhoto : props.profilePhoto} />
 				</div>
 				<div className={s.buttons}>
 					<div>
@@ -30,21 +24,21 @@ const Profile = props => {
 				</div>
 			</div>
 			<div className={s.info}>
-				<div className={s.userName}>{props.profilePage.profile.fullName}</div>
+				<div className={s.userName}>{props.profileName}</div>
 				<div className={s.status}>
 					<ProfileStatusWithHook
-						status={props.profilePage.status}
+						status={props.status}
 						updateStatus={props.updateStatusProfile}
 					/>
 				</div>
 				<div className={s.userId}>
 					<div>Id пользователя:</div>
-					<div>{props.profilePage.profile.userId}</div>
+					<div>{props.profileId}</div>
 				</div>
 				<div className={s.about}></div>
 				<div className={s.country}>
 					<div>Страна проживания:</div>
-					<div>{props.profilePage.country}</div>
+					<div>{props.profileCountry}</div>
 				</div>
 			</div>
 			<div className={s.photos}>

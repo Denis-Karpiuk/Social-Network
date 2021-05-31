@@ -3,11 +3,21 @@ import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import { compose } from 'redux'
 import { withAuthRedirect } from '../../hoc/withAuthRedirect'
+import { takeAutorizedUserId } from '../../redux/Auth-Selectors'
 import {
 	getProfile,
 	getStatus,
 	updateStatusProfile,
 } from '../../redux/Profile-Reducer'
+import {
+	takeIsFetching,
+	takeProfile,
+	takeProfileCountry,
+	takeProfileId,
+	takeProfileName,
+	takeProfilePhoto,
+	takeStatus,
+} from '../../redux/Profile-Selectors'
 import Preloader from '../Common/Preloader/Preloader'
 import Profile from './Profile'
 
@@ -21,7 +31,7 @@ class ClassProfileContainer extends React.Component {
 		this.props.getStatus(userId)
 	}
 	render() {
-		if (this.props.profilePage.isFetching) return <Preloader />
+		if (this.props.isFetching) return <Preloader />
 		return (
 			<div>
 				<Profile {...this.props} />
@@ -32,8 +42,14 @@ class ClassProfileContainer extends React.Component {
 
 const mapStateToProps = state => {
 	return {
-		profilePage: state.profilePage,
-		autorizedUserId: state.auth.userId,
+		profile: takeProfile(state),
+		isFetching: takeIsFetching(state),
+		status: takeStatus(state),
+		profilePhoto: takeProfilePhoto(state),
+		profileName: takeProfileName(state),
+		profileId: takeProfileId(state),
+		profileCountry: takeProfileCountry(state),
+		autorizedUserId: takeAutorizedUserId(state),
 	}
 }
 
