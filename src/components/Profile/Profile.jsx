@@ -8,7 +8,6 @@ const Profile = props => {
 	if (!props.profile) {
 		return <Preloader />
 	}
-	console.log('renderProfile')
 	return (
 		<div className={s.profilePage}>
 			<div className={s.user}>
