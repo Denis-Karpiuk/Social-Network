@@ -29,6 +29,9 @@ class ClassProfileContainer extends React.Component {
 		}
 		this.props.getProfile(userId)
 		this.props.getStatus(userId)
+		setTimeout(() => {
+			this.setState({ a: 5 })
+		}, 3000)
 	}
 	render() {
 		if (this.props.isFetching) return <Preloader />
