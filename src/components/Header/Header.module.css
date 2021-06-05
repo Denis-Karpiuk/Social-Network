@@ -5,6 +5,9 @@
 	align-items: center;
 	background-color: white;
 	font-weight: bold;
+
+	height: 55px;
+	padding: 10px;
 }
 
 .login {

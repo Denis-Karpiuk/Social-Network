@@ -23,6 +23,7 @@ import { initializeApp } from './redux/App-Reducer'
 const mapStateToProps = state => {
 	return {
 		initialized: state.app.initialized,
+		isAuth: state.auth.isAuth,
 	}
 }
 
@@ -35,29 +36,38 @@ class App extends React.Component {
 			return <Preloader />
 		}
 		return (
-			<div className='app-wrapper'>
-				<HeaderContainer />
-				<div className='body'>
-					<NavbarContainer />
-					<div className='content'>
+			<div className='app'>
+				{!this.props.isAuth ? (
+					<div className='app-login'>
 						<Route path='/login' render={() => <LoginContainer />} />
-						<Route
-							path='/profile/:userId?'
-							render={() => <ProfileContainer />}
-						/>
-						<Route path='/music' render={() => <Music_Container />} />
-						<Route path='/news' render={() => <NewsContainer />} />
-						<Route path='/messages' render={() => <MessagesContainer />} />
-						<Route path='/friends' render={() => <Friends />} />
-						<Route path='/photos' render={() => <PhotosContainer />} />
-						<Route path='/users' render={() => <UsersContainer />} />
-						<Route path='/video' render={() => <Video />} />
-						<Route path='/recommend' render={() => <Recommend />} />
-						<Route path='/likes' render={() => <Likes />} />
-						<Route path='/comments' render={() => <Comments />} />
 					</div>
-					<NavbarRight />
-				</div>
+				) : (
+					<div>
+						<div className='headers'>
+							<HeaderContainer />
+						</div>
+						<div className='body'>
+							<NavbarContainer />
+							<div className='content'>
+								<Route
+									path='/profile/:userId?'
+									render={() => <ProfileContainer />}
+								/>
+								<Route path='/music' render={() => <Music_Container />} />
+								<Route path='/news' render={() => <NewsContainer />} />
+								<Route path='/messages' render={() => <MessagesContainer />} />
+								<Route path='/friends' render={() => <Friends />} />
+								<Route path='/photos' render={() => <PhotosContainer />} />
+								<Route path='/users' render={() => <UsersContainer />} />
+								<Route path='/video' render={() => <Video />} />
+								<Route path='/recommend' render={() => <Recommend />} />
+								<Route path='/likes' render={() => <Likes />} />
+								<Route path='/comments' render={() => <Comments />} />
+							</div>
+							<NavbarRight />
+						</div>
+					</div>
+				)}
 			</div>
 		)
 	}

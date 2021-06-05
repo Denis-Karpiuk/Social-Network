@@ -1,3 +1,56 @@
 .serverError {
 	border: solid red 2px;
 }
+.loginPage {
+	display: grid;
+	grid-template-columns: 50% 35% 15%;
+	background: url(https://image.freepik.com/free-photo/blue-and-bright-blue-color-gradient-flare-light-background-color_40417-157.jpg);
+	background-position: center;
+	background-size: cover;
+	width: 100%;
+	height: 100vh;
+}
+
+.welcomBlock {
+	padding: 20px;
+	margin: auto;
+	color: white;
+	font-size: 60px;
+}
+
+.loginFormBlock {
+	padding: 30px 40px;
+	background-color: white;
+}
+
+.instruction {
+	padding-bottom: 30px;
+}
+
+.loginForm input,
+.loginButton button {
+	margin: 10px 0px;
+	height: 40px;
+	width: 100%;
+	border-radius: 10px;
+	border: 1px solid gray;
+	outline: none;
+	padding-left: 10px;
+}
+
+.rememberItem {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.rememberItem input {
+	width: 30px;
+	margin-right: 20px;
+}
+
+.loginButton button {
+	background-color: blue;
+	color: white;
+	font-size: large;
+}

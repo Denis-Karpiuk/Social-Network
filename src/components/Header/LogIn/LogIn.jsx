@@ -11,9 +11,17 @@ import s from './LogIn.module.css'
 const LoginForm = props => {
 	return (
 		<div>
-			<form onSubmit={props.handleSubmit}>
+			<form className={s.loginForm} onSubmit={props.handleSubmit}>
 				<div>
+					<div className={s.instruction}>
+						<h1>Sign in</h1>
+						<p>
+							Enter your email address and password to access profile panel.
+						</p>
+					</div>
+					<p>Email address</p>
 					<Field
+						className={s.formInput}
 						name='email'
 						placeholder='email'
 						validate={[required]}
@@ -21,7 +29,9 @@ const LoginForm = props => {
 					/>
 				</div>
 				<div>
+					<p>Password</p>
 					<Field
+						className={s.formInput + ' ' + s.test}
 						name='password'
 						placeholder='password'
 						validate={[required]}
@@ -29,13 +39,13 @@ const LoginForm = props => {
 						type='password'
 					/>
 				</div>
-				<div>
+				<div className={s.rememberItem}>
 					<Field name='rememberMe' component='input' type='checkbox' />
-					rememberMe
+					<div>Remember Me</div>
 				</div>
 				{props.error && <div className={s.serverError}> {props.error}</div>}
-				<div>
-					<button>Login</button>
+				<div className={s.loginButton}>
+					<button>Sign in</button>
 				</div>
 			</form>
 		</div>
@@ -51,8 +61,12 @@ const LogIn = props => {
 	if (props.isFetching) return <Preloader />
 	return (
 		<div className={s.loginPage}>
-			<p>LogIn</p>
-			<LoginReduxForm onSubmit={onSubmit} />
+			<div className={s.welcomBlock}>
+				<h1>Welcom to our Network</h1>
+			</div>
+			<div className={s.loginFormBlock}>
+				<LoginReduxForm onSubmit={onSubmit} />
+			</div>
 		</div>
 	)
 }
