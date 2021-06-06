@@ -5,13 +5,13 @@ import './App.css'
 import Comments from './components/Comments/Comments'
 import Preloader from './components/Common/Preloader/Preloader'
 import Friends from './components/Friends/Friends'
+import FriendsOnlineContainer from './components/FriendsOnline/FriendsOnlineContainer'
 import HeaderContainer from './components/Header/Header'
 import LoginContainer from './components/Header/LogIn/LogIn'
 import Likes from './components/Likes/Likes'
 import MessagesContainer from './components/Messages/Messages-Container'
 import Music_Container from './components/Music/Music-Container'
 import NavbarContainer from './components/Navbar/Navbar-Container'
-import NavbarRight from './components/NavbarRight/NavbarRight'
 import NewsContainer from './components/News/News-Container'
 import PhotosContainer from './components/Photos/PhotosContainer'
 import ProfileContainer from './components/Profile/ProfileContainer'
@@ -64,7 +64,7 @@ class App extends React.Component {
 							<Route path='/comments' render={() => <Comments />} />
 						</div>
 						<div className='friends-online'>
-							<NavbarRight />
+							<FriendsOnlineContainer />
 						</div>
 					</div>
 				</div>
