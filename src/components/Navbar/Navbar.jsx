@@ -1,6 +1,5 @@
 import React from 'react'
 import s from './Navbar.module.css'
-import NavFriends from './NavFriends/NavFriends'
 import NavItem from './NavItem/NavItem'
 
 const Navbar = props => {
@@ -10,9 +9,6 @@ const Navbar = props => {
 	return (
 		<div className={s.navbar}>
 			<div>{navItem}</div>
-			<div>
-				<NavFriends state={props.navFriends} />
-			</div>
 		</div>
 	)
 }

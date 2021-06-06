@@ -1,35 +1,20 @@
-* {
-	margin: 0;
-	padding: 0;
-}
-
-.app-wrapper a {
+.app a {
 	text-decoration: none;
 }
 
 .body {
 	display: grid;
-	grid-template-columns: 1fr 165px 560px 230px 1fr;
-	gap: 10px;
+	grid-template-columns: 15% 70% 15%;
+	/* gap: 10px; */
+	border: solid 1px red;
 
-	font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue',
-		Geneva, 'Noto Sans Armenian', 'Noto Sans Bengali', 'Noto Sans Cherokee',
-		'Noto Sans Devanagari', 'Noto Sans Ethiopic', 'Noto Sans Georgian',
-		'Noto Sans Hebrew', 'Noto Sans Kannada', 'Noto Sans Khmer', 'Noto Sans Lao',
-		'Noto Sans Osmanya', 'Noto Sans Tamil', 'Noto Sans Telugu', 'Noto Sans Thai',
-		sans-serif, arial, Tahoma, verdana;
+	font-family: 'Helvetica Neue', Geneva, 'Noto Sans Armenian',
+		'Noto Sans Bengali', 'Noto Sans Cherokee', 'Noto Sans Devanagari',
+		'Noto Sans Ethiopic', 'Noto Sans Georgian', 'Noto Sans Hebrew',
+		'Noto Sans Kannada', 'Noto Sans Khmer', 'Noto Sans Lao', 'Noto Sans Osmanya',
+		'Noto Sans Tamil', 'Noto Sans Telugu', 'Noto Sans Thai', sans-serif, arial,
+		Tahoma, verdana;
 }
-
 .content {
-	grid-column-start: 3;
-}
-
-.login {
-	background-color: blue;
-}
-
-app-login {
-	display: grid;
-	grid-column: auto;
-	grid-row: auto;
+	border: solid 1px red;
 }
