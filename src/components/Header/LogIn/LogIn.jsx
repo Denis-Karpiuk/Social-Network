@@ -13,7 +13,7 @@ const LoginForm = ({ handleSubmit, error }) => {
 		<div className={s.loginForm}>
 			<form onSubmit={handleSubmit}>
 				<div>
-					<div className={s.instruction}>
+					<div className={s.loginFormInstruction}>
 						<h1>Sign in</h1>
 						<p>
 							Enter your email address and password to access profile panel.
@@ -21,7 +21,6 @@ const LoginForm = ({ handleSubmit, error }) => {
 					</div>
 					<p>Email address</p>
 					<Field
-						className={s.formInput}
 						name='email'
 						placeholder='email'
 						validate={[required]}
@@ -31,7 +30,6 @@ const LoginForm = ({ handleSubmit, error }) => {
 				<div>
 					<p>Password</p>
 					<Field
-						className={s.formInput + ' ' + s.test}
 						name='password'
 						placeholder='password'
 						validate={[required]}
@@ -39,12 +37,12 @@ const LoginForm = ({ handleSubmit, error }) => {
 						type='password'
 					/>
 				</div>
-				<div className={s.rememberItem}>
+				<div className={s.loginFormRememberItem}>
 					<Field name='rememberMe' component={Input} type='checkbox' />
 					<div>Remember Me</div>
 				</div>
 				{error && <div className={s.serverError}> {error}</div>}
-				<div className={s.loginButton}>
+				<div className={s.loginFormButton}>
 					<button>Sign in</button>
 				</div>
 			</form>

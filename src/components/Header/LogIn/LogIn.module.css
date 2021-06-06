@@ -23,12 +23,12 @@
 	background-color: white;
 }
 
-.instruction {
+.loginFormInstruction {
 	padding-bottom: 30px;
 }
 
 .loginForm input,
-.loginButton button {
+.loginFormButton button {
 	margin: 10px 0px;
 	height: 40px;
 	width: 100%;
@@ -38,18 +38,18 @@
 	padding-left: 10px;
 }
 
-.rememberItem {
+.loginFormRememberItem {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 }
 
-.rememberItem input {
+.loginFormRememberItem input {
 	width: 30px;
 	margin-right: 20px;
 }
 
-.loginButton button {
+.loginFormButton button {
 	background-color: #3f86fc;
 	color: white;
 	font-size: large;
