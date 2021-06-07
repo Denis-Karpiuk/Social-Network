@@ -1,6 +1,3 @@
-.serverError {
-	border: solid red 2px;
-}
 .loginPage {
 	display: grid;
 	grid-template-columns: 50% 35% 15%;
@@ -10,25 +7,21 @@
 	width: 100%;
 	height: 100vh;
 }
-
-.welcomBlock {
+.welcome {
 	padding: 20px;
 	margin: auto;
 	color: white;
 	font-size: 60px;
 }
-
-.loginFormBlock {
+.form {
 	padding: 30px 40px;
 	background-color: white;
 }
-
-.loginFormInstruction {
+.form__instruction {
 	padding-bottom: 30px;
 }
-
-.loginForm input,
-.loginFormButton button {
+.form input,
+.form__button button {
 	margin: 10px 0px;
 	height: 40px;
 	width: 100%;
@@ -37,20 +30,20 @@
 	outline: none;
 	padding-left: 10px;
 }
-
-.loginFormRememberItem {
+.form__checkbox {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 }
-
-.loginFormRememberItem input {
+.form__checkbox input {
 	width: 30px;
 	margin-right: 20px;
 }
-
-.loginFormButton button {
+.form__button button {
 	background-color: #3f86fc;
 	color: white;
 	font-size: large;
+}
+.form__serverError {
+	border: solid red 2px;
 }

@@ -1,11 +1,11 @@
-.logotype {
+/* .logotype {
 	grid-column-start: 2;
 	justify-content: start;
 
 	display: flex;
 	flex-direction: row;
 	justify-content: start;
-}
+} */
 
 .logotype img {
 	width: 48px;

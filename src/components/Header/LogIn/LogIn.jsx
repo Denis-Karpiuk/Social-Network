@@ -10,10 +10,10 @@ import s from './LogIn.module.css'
 
 const LoginForm = ({ handleSubmit, error }) => {
 	return (
-		<div className={s.loginForm}>
+		<div className={s.form}>
 			<form onSubmit={handleSubmit}>
 				<div>
-					<div className={s.loginFormInstruction}>
+					<div className={s.form__instruction}>
 						<h1>Sign in</h1>
 						<p>
 							Enter your email address and password to access profile panel.
@@ -37,12 +37,12 @@ const LoginForm = ({ handleSubmit, error }) => {
 						type='password'
 					/>
 				</div>
-				<div className={s.loginFormRememberItem}>
+				<div className={s.form__checkbox}>
 					<Field name='rememberMe' component={Input} type='checkbox' />
 					<div>Remember Me</div>
 				</div>
-				{error && <div className={s.serverError}> {error}</div>}
-				<div className={s.loginFormButton}>
+				{error && <div className={s.form__serverError}> {error}</div>}
+				<div className={s.form__button}>
 					<button>Sign in</button>
 				</div>
 			</form>
@@ -59,10 +59,10 @@ const LogIn = ({ isAuth, login, isFetching }) => {
 	if (isFetching) return <Preloader />
 	return (
 		<div className={s.loginPage}>
-			<div className={s.welcomBlock}>
+			<div className={s.welcome}>
 				<h1>Welcom to our Network</h1>
 			</div>
-			<div className={s.loginFormBlock}>
+			<div className={s.loginForm}>
 				<LoginReduxForm onSubmit={onSubmit} />
 			</div>
 		</div>

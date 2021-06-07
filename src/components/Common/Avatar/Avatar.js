@@ -1,23 +1,12 @@
 import React from 'react'
-import userPhoto from '../../../assets/images/user.png'
+import avatar from '../../../assets/images/avatar1.png'
 import s from './Avatar.module.css'
 
-const Avatar = props => {
+const Avatar = ({ style }) => {
+	debugger
 	return (
-		<div className={s.avatar}>
-			<div>
-				<span>{props.login}</span>
-			</div>
-			<div>
-				<img
-					onDoubleClick={props.logout}
-					src={
-						!props.profile || !props.profile.photos.small
-							? userPhoto
-							: props.profile.photos.small
-					}
-				/>
-			</div>
+		<div className={s.headerAvatar}>
+			<img src={avatar} />
 		</div>
 	)
 }

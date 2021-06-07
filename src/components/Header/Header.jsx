@@ -2,10 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 import { logout } from '../../redux/Auth-Reducer'
+import Avatar from '../Common/Avatar/Avatar'
 import s from './Header.module.css'
 import Logotype from './Logotype/Logotype'
 import Notyfication from './Notyfication/Notyfication'
-import Player from './Player/Player'
 import Search from './Search/Search'
 
 class Header extends React.Component {
@@ -15,8 +15,8 @@ class Header extends React.Component {
 				<Logotype />
 				<Search />
 				<Notyfication />
-				<Player />
 				<div className={s.loginBlock}>
+					<Avatar style={'headerAvatar'} />
 					{this.props.auth.isAuth ? (
 						<div className={s.userName}>
 							{this.props.login}

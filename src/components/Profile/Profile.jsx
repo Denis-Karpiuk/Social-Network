@@ -1,5 +1,5 @@
 import React from 'react'
-import userPhoto from '../../assets/images/user.png'
+import userPhoto from '../../assets/images/avatar1.png'
 import Preloader from '../Common/Preloader/Preloader'
 import s from './Profile.module.css'
 import ProfileStatusWithHook from './ProfileStatus/ProfileStatus-HOOK'
