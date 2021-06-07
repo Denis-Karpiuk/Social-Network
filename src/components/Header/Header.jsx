@@ -16,7 +16,7 @@ class Header extends React.Component {
 				<Search />
 				<Notyfication />
 				<div className={s.loginBlock}>
-					<Avatar style={'headerAvatar'} />
+					<Avatar width={'40px'} height={'40px'} />
 					{this.props.auth.isAuth ? (
 						<div className={s.userName}>
 							{this.props.login}
