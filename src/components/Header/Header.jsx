@@ -7,6 +7,7 @@ import s from './Header.module.css'
 import Logotype from './Logotype/Logotype'
 import Notyfication from './Notyfication/Notyfication'
 import Search from './Search/Search'
+import test from '../../assets/images/React App_files/Denis.jpg'
 
 class Header extends React.Component {
 	render() {
@@ -16,7 +17,7 @@ class Header extends React.Component {
 				<Search />
 				<Notyfication />
 				<div className={s.loginBlock}>
-					<Avatar width={'40px'} height={'40px'} />
+					<Avatar photo={test} width={'40px'} height={'40px'} />
 					{this.props.auth.isAuth ? (
 						<div className={s.userName}>
 							{this.props.login}

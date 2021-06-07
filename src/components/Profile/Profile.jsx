@@ -1,5 +1,5 @@
 import React from 'react'
-import userPhoto from '../../assets/images/avatar1.png'
+import Avatar from '../Common/Avatar/Avatar'
 import Preloader from '../Common/Preloader/Preloader'
 import s from './Profile.module.css'
 import ProfileStatusWithHook from './ProfileStatus/ProfileStatus-HOOK'
@@ -12,7 +12,8 @@ const Profile = props => {
 		<div className={s.profilePage}>
 			<div className={s.user}>
 				<div className={s.avatar}>
-					<img src={!props.profilePhoto ? userPhoto : props.profilePhoto} />
+					<Avatar photo={props.profilePhoto} />
+					{/* <img src={!props.profilePhoto ? userPhoto : props.profilePhoto} /> */}
 				</div>
 				<div className={s.buttons}>
 					<div>
