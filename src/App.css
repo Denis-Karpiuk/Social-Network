@@ -6,15 +6,13 @@
 	display: grid;
 	grid-template-columns: 15% 70% 15%;
 	/* gap: 10px; */
-	border: solid 1px red;
+}
 
+.app {
 	font-family: 'Helvetica Neue', Geneva, 'Noto Sans Armenian',
 		'Noto Sans Bengali', 'Noto Sans Cherokee', 'Noto Sans Devanagari',
 		'Noto Sans Ethiopic', 'Noto Sans Georgian', 'Noto Sans Hebrew',
 		'Noto Sans Kannada', 'Noto Sans Khmer', 'Noto Sans Lao', 'Noto Sans Osmanya',
 		'Noto Sans Tamil', 'Noto Sans Telugu', 'Noto Sans Thai', sans-serif, arial,
 		Tahoma, verdana;
-}
-.content {
-	border: solid 1px red;
 }

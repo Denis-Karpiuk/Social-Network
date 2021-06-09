@@ -11,10 +11,9 @@ const Profile = props => {
 	return (
 		<div className={s.profilePage}>
 			<div className={s.user}>
-				<div className={s.avatar}>
-					<Avatar photo={props.profilePhoto} />
-					{/* <img src={!props.profilePhoto ? userPhoto : props.profilePhoto} /> */}
-				</div>
+				{/* <div className={s.avatar}> */}
+				<Avatar photo={props.profilePhoto} />
+				{/* </div> */}
 				<div className={s.buttons}>
 					<div>
 						<button>Send Message</button>

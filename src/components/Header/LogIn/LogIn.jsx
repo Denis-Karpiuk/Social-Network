@@ -59,9 +59,7 @@ const LogIn = ({ isAuth, login, isFetching }) => {
 	if (isFetching) return <Preloader />
 	return (
 		<div className={s.loginPage}>
-			<div className={s.welcome}>
-				<h1>Welcom to our Network</h1>
-			</div>
+			<div className={s.welcome}>Welcome React Network</div>
 			<div className={s.loginForm}>
 				<LoginReduxForm onSubmit={onSubmit} />
 			</div>

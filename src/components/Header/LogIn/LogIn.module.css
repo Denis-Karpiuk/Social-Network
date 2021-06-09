@@ -1,7 +1,7 @@
 .loginPage {
 	display: grid;
-	grid-template-columns: 50% 35% 15%;
-	background: url(https://image.freepik.com/free-photo/blue-and-bright-blue-color-gradient-flare-light-background-color_40417-157.jpg);
+	grid-template-columns: 50% 35%;
+	background: url(../../../assets/images/reactBackground.png);
 	background-position: center;
 	background-size: cover;
 	width: 100%;
@@ -11,11 +11,12 @@
 	padding: 20px;
 	margin: auto;
 	color: white;
-	font-size: 60px;
+	font-size: 150px;
 }
-.form {
+.loginForm {
 	padding: 30px 40px;
-	background-color: white;
+	background: rgba(255, 255, 255, 0.1);
+	color: white;
 }
 .form__instruction {
 	padding-bottom: 30px;

@@ -2,15 +2,13 @@ import React from 'react'
 import avatar from '../../../assets/images/avatar1.png'
 import s from './Avatar.module.css'
 
-const Avatar = ({ photo, width, height, r = '50%' }) => {
-	const avatarStyle = {
-		width: width,
-		height: height,
+const Avatar = ({ photo, r = '50%' }) => {
+	let style = {
 		borderRadius: r,
 	}
 	return (
 		<div className={s.avatar}>
-			<img style={avatarStyle} src={!photo ? avatar : photo} />
+			<img style={style} src={!photo ? avatar : photo} />
 		</div>
 	)
 }

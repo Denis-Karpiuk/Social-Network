@@ -1,6 +1,6 @@
 .profilePage {
 	display: grid;
-	grid-template-columns: 200px 1fr;
+	grid-template-columns: 200px 200px;
 	grid-template-rows: repeat(2, auto);
 	grid-template-areas:
 		'user info'

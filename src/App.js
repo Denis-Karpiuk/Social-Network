@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Route } from 'react-router'
 import './App.css'
-import Comments from './components/Comments/Comments'
 import Preloader from './components/Common/Preloader/Preloader'
 import Friends from './components/Friends/Friends'
 import FriendsOnlineContainer from './components/FriendsOnline/FriendsOnlineContainer'
@@ -19,7 +18,6 @@ import Recommend from './components/Recommend/Recommend'
 import UsersContainer from './components/Users/UsersContainer'
 import Video from './components/Video/Video'
 import { initializeApp } from './redux/App-Reducer'
-
 const mapStateToProps = state => {
 	return {
 		initialized: state.app.initialized,
@@ -61,7 +59,6 @@ class App extends React.Component {
 							<Route path='/video' render={() => <Video />} />
 							<Route path='/recommend' render={() => <Recommend />} />
 							<Route path='/likes' render={() => <Likes />} />
-							<Route path='/comments' render={() => <Comments />} />
 						</div>
 						<div className='friends-online'>
 							<FriendsOnlineContainer />

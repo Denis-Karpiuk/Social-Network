@@ -1,20 +1,72 @@
 .header {
 	display: grid;
-	grid-template-columns: 15% 35% 35% 15%;
-	column-gap: 10px;
-	/* align-items: center; */
+	grid-template-columns: 15% 1fr 15% 15%;
+	grid-template-rows: 75px;
+	grid-template-areas: 'network search  notification user';
+	align-items: center;
 	background-color: white;
 	font-weight: bold;
-
-	height: 55px;
-	padding: 10px;
-	margin-bottom: 15px;
+	margin-bottom: 10px;
 }
 
-.login {
-	color: red;
+.network {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	grid-area: network;
+	margin-left: 10px;
 }
-
-.loginBlock a {
-	color: red;
+.network__logotype {
+	min-width: 60px;
+	min-height: 60px;
+	margin-right: 10px;
+}
+.network__name {
+	font-size: 23px;
+	color: blue;
+}
+.search {
+	grid: search;
+}
+.notification {
+	grid-area: notification;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	border: 1px solid black;
+}
+.user {
+	grid-area: user;
+	margin-right: 10px;
+}
+.user__login {
+	display: grid;
+	grid-template-columns: 60px auto;
+}
+.login__avatar {
+	width: 60px;
+	height: 60px;
+}
+.login__info {
+	display: grid;
+	grid-template-columns: 1fr 30px;
+}
+.login__name {
+	margin: auto;
+	font-size: x-large;
+}
+.logoutButton,
+.message,
+.bell {
+	margin: auto;
+	width: 30px;
+	height: 30px;
+}
+.user__loguot {
+	width: 60px;
+	height: 60px;
+	margin: auto;
+}
+.logoutButton img {
+	cursor: pointer;
 }
