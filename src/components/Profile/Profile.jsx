@@ -3,6 +3,7 @@ import Avatar from '../Common/Avatar/Avatar'
 import Preloader from '../Common/Preloader/Preloader'
 import s from './Profile.module.css'
 import ProfileStatusWithHook from './ProfileStatus/ProfileStatus-HOOK'
+import ProfileStatus from './ProfileStatus/ProfileStatus'
 
 const Profile = props => {
 	if (!props.profile) {
@@ -26,7 +27,7 @@ const Profile = props => {
 			<div className={s.info}>
 				<div className={s.userName}>{props.profileName}</div>
 				<div className={s.status}>
-					<ProfileStatusWithHook
+					<ProfileStatus
 						status={props.status}
 						updateStatus={props.updateStatusProfile}
 					/>

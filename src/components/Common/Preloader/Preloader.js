@@ -5,7 +5,7 @@ import react from '../../../assets/images/reactGif.gif'
 
 const Preloader = props => {
 	return (
-		<div className={s.preloader}>
+		<div role={'preloader'} className={s.preloader}>
 			<img className={s.little} src={react} />
 		</div>
 	)

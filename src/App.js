@@ -1,6 +1,7 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { connect, Provider } from 'react-redux'
 import { Route } from 'react-router'
+import { BrowserRouter } from 'react-router-dom'
 import './App.css'
 import Preloader from './components/Common/Preloader/Preloader'
 import Friends from './components/Friends/Friends'
@@ -18,6 +19,8 @@ import Recommend from './components/Recommend/Recommend'
 import UsersContainer from './components/Users/UsersContainer'
 import Video from './components/Video/Video'
 import { initializeApp } from './redux/App-Reducer'
+import store from './redux/redux-store'
+
 const mapStateToProps = state => {
 	return {
 		initialized: state.app.initialized,
@@ -69,4 +72,18 @@ class App extends React.Component {
 		)
 	}
 }
-export default connect(mapStateToProps, { initializeApp })(App)
+const ContainerAPP = connect(mapStateToProps, { initializeApp })(App)
+
+const MainApp = props => {
+	return (
+		<BrowserRouter>
+			<Provider store={store}>
+				<ContainerAPP />
+			</Provider>
+		</BrowserRouter>
+	)
+}
+export default MainApp
+
+// <React.StrictMode> //режим строгой проверки, помогает обнаруживать ошибки при разрабтке, не влияет на продакшен версию, рендерит компоненты по два раза.
+// </React.StrictMode>
