@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import Avatar from '../Common/Avatar/Avatar'
+import Icon from '../Common/Icon/Icon'
 import s from './Users.module.css'
 
 const Users = props => {
@@ -41,7 +41,11 @@ const Users = props => {
 					<div className={s.user} key={user.id}>
 						<div className={s.avatar}>
 							<NavLink to={'/profile/' + user.id}>
-								<Avatar width={'120px'} height={'120px'} />
+								<Icon
+									photo={user.photos.small}
+									width={'120px'}
+									height={'120px'}
+								/>
 							</NavLink>
 						</div>
 						<div className={s.button}>

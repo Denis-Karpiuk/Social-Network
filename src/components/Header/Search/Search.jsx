@@ -3,7 +3,7 @@ import s from './Search.module.css'
 const Search = () => {
 	return (
 		<div className={s.search}>
-			<input type='text' placeholder='SEARCH' />
+			<input type='search' placeholder='SEARCH' />
 		</div>
 	)
 }

@@ -9,7 +9,7 @@ let state = {
 	],
 }
 //* Вызваем AC для reducer и передаём в него данные
-let action = addMessage('Hello')
+let action = addMessage('Hello World')
 //* Создаём тест, который проверяет корректность
 it('messages should be add', () => {
 	//* Получаем результат работы функции, вызвав её с переданными в неё параметрами
@@ -22,5 +22,5 @@ it('message text shoul be correct', () => {
 	//* Резульатат вызова функции
 	let result = messageReducer(state, action)
 	//* Проверяем результат
-	expect(result.messages[3].text).toBe('Hello')
+	expect(result.messages[3].text).toBe('Hello World')
 })

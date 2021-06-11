@@ -7,8 +7,3 @@ test('renders div main', () => {
 	const div = screen.getByRole(/preloader/i)
 	expect(div).toBeInTheDocument()
 })
-
-// test('renders learn react link', () => {
-// 	render(<MainApp />)
-// 	screen.debug()
-// })

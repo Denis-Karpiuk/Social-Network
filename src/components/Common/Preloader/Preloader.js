@@ -1,7 +1,6 @@
 import React from 'react'
-import preloader from '../../../assets/images/Cube_big.gif'
-import s from './Preloader.module.css'
 import react from '../../../assets/images/reactGif.gif'
+import s from './Preloader.module.css'
 
 const Preloader = props => {
 	return (

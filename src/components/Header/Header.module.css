@@ -1,8 +1,8 @@
 .header {
 	display: grid;
-	grid-template-columns: 15% 1fr 15% 15%;
+	grid-template-columns: 15% 1fr 8% 15%;
 	grid-template-rows: 75px;
-	grid-template-areas: 'network search  notification user';
+	grid-template-areas: 'network search  user user';
 	align-items: center;
 	background-color: white;
 	font-weight: bold;
@@ -23,18 +23,17 @@
 }
 .network__name {
 	font-size: 23px;
-	color: blue;
+	color: #1082f4;
 }
 .search {
-	grid: search;
+	grid-area: search;
+	text-align: center;
+	/* border: 1px solid black; */
 }
-.notification {
-	grid-area: notification;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	border: 1px solid black;
+.search input {
+	max-width: 80%;
 }
+
 .user {
 	grid-area: user;
 	margin-right: 10px;
@@ -49,15 +48,15 @@
 }
 .login__info {
 	display: grid;
-	grid-template-columns: 1fr 30px;
+	grid-template-columns: repeat(4, auto);
 }
 .login__name {
 	margin: auto;
 	font-size: x-large;
 }
 .logoutButton,
-.message,
-.bell {
+.login__message,
+.login__notifycation {
 	margin: auto;
 	width: 30px;
 	height: 30px;
