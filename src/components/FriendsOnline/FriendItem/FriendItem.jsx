@@ -4,14 +4,14 @@ import Icon from '../../Common/Icon/Icon'
 
 const FriendItem = ({ link, img, friendName }) => {
 	return (
-		<div className={s.friend}>
-			<div className={s.fiend__avatar}>
-				<NavLink to={link}>
+		<NavLink to={link} activeClassName={s.active}>
+			<div className={s.friend}>
+				<div className={s.fiend__avatar}>
 					<Icon photo={img} />
-				</NavLink>
+				</div>
+				<div className={s.friend__name}>{friendName}</div>
 			</div>
-			<div className={s.friend__name}>{friendName}</div>
-		</div>
+		</NavLink>
 	)
 }
 
