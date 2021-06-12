@@ -65,7 +65,7 @@ class App extends React.Component {
 								<Route path='/recommend' render={() => <Recommend />} />
 								<Route path='/likes' render={() => <Likes />} />
 							</div>
-							<div className='friends-online'>
+							<div className='online'>
 								<FriendsOnlineContainer />
 							</div>
 						</div>

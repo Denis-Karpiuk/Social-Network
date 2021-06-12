@@ -1,13 +1,10 @@
-.app a {
-	text-decoration: none;
-}
-
 .body {
 	display: grid;
-	grid-template-columns: 15% 70% 15%;
+	grid-template-columns: 15% 68% 15%;
+	grid-template-rows: auto;
+	grid-template-areas: 'navbar content add';
 	gap: 10px;
 }
-
 .app {
 	font-family: 'Helvetica Neue', Geneva, 'Noto Sans Armenian',
 		'Noto Sans Bengali', 'Noto Sans Cherokee', 'Noto Sans Devanagari',
@@ -15,4 +12,17 @@
 		'Noto Sans Kannada', 'Noto Sans Khmer', 'Noto Sans Lao', 'Noto Sans Osmanya',
 		'Noto Sans Tamil', 'Noto Sans Telugu', 'Noto Sans Thai', sans-serif, arial,
 		Tahoma, verdana;
+}
+.app a {
+	text-decoration: none;
+}
+
+.navbar {
+	grid-area: navbar;
+}
+.content {
+	grid-area: content;
+}
+.online {
+	grid-area: add;
 }
