@@ -96,4 +96,9 @@ export const updateStatusProfile = status => {
 		})
 	}
 }
+
+export const updateProfilePhoto = FormData => async dispatch => {
+	const response = await profileAPI.updatePhoto(FormData)
+	console.log(response.data)
+}
 export default profileReducer

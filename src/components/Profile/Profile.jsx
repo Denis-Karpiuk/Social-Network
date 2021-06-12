@@ -11,9 +11,10 @@ const Profile = props => {
 	return (
 		<div className={s.profilePage}>
 			<div className={s.user}>
-				{/* <div className={s.avatar}> */}
-				<Icon photo={props.profilePhoto} />
-				{/* </div> */}
+				<div className={s.avatar}>
+					<Icon />
+				</div>
+
 				<div className={s.buttons}>
 					<div>
 						<button>Send Message</button>

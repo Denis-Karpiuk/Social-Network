@@ -1,8 +1,6 @@
-import React from 'react'
 import s from './Paginator.module.css'
 
 const Paginator = ({ ...props }) => {
-	debugger
 	let maxPageNumber = Math.ceil(props.totalCount / props.pageSize)
 	let pages = []
 	for (

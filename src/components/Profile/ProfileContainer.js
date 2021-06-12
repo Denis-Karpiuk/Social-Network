@@ -1,13 +1,14 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import { compose } from 'redux'
-import { withAuthRedirect } from '../../hoc/withAuthRedirect'
+import { withAuthRedirect } from '../../HOC/withAuthRedirect'
 import { takeAutorizedUserId } from '../../redux/Auth-Selectors'
 import {
 	getProfile,
 	getStatus,
 	updateStatusProfile,
+	updateProfilePhoto,
 } from '../../redux/Profile-Reducer'
 import {
 	takeIsFetching,
@@ -29,6 +30,7 @@ class ClassProfileContainer extends React.Component {
 		}
 		this.props.getProfile(userId)
 		this.props.getStatus(userId)
+		// this.props.updateProfilePhoto()
 	}
 	render() {
 		if (this.props.isFetching) return <Preloader />
@@ -58,6 +60,7 @@ const ProfileContainer = compose(
 		getProfile,
 		getStatus,
 		updateStatusProfile,
+		updateProfilePhoto,
 	}),
 	withRouter,
 	withAuthRedirect

@@ -8,6 +8,7 @@ import logo from '../../assets/images/logoHeader.png'
 import out from '../../assets/images/logout.png'
 import photo from '../../assets/images/React App_files/pas.jpg'
 import { logout } from '../../redux/Auth-Reducer'
+import { takeProfilePhoto } from '../../redux/Profile-Selectors'
 import Icon from '../Common/Icon/Icon'
 import s from './Header.module.css'
 import Search from './Search/Search'
@@ -30,8 +31,8 @@ class Header extends React.Component {
 				<div className={s.user}>
 					{this.props.auth.isAuth ? (
 						<div className={s.user__login}>
-							<div className={s.login__Icon}>
-								<Icon photo={photo} />
+							<div className={s.login__userIcon}>
+								<Icon photo={this.props.userIcon} />
 							</div>
 							<div className={s.login__info}>
 								<div className={s.login__name}>{this.props.login}</div>
@@ -62,7 +63,7 @@ const mapStateToProps = state => {
 	return {
 		auth: state.auth,
 		login: state.auth.login,
-		// userIcon: tekeUserIcon(state)
+		userIcon: takeProfilePhoto(state),
 	}
 }
 const HeaderContainer = connect(mapStateToProps, { logout })(Header)

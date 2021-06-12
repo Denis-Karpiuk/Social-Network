@@ -1,17 +1,17 @@
 .navlink {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 10px;
-    margin-top: 10px;
+	display: flex;
+	justify-content: center;
+	padding-bottom: 10px;
+	margin-top: 10px;
 }
 
 .item a.active {
-    color: red;
-    font-weight: bold;
+	color: red;
+	font-weight: bold;
 }
 
 .friendsItems {
-    color: white;
-    display: flex;
-    justify-content: center;
+	color: white;
+	display: flex;
+	justify-content: center;
 }
