@@ -1,10 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import {
-	takeFriendsOnline,
-	takeLinkPage,
-} from '../../redux/FriendsOnline-Selectors'
 import FriendItem from './FriendItem/FriendItem'
 import s from './FriendsOnline.module.css'
 
@@ -29,10 +25,7 @@ const FriendsOnline = ({ link, friendsOnline }) => {
 }
 
 const mapStateToProps = state => {
-	return {
-		link: takeLinkPage(state),
-		friendsOnline: takeFriendsOnline(state),
-	}
+	return {}
 }
 
 const FriendsOnlineContainer = connect(mapStateToProps, {})(FriendsOnline)
