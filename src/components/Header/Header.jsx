@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import bell from '../../assets/images/bell.png'
+import bell from '../../assets/images/notification.png'
 import message from '../../assets/images/email.png'
 import login from '../../assets/images/login.png'
 import logo from '../../assets/images/logoHeader.png'
