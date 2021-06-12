@@ -1,13 +1,13 @@
-.item img {
-    width: 40px;
-    height: 40px;
-    border-radius: 20px;
+.friend {
+	display: flex;
+	flex-direction: row;
+	padding-top: 10px;
 }
-
-.item {
-    padding: 5px;
+.fiend__avatar {
+	width: 60px;
+	height: 60px;
 }
-
-.itemName {
-    text-align: center;
+.friend__name {
+	padding-top: 20px;
+	margin-left: 10px;
 }

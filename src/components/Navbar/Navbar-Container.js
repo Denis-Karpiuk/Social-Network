@@ -8,5 +8,4 @@ let mapStateToProps = state => {
 	}
 }
 const NavbarContainer = connect(mapStateToProps)(Navbar)
-
 export default NavbarContainer

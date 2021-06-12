@@ -9,15 +9,13 @@ import {
 import FriendItem from './FriendItem/FriendItem'
 import s from './FriendsOnline.module.css'
 
-const FriendsOnline = ({ link, nameBlock, friendsOnline }) => {
+const FriendsOnline = ({ link, friendsOnline }) => {
 	return (
-		<div className={s.item}>
-			<div className={s.navlink}>
-				<NavLink to={link} activeClassName={s.active}>
-					<div>{nameBlock}</div>
-				</NavLink>
-			</div>
-			<div className={s.friendsOnlineList}>
+		<div className={s.FriendsOnline}>
+			<NavLink to={link} activeClassName={s.active}>
+				<div>Online</div>
+			</NavLink>
+			<div className={s.friendsOnline__List}>
 				{friendsOnline.map(friend => (
 					<FriendItem
 						key={friend.id}
@@ -34,7 +32,6 @@ const FriendsOnline = ({ link, nameBlock, friendsOnline }) => {
 const mapStateToProps = state => {
 	return {
 		link: takeLinkPage(state),
-		nameBlock: takeBlockName(state),
 		friendsOnline: takeFriendsOnline(state),
 	}
 }
