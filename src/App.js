@@ -5,11 +5,10 @@ import { BrowserRouter } from 'react-router-dom'
 import './App.css'
 import Preloader from './components/Common/Preloader/Preloader'
 import Friends from './components/Friends/Friends'
-import FriendsOnlineContainer from './components/FriendsOnline/FriendsOnlineContainer'
 import HeaderContainer from './components/Header/Header'
 import MessagesContainer from './components/Messages/Messages-Container'
 import Music_Container from './components/Music/Music-Container'
-import NavbarContainer from './components/Navbar/Navbar-Container'
+import Navbar from './components/Navbar/Navbar'
 import NewsContainer from './components/News/News-Container'
 import PhotosContainer from './components/Photos/PhotosContainer'
 import ProfileContainer from './components/Profile/ProfileContainer'
@@ -45,7 +44,9 @@ class App extends React.Component {
 						<Route path='/login' render={() => <Login />} />
 						<HeaderContainer />
 						<div className='body'>
-							<div className='navbar'>{/* <NavbarContainer /> */}</div>
+							<div className='navbar'>
+								<Navbar />
+							</div>
 							<div className='content'>
 								<Route
 									path='/profile/:userId?'

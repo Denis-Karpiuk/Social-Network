@@ -1,16 +1,25 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import Icon from '../../Common/Icon/Icon'
 import s from './NavItem.module.css'
 
-const NavItem = props => {
+const NavItem = ({ link, img, name }) => {
 	return (
 		<div className={s.item}>
-			<NavLink to={props.link} activeClassName={s.active}>
-				<div>
-					<img src={props.img} />
-				</div>
-				<div>{props.name}</div>
-			</NavLink>
+			{true ? (
+				<NavLink to={`/${link}/`} activeClassName={s.active}>
+					<div className={s.icon}>
+						<Icon photo={img} r={0} />
+					</div>
+					<div>{name}</div>
+				</NavLink>
+			) : (
+				<NavLink to={`/${link}/`} activeClassName={s.active}>
+					<div className={s.icon}>
+						<Icon photo={img} r={0} />
+					</div>
+				</NavLink>
+			)}
 		</div>
 	)
 }

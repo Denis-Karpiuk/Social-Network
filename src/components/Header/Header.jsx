@@ -1,18 +1,16 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import bell from '../../assets/images/notification.png'
-import message from '../../assets/images/email.png'
-import login from '../../assets/images/login.png'
+import message from '../../assets/images/mail.png'
+import login from '../../assets/images/user3.png'
 import logo from '../../assets/images/logoHeader.png'
-import out from '../../assets/images/logout.png'
-import photo from '../../assets/images/React App_files/pas.jpg'
+import out from '../../assets/images/power-off.png'
+import bell from '../../assets/images/notification.png'
 import { logout } from '../../redux/Auth-Reducer'
 import { takeProfilePhoto } from '../../redux/Profile-Selectors'
 import Icon from '../Common/Icon/Icon'
 import s from './Header.module.css'
 import Search from './Search/Search'
-
 class Header extends React.Component {
 	render() {
 		return (
@@ -40,7 +38,7 @@ class Header extends React.Component {
 									<Icon photo={bell} />
 								</div>
 								<div className={s.login__message}>
-									<Icon photo={message} />
+									<Icon photo={message} r={0} />
 								</div>
 								<div className={s.logoutButton} onClick={this.props.logout}>
 									<Icon photo={out} />
