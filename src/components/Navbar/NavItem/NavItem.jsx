@@ -8,14 +8,14 @@ const NavItem = ({ link, img, name }) => {
 		<div className={s.item}>
 			{true ? (
 				<NavLink to={`/${link}/`} activeClassName={s.active}>
-					<div className={s.icon}>
+					<div className={s.item__icon}>
 						<Icon photo={img} r={0} />
 					</div>
-					<div>{name}</div>
+					<div className={s.item__name}>{name}</div>
 				</NavLink>
 			) : (
 				<NavLink to={`/${link}/`} activeClassName={s.active}>
-					<div className={s.icon}>
+					<div className={s.item__icon}>
 						<Icon photo={img} r={0} />
 					</div>
 				</NavLink>

@@ -1,5 +1,5 @@
 import React from 'react'
-import icon from '../../../assets/images/avatar1.png'
+import icon from '../../../assets/images/user.png'
 import s from './Icon.module.css'
 
 const Icon = ({ photo, r = '50%' }) => {

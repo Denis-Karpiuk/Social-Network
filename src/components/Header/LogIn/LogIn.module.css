@@ -1,22 +1,25 @@
 .loginPage {
 	display: grid;
-	grid-template-columns: 50% 35%;
-	background: url(../../../assets/images/reactBackground.png);
+	grid-template-columns: 15% 35% 50%;
+	grid-template-areas: '. form welcome';
+	background: url(../../../assets/images/background-react.jpg);
 	background-position: center;
 	background-size: cover;
 	width: 100%;
 	height: 100vh;
 }
 .welcome {
+	grid-area: welcome;
 	padding: 20px;
 	margin: auto;
 	color: white;
 	font-size: 150px;
 }
 .loginForm {
+	grid-area: form;
 	padding: 30px 40px;
-	background: rgba(255, 255, 255, 0.1);
-	color: white;
+	background: rgba(255, 255, 255, 1);
+	color: #1084dd;
 }
 .form__instruction {
 	padding-bottom: 30px;
@@ -41,7 +44,7 @@
 	margin-right: 20px;
 }
 .form__button button {
-	background-color: #3f86fc;
+	background-color: #1084dd;
 	color: white;
 	font-size: large;
 }

@@ -19,6 +19,7 @@ const Navbar = props => {
 		<div className={s.navbar}>
 			<NavItem link={'profile'} name={'Profile'} img={profile} />
 			<NavItem link={'news'} name={'News'} img={news} />
+			<NavItem link={'messages'} name={'Messages'} img={messages} />
 			<NavItem link={'photos'} name={'Photos'} img={gallery} />
 			<NavItem link={'music'} name={'Music'} img={music} />
 			<NavItem link={'video'} name={'Video'} img={video} />
@@ -29,7 +30,6 @@ const Navbar = props => {
 				name={'Notifications'}
 				img={notification}
 			/>
-			<NavItem link={'messages'} name={'Messages'} img={messages} />
 			<NavItem link={'stars'} name={'Stars'} img={star} />
 			<NavItem link={'likes'} name={'Likes'} img={likes} />
 			<NavItem link={'setting'} name={'Settings'} img={setting} />
