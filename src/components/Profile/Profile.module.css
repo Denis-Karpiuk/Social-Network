@@ -1,64 +1,144 @@
 .profilePage {
 	display: grid;
-	grid-template-columns: 200px auto;
+	grid-template-columns: auto;
 	grid-template-rows: repeat(2, auto);
-	grid-template-areas:
+	/* grid-template-areas:
 		'user info'
-		'user photos';
-	gap: 5px;
+		'user photos'; */
+	/* gap: 5px; */
 }
 
-.user {
+/* .user {
 	padding: 10px;
 	background-color: white;
 	grid-area: user;
-}
+} */
 /* .user input {
 	max-width: 100%;
 } */
 
-.info {
+/* .info {
 	padding: 5px;
 	background-color: white;
 	grid-area: info;
-}
+} */
 
-.photos {
+/* .photos {
 	background-color: white;
 	grid-area: photos;
 	padding: 10px;
-}
+} */
 
-.buttons button {
+/* .buttons button {
 	background-color: blue;
 	color: white;
 	margin-top: 10px;
 	width: 100%;
 	height: 30px;
-}
+} */
 
-.userName,
+/* .userName,
 .userId,
 .country,
 .about {
 	padding: 5px;
-}
-.userName,
+} */
+/* .userName,
 .about {
 	font-weight: bold;
 	font-style: italic;
 	padding: 5px;
-}
-.userId,
+} */
+/* .userId,
 .country {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 	font-style: italic;
-}
+} */
 
-.status {
+/* .status {
 	font-style: italic;
 	color: red;
 	padding: 5px;
+} */
+
+.header__img img {
+	max-width: 100%;
+}
+.header__img {
+	background-color: white;
+}
+
+.header__footer {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	background-color: white;
+	padding: 20px 10px;
+}
+.footer__links {
+	display: flex;
+	flex-direction: row;
+}
+
+.footer__links__item {
+	height: 30px;
+	width: 30px;
+	padding: 10px 10px;
+}
+
+.footer__statistic {
+	display: flex;
+}
+
+.statistic__posts,
+.statistic__followers,
+.statistic__following {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0px 10px;
+	padding-bottom: 5px;
+	font-style: italic;
+}
+
+.count {
+	align-items: center;
+}
+
+.profile__avatar {
+	width: 170px;
+	height: 170px;
+}
+.profile__info {
+	position: absolute;
+	left: 42%;
+	bottom: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.profile__header {
+	position: relative;
+}
+
+.profile__name {
+	font-size: x-large;
+}
+
+.profile__menu {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	background-color: white;
+	margin: 10px 0px;
+	height: 75px;
+}
+
+.profile__menu a.active {
+	color: blue;
 }

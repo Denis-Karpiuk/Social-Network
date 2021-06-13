@@ -17,7 +17,7 @@ import Video from './components/Video/Video'
 import { initializeApp } from './redux/App-Reducer'
 import store from './redux/redux-store'
 
-const Login = React.lazy(() => import('./components/Header/LogIn/LogIn'))
+const Login = React.lazy(() => import('./components/LogIn/LogIn'))
 
 const mapStateToProps = state => {
 	return {

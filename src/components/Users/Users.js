@@ -15,7 +15,6 @@ const Users = props => {
 	let nextPageNumber = props.pageStart + 10
 	return (
 		<div className={s.UsersPage}>
-			<div className={s.pageName}>{props.pageName}</div>
 			<div className={s.paginator}>
 				<span onClick={() => props.onPrev(prevPageNumber)} className={s.prev}>
 					Prev

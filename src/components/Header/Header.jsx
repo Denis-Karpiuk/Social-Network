@@ -11,8 +11,10 @@ import { takeProfilePhoto } from '../../redux/Profile-Selectors'
 import Icon from '../Common/Icon/Icon'
 import s from './Header.module.css'
 import Search from './Search/Search'
+import NavItem from '../Navbar/NavItem/NavItem'
 class Header extends React.Component {
 	render() {
+		debugger
 		return (
 			<div className={s.header}>
 				<div className={s.network}>
@@ -26,23 +28,21 @@ class Header extends React.Component {
 				<div className={s.search}>
 					<Search />
 				</div>
-				<div className={s.user}>
+				<div className={s.userAuth}>
 					{this.props.auth.isAuth ? (
-						<div className={s.user__login}>
-							<div className={s.login__userIcon}>
+						<div className={s.user}>
+							<div className={s.user__avatar}>
 								<Icon photo={this.props.userIcon} />
 							</div>
-							<div className={s.login__info}>
-								<div className={s.login__name}>{this.props.login}</div>
-								<div className={s.login__notifycation}>
-									<Icon photo={bell} />
-								</div>
-								<div className={s.login__message}>
-									<Icon photo={message} r={0} />
-								</div>
-								<div className={s.logoutButton} onClick={this.props.logout}>
-									<Icon photo={out} />
-								</div>
+							<div className={s.user__name}>{this.props.login}</div>
+							<div className={s.user__notification}>
+								<Icon photo={bell} />
+							</div>
+							<div className={s.user__message}>
+								<Icon photo={message} r={0} />
+							</div>
+							<div className={s.logoutButton} onClick={this.props.logout}>
+								<Icon photo={out} />
 							</div>
 						</div>
 					) : (

@@ -6,20 +6,12 @@ import s from './NavItem.module.css'
 const NavItem = ({ link, img, name }) => {
 	return (
 		<div className={s.item}>
-			{true ? (
-				<NavLink to={`/${link}/`} activeClassName={s.active}>
-					<div className={s.item__icon}>
-						<Icon photo={img} r={0} />
-					</div>
-					<div className={s.item__name}>{name}</div>
-				</NavLink>
-			) : (
-				<NavLink to={`/${link}/`} activeClassName={s.active}>
-					<div className={s.item__icon}>
-						<Icon photo={img} r={0} />
-					</div>
-				</NavLink>
-			)}
+			<NavLink to={`/${link}/`} activeClassName={s.active}>
+				<div className={s.item__icon}>
+					<Icon photo={img} r={0} />
+				</div>
+				<div className={s.item__name}>{name}</div>
+			</NavLink>
 		</div>
 	)
 }

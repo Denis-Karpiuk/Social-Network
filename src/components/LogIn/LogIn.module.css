@@ -2,7 +2,7 @@
 	display: grid;
 	grid-template-columns: 15% 35% 50%;
 	grid-template-areas: '. form welcome';
-	background: url(../../../assets/images/reactjs1.png);
+	background: url(../../assets/images/background-react.jpg);
 	background-position: center;
 	background-size: cover;
 	width: 100%;
@@ -14,6 +14,7 @@
 	margin: auto;
 	color: white;
 	font-size: 150px;
+	padding-left: 50px;
 }
 .loginForm {
 	grid-area: form;
