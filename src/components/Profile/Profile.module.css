@@ -1,97 +1,46 @@
-.profilePage {
+.profile {
 	display: grid;
-	grid-template-columns: auto;
-	grid-template-rows: repeat(2, auto);
-	/* grid-template-areas:
-		'user info'
-		'user photos'; */
-	/* gap: 5px; */
+	grid-template-columns: 65% 35%;
+	padding-bottom: 20px;
+	gap: 10px 10px;
+	align-items: start;
 }
-
-/* .user {
-	padding: 10px;
-	background-color: white;
-	grid-area: user;
-} */
-/* .user input {
-	max-width: 100%;
-} */
-
-/* .info {
-	padding: 5px;
-	background-color: white;
-	grid-area: info;
-} */
-
-/* .photos {
-	background-color: white;
-	grid-area: photos;
-	padding: 10px;
-} */
-
-/* .buttons button {
-	background-color: blue;
-	color: white;
-	margin-top: 10px;
-	width: 100%;
-	height: 30px;
-} */
-
-/* .userName,
-.userId,
-.country,
-.about {
-	padding: 5px;
-} */
-/* .userName,
-.about {
-	font-weight: bold;
-	font-style: italic;
-	padding: 5px;
-} */
-/* .userId,
-.country {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	font-style: italic;
-} */
-
-/* .status {
-	font-style: italic;
-	color: red;
-	padding: 5px;
-} */
-
-.header__img img {
+.profile__header {
+	grid-column: 1/3;
+}
+.header__background img {
 	max-width: 100%;
 }
-.header__img {
+.header__background,
+.createPost,
+.myPosts,
+.friends,
+.myPosts {
 	background-color: white;
 }
-
 .header__footer {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	background-color: white;
+	display: grid;
+	grid-template-columns: repeat(3, 33.3%);
 	padding: 20px 10px;
+	background-color: white;
 }
-.footer__links {
+.footer__contacts {
 	display: flex;
 	flex-direction: row;
+	text-align: center;
+	justify-content: space-between;
+	margin: 0 15px;
 }
-
-.footer__links__item {
+.link__item {
+	align-self: center;
 	height: 30px;
 	width: 30px;
-	padding: 10px 10px;
 }
-
 .footer__statistic {
 	display: flex;
+	flex-direction: row;
+	justify-content: center;
 }
-
 .statistic__posts,
 .statistic__followers,
 .statistic__following {
@@ -103,42 +52,85 @@
 	padding-bottom: 5px;
 	font-style: italic;
 }
-
 .count {
 	align-items: center;
 }
-
 .profile__avatar {
 	width: 170px;
 	height: 170px;
-}
-.profile__info {
 	position: absolute;
 	left: 42%;
-	bottom: 20px;
+	top: 125px;
+}
+.profile__info {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
-
 .profile__header {
 	position: relative;
 }
-
 .profile__name {
 	font-size: x-large;
 }
-
-.profile__menu {
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	background-color: white;
-	margin: 10px 0px;
-	height: 75px;
+.profile__status {
+	padding-top: 5px;
 }
 
-.profile__menu a.active {
-	color: blue;
+.createPost,
+.myPosts,
+.friends,
+.myPosts {
+	background-color: white;
+}
+.createPost {
+	grid-column: 1/2;
+}
+.createPost__item {
+	display: flex;
+	flex-direction: row;
+	padding: 10px;
+}
+.createPost__avatar {
+	width: 60px;
+	height: 60px;
+	margin-right: 20px;
+}
+.createPost__textarea {
+	width: 85%;
+	align-self: center;
+}
+.createPost__textarea textarea {
+	width: 99%;
+	outline: none;
+	border: none;
+	resize: none;
+	border-bottom: solid 1px lightgray;
+	padding-top: 20px;
+}
+.postForm__button {
+	text-align: center;
+}
+.postForm__button button {
+	height: 35px;
+	background-color: #50b5ff;
+	color: white;
+	border: 1px solid #50b5ff;
+	border-radius: 5px;
+}
+
+.friendsList,
+.photos {
+	display: grid;
+	grid-template-columns: repeat(3, auto);
+	justify-content: space-around;
+	padding: 10px;
+}
+.friend__avatar {
+	width: 75px;
+	height: 75px;
+	padding-bottom: 5px;
+}
+.friend__name {
+	padding-bottom: 10px;
 }

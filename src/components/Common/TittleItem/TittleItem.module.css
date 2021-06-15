@@ -1,0 +1,16 @@
+.tittleItem {
+	max-width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	font-size: x-large;
+	padding: 10px;
+	border-bottom: solid 1px lightgray;
+}
+
+.tittle__button button {
+	color: blue;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+}

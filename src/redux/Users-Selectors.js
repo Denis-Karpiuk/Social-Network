@@ -8,6 +8,7 @@ export const takePageNumber = state => state.usersPage.pageNumber
 export const takePageStart = state => state.usersPage.pageStart
 export const takeIsFetching = state => state.usersPage.isFetching
 export const takeFollowingProgress = state => state.usersPage.followingProgress
+export const takeFriends = state => state.usersPage.friends
 
 export const getUsersSelector = createSelector(takeUsers, users => {
 	return users.filter(user => user.id > 0)

@@ -21,7 +21,8 @@ import {
 } from '../../redux/Profile-Selectors'
 import Preloader from '../Common/Preloader/Preloader'
 import Profile from './Profile'
-
+import { getFriends } from '../../redux/Users-Reducer'
+import { takeFriends } from '../../redux/Users-Selectors'
 class ClassProfileContainer extends React.Component {
 	componentDidMount() {
 		let userId = this.props.match.params.userId
@@ -30,7 +31,7 @@ class ClassProfileContainer extends React.Component {
 		}
 		this.props.getProfile(userId)
 		this.props.getStatus(userId)
-		// this.props.updateProfilePhoto()
+		this.props.getFriends()
 	}
 	render() {
 		if (this.props.isFetching) return <Preloader />
@@ -52,6 +53,7 @@ const mapStateToProps = state => {
 		profileId: takeProfileId(state),
 		profileCountry: takeProfileCountry(state),
 		autorizedUserId: takeAutorizedUserId(state),
+		friends: takeFriends(state),
 	}
 }
 
@@ -61,6 +63,7 @@ const ProfileContainer = compose(
 		getStatus,
 		updateStatusProfile,
 		updateProfilePhoto,
+		getFriends,
 	}),
 	withRouter,
 	withAuthRedirect

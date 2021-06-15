@@ -8,6 +8,7 @@ const CHANGE_PAGES = 'CHANGE_PAGES'
 const ACTIVEPAGE = 'ACTIVEPAGE'
 const FETCHING = 'FETCHING'
 const TOGGEL_FOLLOWING_PROGRESS = 'TOGGEL_FOLLOWING_PROGRESS'
+const SET_FRIENDS = 'users/SET_FRIENDS'
 
 let initialState = {
 	pageName: 'Пользователи',
@@ -18,6 +19,7 @@ let initialState = {
 	pageStart: 1,
 	isFetching: false,
 	followingProgress: [],
+	friends: null,
 }
 const usersReducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -88,6 +90,12 @@ const usersReducer = (state = initialState, action) => {
 					: [state.followingProgress.filter(id => id != action.userId)],
 			}
 		}
+		case SET_FRIENDS: {
+			return {
+				...state,
+				friends: action.friends,
+			}
+		}
 		default:
 			return state
 	}
@@ -116,6 +124,13 @@ export const fetching = isFetching => {
 }
 export const toggleFollowing = (isFetching, userId) => {
 	return { type: TOGGEL_FOLLOWING_PROGRESS, isFetching, userId }
+}
+
+export const setFriends = friends => {
+	return {
+		type: SET_FRIENDS,
+		friends,
+	}
 }
 
 export const getUsers = (pageNumber, pageSize) => {
@@ -151,6 +166,11 @@ export const follow = userId => {
 			dispatch(toggleFollowing(false, userId))
 		})
 	}
+}
+
+export const getFriends = () => async dispatch => {
+	let response = await userAPI.getFriends()
+	dispatch(setFriends(response.data.items))
 }
 
 export default usersReducer

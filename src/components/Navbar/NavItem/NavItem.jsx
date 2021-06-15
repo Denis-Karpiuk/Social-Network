@@ -8,7 +8,7 @@ const NavItem = ({ link, img, name }) => {
 		<div className={s.item}>
 			<NavLink to={`/${link}/`} activeClassName={s.active}>
 				<div className={s.item__icon}>
-					<Icon photo={img} r={0} />
+					<Icon img={img} r={0} />
 				</div>
 				<div className={s.item__name}>{name}</div>
 			</NavLink>

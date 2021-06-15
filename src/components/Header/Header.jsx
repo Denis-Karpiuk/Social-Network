@@ -14,12 +14,11 @@ import Search from './Search/Search'
 import NavItem from '../Navbar/NavItem/NavItem'
 class Header extends React.Component {
 	render() {
-		debugger
 		return (
 			<div className={s.header}>
 				<div className={s.network}>
 					<div className={s.network__logotype}>
-						<Icon photo={logo} />
+						<Icon img={logo} r={'50%'} />
 					</div>
 					<div className={s.network__name}>
 						<p>React Network</p>
@@ -32,23 +31,23 @@ class Header extends React.Component {
 					{this.props.auth.isAuth ? (
 						<div className={s.user}>
 							<div className={s.user__avatar}>
-								<Icon photo={this.props.userIcon} />
+								<Icon img={this.props.userIcon} />
 							</div>
 							<div className={s.user__name}>{this.props.login}</div>
 							<div className={s.user__notification}>
-								<Icon photo={bell} />
+								<Icon img={bell} />
 							</div>
 							<div className={s.user__message}>
-								<Icon photo={message} r={0} />
+								<Icon img={message} r={0} />
 							</div>
 							<div className={s.logoutButton} onClick={this.props.logout}>
-								<Icon photo={out} />
+								<Icon img={out} />
 							</div>
 						</div>
 					) : (
 						<div className={s.user__loguot}>
 							<NavLink to='/login'>
-								<Icon photo={login} r={'0'} />
+								<Icon img={login} r={'0'} />
 							</NavLink>
 						</div>
 					)}
