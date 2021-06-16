@@ -1,8 +1,10 @@
 import { stopSubmit } from 'redux-form'
 import { authAPI } from '../api/api'
+import { getProfile } from './Profile-Reducer'
 
 const SET_USER_LOGIN_DATA = 'AUTH/SET_USER_LOGIN_DATA'
 const TOOGLE_FETCHING = 'AUTH/TOOGLE_FETCHING'
+const SET_USER_AUTH_PHOTO = 'AUTH/SET_USER_AUTH_PHOTO'
 
 const initialState = {
 	isAuth: false,
@@ -10,6 +12,7 @@ const initialState = {
 	userId: null,
 	email: null,
 	isFetching: false,
+	userAuthPhoto: null,
 }
 const authReducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -23,6 +26,15 @@ const authReducer = (state = initialState, action) => {
 			return {
 				...state,
 				isFetching: action.fetching,
+			}
+		}
+		case SET_USER_AUTH_PHOTO: {
+			return {
+				...state,
+				userAuthPhoto:
+					state.userId !== action.userId
+						? state.userAuthPhoto
+						: action.userPhoto,
 			}
 		}
 		default:
@@ -43,11 +55,22 @@ const setUserLoginData = (userId, email, login, isAuth) => {
 	}
 }
 
+export const setUserAuthPhoto = (userPhoto, userId) => {
+	return {
+		type: SET_USER_AUTH_PHOTO,
+		userPhoto,
+		userId,
+	}
+}
+
 export const getUserLoginData = () => async dispatch => {
 	const response = await authAPI.me()
+	console.log('auth')
 	if (response.data.resultCode === 0) {
 		let { id, email, login } = response.data.data
 		dispatch(setUserLoginData(id, email, login, true))
+		await dispatch(getProfile(id))
+		console.log('profile')
 	}
 }
 

@@ -28,13 +28,13 @@
 	display: flex;
 	flex-direction: row;
 	text-align: center;
-	justify-content: space-between;
 	margin: 0 15px;
 }
 .link__item {
 	align-self: center;
 	height: 30px;
 	width: 30px;
+	margin-right: 9px;
 }
 .footer__statistic {
 	display: flex;

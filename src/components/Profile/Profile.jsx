@@ -50,9 +50,9 @@ const Profile = ({
 				</div>
 				<div className={s.header__footer}>
 					<div className={s.footer__contacts}>
-						{Object.keys(contacts).map(key =>
+						{Object.keys(contacts).map((key, index) =>
 							contacts[key] ? (
-								<div className={s.link__item}>
+								<div key={key} className={s.link__item}>
 									<LinkIcon img={key} link={contacts[key]} />
 								</div>
 							) : null
@@ -101,7 +101,7 @@ const Profile = ({
 				<TittleItem tittle={'Friends'} subtittle={'Add New'} link={'users'} />
 				<div className={s.friendsList}>
 					{friends.map(friend => (
-						<div className={s.friend}>
+						<div key={friend.id} className={s.friend}>
 							<div className={s.friend__avatar}>
 								<NavLink to={'/profile/' + friend.id}>
 									<Icon img={friend.photos.large} r={'50%'}></Icon>

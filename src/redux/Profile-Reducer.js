@@ -1,4 +1,5 @@
 import { profileAPI } from '../api/api'
+import { setUserAuthPhoto } from './Auth-Reducer'
 
 const SET_PROFILE_USER = 'SET_PROFILE_USER'
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
@@ -68,31 +69,23 @@ const updateStatus = status => {
 	}
 }
 
-export const getProfile = userId => {
-	return dispatch => {
-		dispatch(isFetching(true))
-		profileAPI.getProfile(userId).then(response => {
-			dispatch(isFetching(false))
-			dispatch(setProfile(response.data))
-		})
-	}
+export const getProfile = userId => async dispatch => {
+	dispatch(isFetching(true))
+	let response = await profileAPI.getProfile(userId)
+	dispatch(setProfile(response.data))
+	dispatch(setUserAuthPhoto(response.data.photos, response.data.userId))
+	dispatch(isFetching(false))
 }
 
-export const getStatus = userId => {
-	return dispatch => {
-		profileAPI.getStatus(userId).then(response => {
-			dispatch(setStatus(response.data))
-		})
-	}
+export const getStatus = userId => async dispatch => {
+	let response = await profileAPI.getStatus(userId)
+	dispatch(setStatus(response.data))
 }
 
-export const updateStatusProfile = status => {
-	return dispatch => {
-		profileAPI.updateStatus(status).then(response => {
-			if (response.data.resultCode === 0) {
-				dispatch(updateStatus(status))
-			}
-		})
+export const updateStatusProfile = status => async dispatch => {
+	let response = await profileAPI.updateStatus(status)
+	if (response.data.resultCode === 0) {
+		dispatch(updateStatus(status))
 	}
 }
 

@@ -1,4 +1,5 @@
 import { getUserLoginData } from './Auth-Reducer'
+import { getProfile } from './Profile-Reducer'
 
 const INITIALIZED_SUCSESS = 'INITIALIZED_SUCSESS'
 
@@ -25,10 +26,10 @@ const initializedSucsess = () => {
 	}
 }
 
-export const initializeApp = () => dispatch => {
-	dispatch(getUserLoginData()).then(() => {
-		dispatch(initializedSucsess())
-	})
+export const initializeApp = () => async dispatch => {
+	await dispatch(getUserLoginData())
+	console.log('app')
+	dispatch(initializedSucsess())
 }
 
 export default appReducer

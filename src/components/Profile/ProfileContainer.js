@@ -8,7 +8,6 @@ import {
 	getProfile,
 	getStatus,
 	updateStatusProfile,
-	updateProfilePhoto,
 } from '../../redux/Profile-Reducer'
 import {
 	takeContacts,
@@ -24,7 +23,7 @@ import Preloader from '../Common/Preloader/Preloader'
 import Profile from './Profile'
 import { getFriends } from '../../redux/Users-Reducer'
 import { takeFriends } from '../../redux/Users-Selectors'
-class ClassProfileContainer extends React.Component {
+class ClassProfileContainer extends React.PureComponent {
 	componentDidMount() {
 		let userId = this.props.match.params.userId
 		if (!userId) {
@@ -63,7 +62,6 @@ const ProfileContainer = compose(
 		getProfile,
 		getStatus,
 		updateStatusProfile,
-		updateProfilePhoto,
 		getFriends,
 	}),
 	withRouter,
