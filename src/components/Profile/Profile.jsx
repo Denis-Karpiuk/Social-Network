@@ -38,7 +38,6 @@ const Profile = ({
 	profile,
 	profilePhoto,
 	contacts,
-	...props
 }) => {
 	if (!profile || !friends) {
 		return <Preloader />

@@ -1,16 +1,15 @@
 import React from 'react'
 import icon from '../../../assets/images/export.png'
-import s from './LinkIcon.module.css'
-import profilePhoto from '../../../assets/images/user1.png'
-import telegram from '../../../assets/images/telegram.png'
+import facebook from '../../../assets/images/facebook.png'
 import github from '../../../assets/images/github.png'
 import instagram from '../../../assets/images/instagram.png'
 import linkedin from '../../../assets/images/linkedin.png'
-import background from '../../../assets/images/profile-bg.jpg'
-import youtube from '../../../assets/images/youtube1.png'
+import telegram from '../../../assets/images/telegram.png'
 import twitter from '../../../assets/images/twitter.png'
-import facebook from '../../../assets/images/facebook.png'
+import profilePhoto from '../../../assets/images/user1.png'
 import vk from '../../../assets/images/vk.png'
+import youtube from '../../../assets/images/youtube1.png'
+import s from './LinkIcon.module.css'
 
 let icons = {
 	github,
@@ -21,6 +20,7 @@ let icons = {
 	facebook,
 	vk,
 	telegram,
+	profilePhoto,
 }
 const LinkIcon = ({ img, link }) => {
 	return (
