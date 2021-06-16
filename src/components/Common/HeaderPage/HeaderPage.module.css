@@ -1,0 +1,22 @@
+.headerPage img {
+	position: relative;
+	max-width: 100%;
+	margin-bottom: 10px;
+}
+.tittle,
+.tittle__text {
+	position: absolute;
+	width: 260px;
+	height: 100px;
+	line-height: 100px;
+	top: 190px;
+	left: 42%;
+	text-align: center;
+	font-size: xx-large;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.6);
+}
+.tittle__text {
+	background: none;
+	z-index: 2;
+}

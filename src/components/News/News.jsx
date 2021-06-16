@@ -2,7 +2,6 @@ import React from 'react'
 import Time from './Time'
 import s from './News.module.css'
 import Paginator from '../Common/Paginator/Paginator'
-import LinkIcon from '../Common/Icon/LinkIcon'
 
 class News extends React.Component {
 	onUpdateTextarea = e => {
@@ -33,9 +32,6 @@ class News extends React.Component {
 				</div>
 				<div className={s.buttonPress}>
 					<button onClick={this.onAddNewsPost}>Add News</button>
-				</div>
-				<div className={s.licon}>
-					<LinkIcon link={'https://www.instagram.com/?hl=ru'} />
 				</div>
 			</div>
 		)

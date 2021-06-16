@@ -1,5 +1,5 @@
 import React from 'react'
-import icon from '../../../assets/images/user1.png'
+import icon from '../../../assets/images/user4.png'
 import s from './Icon.module.css'
 
 const Icon = ({ img, r = 0 }) => {
@@ -7,7 +7,7 @@ const Icon = ({ img, r = 0 }) => {
 		borderRadius: r,
 	}
 	return (
-		<div className={s.icon}>
+		<div className={s.img}>
 			<img style={style} src={!img ? icon : img} />
 		</div>
 	)

@@ -1,0 +1,39 @@
+.user {
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: 120px 1fr;
+	background-color: white;
+	border-radius: 5px;
+	margin: 10px;
+	padding-bottom: 30px;
+}
+
+.user__background img {
+	max-width: 100%;
+	border-radius: 5px;
+}
+.user__info {
+	display: flex;
+	margin-left: 30px;
+	padding-bottom: 15px;
+}
+.user__avatar {
+	width: 120px;
+	height: 120px;
+	margin-right: 30px;
+	position: relative;
+	bottom: 40px;
+}
+
+.user__name {
+	align-self: center;
+	font-size: 23px;
+	font-weight: 100;
+}
+.button button {
+	width: 94px;
+	height: 35px;
+	border: none;
+	border-radius: 5px;
+	margin-left: 30px;
+}
