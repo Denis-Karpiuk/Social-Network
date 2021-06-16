@@ -7,7 +7,6 @@ const UPDATE_STATUS = 'UPDATE_STATUS'
 
 const initialState = {
 	profile: null,
-	country: 'Belarus',
 	isFetching: false,
 	followingProgress: false,
 	status: '',

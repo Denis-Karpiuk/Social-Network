@@ -12,12 +12,8 @@ export const takeProfile = state => {
 	return state.profilePage.profile
 }
 
-export const takeProfileCountry = state => {
-	return state.profilePage.profile && state.profilePage.country
-}
-
 export const takeProfilePhoto = createSelector(takeProfile, profile => {
-	return !profile ? null : profile.photos.small
+	return !profile ? null : profile.photos.large
 })
 
 export const takeProfileName = createSelector(takeProfile, profile => {
@@ -26,4 +22,12 @@ export const takeProfileName = createSelector(takeProfile, profile => {
 
 export const takeProfileId = createSelector(takeProfile, profile => {
 	return !profile ? null : profile.userId
+})
+
+export const takeContacts = createSelector(takeProfile, function (profile) {
+	if (!profile) {
+		return null
+	} else {
+		return profile.contacts //obj
+	}
 })

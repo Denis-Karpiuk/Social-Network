@@ -8,9 +8,11 @@
 	border-bottom: solid 1px lightgray;
 }
 
-.tittle__button button {
+.subtittle {
 	color: blue;
 	border: none;
 	background-color: transparent;
 	cursor: pointer;
+	font-size: small;
+	padding-top: 10px;
 }

@@ -1,13 +1,7 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import { Field, Form, reduxForm } from 'redux-form'
-import profilePhoto from '../../assets/images/avatar1.png'
-import github from '../../assets/images/github.png'
-import gmail from '../../assets/images/gmail.png'
-import instagram from '../../assets/images/instagram.png'
-import linkedin from '../../assets/images/linkedin.png'
 import background from '../../assets/images/profile-bg.jpg'
-import telegram from '../../assets/images/telegram.png'
-import youtube from '../../assets/images/youtube.png'
 import { required } from '../../util/Validators'
 import Icon from '../Common/Icon/Icon'
 import LinkIcon from '../Common/Icon/LinkIcon'
@@ -42,6 +36,8 @@ const Profile = ({
 	profileName,
 	friends,
 	profile,
+	profilePhoto,
+	contacts,
 	...props
 }) => {
 	if (!profile || !friends) {
@@ -55,22 +51,16 @@ const Profile = ({
 				</div>
 				<div className={s.header__footer}>
 					<div className={s.footer__contacts}>
-						{/* {}//! Массив с сылками на сети, с проверкой совпадение по названию и */}
-						<div className={s.link__item}>
-							<LinkIcon img={github} link={''} />
-						</div>
-						<div className={s.link__item}>
-							<LinkIcon img={linkedin} link={''} />
-						</div>
-						<div className={s.link__item}>
-							<LinkIcon img={instagram} link={''} />
-						</div>
-						<div className={s.link__item}>
-							<LinkIcon img={youtube} link={''} />
-						</div>
+						{Object.keys(contacts).map(key =>
+							contacts[key] ? (
+								<div className={s.link__item}>
+									<LinkIcon img={key} link={contacts[key]} />
+								</div>
+							) : null
+						)}
 					</div>
 					<div className={s.profile__avatar}>
-						<Icon img={profilePhoto} />
+						<Icon img={profilePhoto} r='50%' />
 					</div>
 					<div className={s.profile__info}>
 						<div className={s.profile__name}>{profileName}</div>
@@ -109,12 +99,14 @@ const Profile = ({
 				</div>
 			</div>
 			<div className={s.friends}>
-				<TittleItem tittle={'Friends'} buttonName={'Add New'} />
+				<TittleItem tittle={'Friends'} subtittle={'Add New'} link={'users'} />
 				<div className={s.friendsList}>
 					{friends.map(friend => (
 						<div className={s.friend}>
 							<div className={s.friend__avatar}>
-								<Icon img={friend.photos.small} r={'50%'}></Icon>
+								<NavLink to={'/profile/' + friend.id}>
+									<Icon img={friend.photos.large} r={'50%'}></Icon>
+								</NavLink>
 							</div>
 							<div className={s.friend__name}>
 								{friend.name.length > 10
@@ -126,7 +118,7 @@ const Profile = ({
 				</div>
 			</div>
 			<div className={s.myPosts}>
-				<TittleItem tittle={'My Posts'} buttonName={'. . .'} />
+				<TittleItem tittle={'My Posts'} subtittle={'. . .'} />
 			</div>
 		</div>
 	)

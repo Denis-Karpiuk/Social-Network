@@ -31,7 +31,7 @@ class Header extends React.Component {
 					{this.props.auth.isAuth ? (
 						<div className={s.user}>
 							<div className={s.user__avatar}>
-								<Icon img={this.props.userIcon} />
+								<Icon img={this.props.userIcon} r='50%' />
 							</div>
 							<div className={s.user__name}>{this.props.login}</div>
 							<div className={s.user__notification}>

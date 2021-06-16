@@ -40,11 +40,7 @@ const Users = props => {
 					<div className={s.user} key={user.id}>
 						<div className={s.avatar}>
 							<NavLink to={'/profile/' + user.id}>
-								<Icon
-									photo={user.photos.small}
-									width={'120px'}
-									height={'120px'}
-								/>
+								<Icon img={user.photos.small} />
 							</NavLink>
 						</div>
 						<div className={s.button}>

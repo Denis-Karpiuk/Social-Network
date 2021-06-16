@@ -11,6 +11,7 @@ import {
 	updateProfilePhoto,
 } from '../../redux/Profile-Reducer'
 import {
+	takeContacts,
 	takeIsFetching,
 	takeProfile,
 	takeProfileCountry,
@@ -51,9 +52,9 @@ const mapStateToProps = state => {
 		profilePhoto: takeProfilePhoto(state),
 		profileName: takeProfileName(state),
 		profileId: takeProfileId(state),
-		profileCountry: takeProfileCountry(state),
 		autorizedUserId: takeAutorizedUserId(state),
 		friends: takeFriends(state),
+		contacts: takeContacts(state),
 	}
 }
 
