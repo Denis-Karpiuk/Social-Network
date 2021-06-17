@@ -1,0 +1,10 @@
+.content {
+	padding: 0px 0px 100% 0px;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	padding-bottom: 50px;
+	color: red;
+	font-style: italic;
+	font-size: x-large;
+}

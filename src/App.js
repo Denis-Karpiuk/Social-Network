@@ -5,14 +5,19 @@ import { BrowserRouter } from 'react-router-dom'
 import './App.css'
 import Preloader from './components/Common/Preloader/Preloader'
 import Friends from './components/Friends/Friends'
+import Groups from './components/Groups/Groups'
 import HeaderContainer from './components/Header/Header'
+import Likes from './components/Likes/Likes'
 import MessagesContainer from './components/Messages/Messages-Container'
 import Music_Container from './components/Music/Music-Container'
 import Navbar from './components/Navbar/Navbar'
 import NewsContainer from './components/News/News-Container'
 import NewUsersContainer from './components/NewUsers/NewUsersContainer'
+import Notification from './components/Notification/Notification'
 import PhotosContainer from './components/Photos/PhotosContainer'
 import ProfileContainer from './components/Profile/ProfileContainer'
+import Settings from './components/Settings/Settings'
+import Stars from './components/Stars/Stars'
 import UsersContainer from './components/Users/UsersContainer'
 import Video from './components/Video/Video'
 import { initializeApp } from './redux/App-Reducer'
@@ -53,13 +58,18 @@ class App extends React.Component {
 									path='/profile/:userId?'
 									render={() => <ProfileContainer />}
 								/>
+								<Route path='/users' render={() => <UsersContainer />} />
 								<Route path='/music' render={() => <Music_Container />} />
 								<Route path='/news' render={() => <NewsContainer />} />
 								<Route path='/messages' render={() => <MessagesContainer />} />
 								<Route path='/friends' render={() => <Friends />} />
 								<Route path='/photos' render={() => <PhotosContainer />} />
-								<Route path='/users' render={() => <UsersContainer />} />
 								<Route path='/video' render={() => <Video />} />
+								<Route path='/notifications' render={() => <Notification />} />
+								<Route path='/stars' render={() => <Stars />} />
+								<Route path='/likes' render={() => <Likes />} />
+								<Route path='/groups' render={() => <Groups />} />
+								<Route path='/settings' render={() => <Settings />} />
 							</div>
 							<div className='last-users'>
 								<NewUsersContainer />

@@ -1,72 +1,81 @@
 .header {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    align-items: center;
-    border-top: 1px solid gray;
-    border-bottom: 1px solid gray;
-    height: 45px;
+	display: grid;
+	grid-template-columns: auto 1fr auto;
+	align-items: center;
+	border-top: 1px solid gray;
+	border-bottom: 1px solid gray;
+	height: 45px;
 }
-
+.container {
+	background: white;
+}
 .title {
-    font-style: italic;
+	font-style: italic;
 }
 .count {
-    color: gray;
+	color: gray;
 }
 .header__buttons {
-    grid-column-start: 3;
+	grid-column-start: 3;
 }
 .button_create {
-    background-color: #eeeeef;
-    color: gray;
-    margin-right: 10px;
+	background-color: #eeeeef;
+	color: gray;
+	margin-right: 10px;
 }
 .button_add {
-    background-color: blue;
-    color: white;
+	background-color: blue;
+	color: white;
 }
 .button_create,
 .button_add {
-    border-radius: 10px;
-    height: 30px;
-    border: none;
+	border-radius: 10px;
+	height: 30px;
+	border: none;
 }
 
 .wrap {
-    margin: 10px 0;
+	margin: 10px 0;
 }
 
 .albums {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 10px;
 }
 
 .photos {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 10px;
 }
 
 .albums__item,
 .photos__item {
-    padding: 0px 0px 85% 0px;
-    position: relative;
+	padding: 0px 0px 85% 0px;
+	position: relative;
 }
 
 .albums__item img,
 .photos__item img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    position: absolute;
-    top: 0;
-    left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	position: absolute;
+	top: 0;
+	left: 0;
 }
 
 .album__main,
 .photo__main {
-    background-color: white;
-    margin-bottom: 15px;
-    padding: 15px;
+	background-color: white;
+	margin-bottom: 15px;
+	padding: 15px;
+}
+.content {
+	text-align: center;
+	padding-bottom: 50px;
+	color: red;
+	font-style: italic;
+	font-size: x-large;
 }

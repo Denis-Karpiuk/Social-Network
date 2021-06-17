@@ -12,6 +12,7 @@
 }
 .profile__header {
 	grid-area: header;
+	height: 275px;
 }
 .header__background img {
 	max-width: 100%;
@@ -74,6 +75,7 @@
 }
 .profile__header {
 	position: relative;
+	margin-bottom: 80px;
 }
 .profile__name {
 	font-size: x-large;

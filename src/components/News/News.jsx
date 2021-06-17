@@ -5,15 +5,6 @@ import Time from './Time'
 import newsBg from '../../assets/images/BackgroundsHeaders/newsBg.jpg'
 
 class News extends React.Component {
-	onUpdateTextarea = e => {
-		this.text = e.target.value
-		this.props.updateTextArea(this.text)
-	}
-	onAddNewsPost = () => {
-		debugger
-		this.props.addNewsPost()
-	}
-	onPressEnter = e => (e.key === 'Enter' ? this.onAddNewsPost() : false)
 	render() {
 		return (
 			<div className={s.news}>

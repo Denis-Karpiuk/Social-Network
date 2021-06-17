@@ -18,13 +18,13 @@ const Navbar = props => {
 	return (
 		<div className={s.navbar}>
 			<NavItem link={'profile'} name={'Profile'} img={profile} />
+			<NavItem link={'users'} name={'Users'} img={users} />
 			<NavItem link={'news'} name={'News'} img={news} />
 			<NavItem link={'messages'} name={'Messages'} img={messages} />
 			<NavItem link={'photos'} name={'Photos'} img={gallery} />
 			<NavItem link={'music'} name={'Music'} img={music} />
-			<NavItem link={'video'} name={'Video'} img={video} />
-			<NavItem link={'users'} name={'Users'} img={users} />
 			<NavItem link={'groups'} name={'Groups'} img={groups} />
+			<NavItem link={'video'} name={'Video'} img={video} />
 			<NavItem
 				link={'notifications'}
 				name={'Notifications'}
@@ -32,7 +32,7 @@ const Navbar = props => {
 			/>
 			<NavItem link={'stars'} name={'Stars'} img={star} />
 			<NavItem link={'likes'} name={'Likes'} img={likes} />
-			<NavItem link={'setting'} name={'Settings'} img={setting} />
+			<NavItem link={'settings'} name={'Settings'} img={setting} />
 		</div>
 	)
 }

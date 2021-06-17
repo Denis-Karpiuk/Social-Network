@@ -1,9 +1,12 @@
 import s from './HeaderPage.module.css'
 
-const HeaderPage = ({ tittle, img }) => {
+const HeaderPage = ({ tittle, img, height = '275px' }) => {
+	let heightHeader = {
+		height: height,
+	}
 	return (
 		<div className={s.headerPage}>
-			<div className={s.bakcground}>
+			<div style={heightHeader} className={s.bakcground}>
 				<img src={img} />
 			</div>
 			<div className={s.tittle}></div>
