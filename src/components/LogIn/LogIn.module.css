@@ -2,7 +2,7 @@
 	display: grid;
 	grid-template-columns: 15% 35% 50%;
 	grid-template-areas: '. form welcome';
-	background: url(../../assets/images/background-react.jpg);
+	background: url(../../assets/images/BackgroundsHeaders/loginBG.jpg);
 	background-position: center;
 	background-size: cover;
 	width: 100%;

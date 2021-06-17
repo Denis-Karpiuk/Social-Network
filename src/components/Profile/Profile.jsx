@@ -1,7 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { Field, Form, reduxForm } from 'redux-form'
-import background from '../../assets/images/profile-bg.jpg'
+import background from '../../assets/images/BackgroundsHeaders/profileBg.jpg'
 import { required } from '../../util/Validators'
 import Icon from '../Common/Icon/Icon'
 import LinkIcon from '../Common/LinkIcon/LinkIcon'

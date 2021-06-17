@@ -1,11 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-import logo from '../../assets/images/logoHeader.png'
-import message from '../../assets/images/mail.png'
-import bell from '../../assets/images/notification.png'
-import out from '../../assets/images/power-off.png'
-import user from '../../assets/images/user3.png'
+import logo from '../../assets/images/iconsApp/logoHeader.png'
+import message from '../../assets/images/iconsApp/mail.png'
+import bell from '../../assets/images/iconsApp/notification.png'
+import out from '../../assets/images/iconsApp/power-off.png'
+import user from '../../assets/images/iconsApp/user3.png'
 import { logout } from '../../redux/Auth-Reducer'
 import {
 	takeAuthUserPhoto,

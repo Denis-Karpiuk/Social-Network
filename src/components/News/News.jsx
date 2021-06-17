@@ -1,7 +1,8 @@
 import React from 'react'
-import Time from './Time'
+import HeaderPage from '../Common/HeaderPage/HeaderPage'
 import s from './News.module.css'
-import Paginator from '../Common/Paginator/Paginator'
+import Time from './Time'
+import newsBg from '../../assets/images/BackgroundsHeaders/newsBg.jpg'
 
 class News extends React.Component {
 	onUpdateTextarea = e => {
@@ -16,22 +17,14 @@ class News extends React.Component {
 	render() {
 		return (
 			<div className={s.news}>
-				<Time />
-				<div className={s.newsText}>
-					{this.props.newsTexts.map(news => (
-						<div key={news}>{news}</div>
-					))}
-				</div>
-				<div>
-					<textarea
-						className={s.textarea}
-						value={this.props.textAreaNewsValue}
-						onChange={this.onUpdateTextarea}
-						onKeyPress={this.onPressEnter}
-					></textarea>
-				</div>
-				<div className={s.buttonPress}>
-					<button onClick={this.onAddNewsPost}>Add News</button>
+				<HeaderPage img={newsBg} tittle={'News'} />
+				<div className={s.news_items}>
+					<Time />
+					<div className={s.news__text}>
+						{this.props.newsTexts.map(news => (
+							<div key={news}>{news}</div>
+						))}
+					</div>
 				</div>
 			</div>
 		)

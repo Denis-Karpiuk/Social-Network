@@ -2,8 +2,7 @@ const UPDATENEWSTEXTAREA = 'UPDATENEWSTEXTAREA'
 const ADDNEWSPOST = 'ADDNEWSPOST'
 
 let initialState = {
-	textAreaNewsValue: '',
-	newsTexts: [1, 2, 3],
+	newsTexts: ['in progress....'],
 }
 
 const newsReducer = (state = initialState, action) => {

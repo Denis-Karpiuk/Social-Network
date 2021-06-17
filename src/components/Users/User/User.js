@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom'
-import HeaderPage from '../../Common/HeaderPage/HeaderPage'
 import Icon from '../../Common/Icon/Icon'
 import s from './User.module.css'
 

@@ -1,5 +1,5 @@
 import s from './Logotype.module.css'
-import logo from '../../../assets/images/react.png'
+import logo from '../../../assets/images/iconsApp/react.png'
 
 const Logotype = () => {
 	return (
