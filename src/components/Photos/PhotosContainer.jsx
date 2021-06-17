@@ -6,7 +6,6 @@ import {
 import { connect } from 'react-redux'
 
 let mapStateToProps = state => {
-	console.log('mapState')
 	return {
 		albums: state.photosPage.albums,
 		photos: state.photosPage.photos,

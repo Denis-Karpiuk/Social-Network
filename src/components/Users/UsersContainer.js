@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux'
 import {
 	activePage,
-	changePages,
 	follow,
 	getUsers,
 	unfollow,
@@ -11,10 +10,8 @@ import {
 	getUsersSelector,
 	takeFollowingProgress,
 	takeIsFetching,
-	takePageName,
 	takePageNumber,
 	takePageSize,
-	takePageStart,
 	takeTotalCount,
 } from '../../redux/Users-Selectors'
 import Preloader from '../Common/Preloader/Preloader'
@@ -25,31 +22,18 @@ class UsersComponentContainer extends React.Component {
 		this.props.getUsers(this.props.pageNumber, this.props.pageSize)
 	}
 
+	onPageNumber = pageNumber => {
+		this.props.activePage(pageNumber)
+		this.props.getUsers(pageNumber, this.props.pageSize)
+	}
+	toUnfollow = userId => {
+		this.props.unfollow(userId)
+	}
+
+	toFollow = userId => {
+		this.props.follow(userId)
+	}
 	render() {
-		let onPageNubmer = pageNumber => {
-			this.props.activePage(pageNumber)
-			this.props.getUsers(pageNumber, this.props.pageSize)
-		}
-		let onNext = (pageStart, maxPageCount) => {
-			if (pageStart < maxPageCount) {
-				this.props.changePages(pageStart)
-				this.props.getUsers(pageStart, this.props.pageSize)
-			}
-		}
-		let onPrev = pageStart => {
-			if (pageStart >= 1) {
-				this.props.changePages(pageStart)
-				this.props.getUsers(pageStart, this.props.pageSize)
-			}
-		}
-
-		let toUnfollow = userId => {
-			this.props.unfollow(userId)
-		}
-
-		let toFollow = userId => {
-			this.props.follow(userId)
-		}
 		return (
 			<>
 				{this.props.isFetching ? (
@@ -57,19 +41,14 @@ class UsersComponentContainer extends React.Component {
 				) : (
 					<Users
 						users={this.props.users}
-						pageName={this.props.pageName}
 						pageNumber={this.props.pageNumber}
 						totalCount={this.props.totalCount}
 						pageSize={this.props.pageSize}
-						pageStart={this.props.pageStart}
-						onNext={onNext}
-						onPrev={onPrev}
-						onPageNubmer={onPageNubmer}
-						follow={toFollow}
-						unfollow={toUnfollow}
+						onPageNumber={this.onPageNumber}
+						follow={this.toFollow}
+						unfollow={this.toUnfollow}
 						isFetching={this.props.isFetching}
 						followingProgress={this.props.followingProgress}
-						isAuth={this.props.isAuth}
 					/>
 				)}
 			</>
@@ -79,12 +58,10 @@ class UsersComponentContainer extends React.Component {
 
 const mapStateToProps = state => {
 	return {
-		pageName: takePageName(state),
 		users: getUsersSelector(state),
 		totalCount: takeTotalCount(state),
 		pageSize: takePageSize(state),
 		pageNumber: takePageNumber(state),
-		pageStart: takePageStart(state),
 		isFetching: takeIsFetching(state),
 		followingProgress: takeFollowingProgress(state),
 	}
@@ -93,7 +70,6 @@ const mapStateToProps = state => {
 const UsersContainer = connect(mapStateToProps, {
 	follow,
 	unfollow,
-	changePages,
 	activePage,
 	getUsers,
 })(UsersComponentContainer)

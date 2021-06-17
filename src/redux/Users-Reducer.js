@@ -1,25 +1,22 @@
 import { userAPI } from '../api/api'
 
-const FOLLOW = 'FOLLOW'
-const UNFOLLOW = 'UNFOLLOW'
-const USERSSET = 'USERSSET'
-const SET_TOTAL_COUNT = 'SET_TOTAL_COUNT'
-const CHANGE_PAGES = 'CHANGE_PAGES'
-const ACTIVEPAGE = 'ACTIVEPAGE'
-const FETCHING = 'FETCHING'
-const TOGGEL_FOLLOWING_PROGRESS = 'TOGGEL_FOLLOWING_PROGRESS'
-const SET_FRIENDS = 'users/SET_FRIENDS'
+const FOLLOW = 'USERS/FOLLOW'
+const UNFOLLOW = 'USERS/UNFOLLOW'
+const SET_USERS = 'USERS/SET_USERS'
+const SET_TOTAL_COUNT = 'USERS/SET_TOTAL_COUNT'
+const SET_ACTIVE_PAGE = 'USERS/SET_ACTIVE_PAGE'
+const FETCHING = 'USERS/FETCHING'
+const TOGGEL_FOLLOWING_PROGRESS = 'USERS/TOGGEL_FOLLOWING_PROGRESS'
+const SET_FRIENDS = 'USERS/SET_FRIENDS'
 
 let initialState = {
-	pageName: 'Пользователи',
 	users: [],
 	pageSize: 100,
 	pageNumber: 1,
 	totalCount: 0,
-	pageStart: 1,
 	isFetching: false,
 	followingProgress: [],
-	friends: null,
+	friends: [],
 }
 const usersReducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -51,7 +48,7 @@ const usersReducer = (state = initialState, action) => {
 				}),
 			}
 		}
-		case USERSSET: {
+		case SET_USERS: {
 			return {
 				...state,
 				users: [...action.users],
@@ -63,14 +60,7 @@ const usersReducer = (state = initialState, action) => {
 				totalCount: action.totalCount,
 			}
 		}
-		case CHANGE_PAGES: {
-			return {
-				...state,
-				pageStart: action.pageStart,
-				pageNumber: action.pageStart,
-			}
-		}
-		case ACTIVEPAGE: {
+		case SET_ACTIVE_PAGE: {
 			return {
 				...state,
 				pageNumber: action.pageNumber,
@@ -107,17 +97,14 @@ export const followSuccsses = userId => {
 export const unfollowSuccsses = userId => {
 	return { type: UNFOLLOW, userId }
 }
-export const usersSet = users => {
-	return { type: USERSSET, users }
+export const setUsers = users => {
+	return { type: SET_USERS, users }
 }
 export const setTotalCount = totalCount => {
 	return { type: SET_TOTAL_COUNT, totalCount }
 }
-export const changePages = pageStart => {
-	return { type: CHANGE_PAGES, pageStart }
-}
 export const activePage = pageNumber => {
-	return { type: ACTIVEPAGE, pageNumber }
+	return { type: SET_ACTIVE_PAGE, pageNumber }
 }
 export const fetching = isFetching => {
 	return { type: FETCHING, isFetching }
@@ -125,7 +112,6 @@ export const fetching = isFetching => {
 export const toggleFollowing = (isFetching, userId) => {
 	return { type: TOGGEL_FOLLOWING_PROGRESS, isFetching, userId }
 }
-
 export const setFriends = friends => {
 	return {
 		type: SET_FRIENDS,
@@ -133,43 +119,34 @@ export const setFriends = friends => {
 	}
 }
 
-export const getUsers = (pageNumber, pageSize) => {
-	return dispatch => {
-		dispatch(fetching(true))
-		userAPI.getUsers(pageNumber, pageSize).then(response => {
-			dispatch(fetching(false))
-			dispatch(usersSet(response.data.items))
-			dispatch(setTotalCount(response.data.totalCount))
-		})
-	}
+export const getUsers = (pageNumber, pageSize) => async dispatch => {
+	dispatch(fetching(true))
+	const response = await userAPI.getUsers(pageNumber, pageSize)
+	dispatch(fetching(false))
+	dispatch(setUsers(response.data.items))
+	dispatch(setTotalCount(response.data.totalCount))
 }
 
-export const unfollow = userId => {
-	return dispatch => {
-		dispatch(toggleFollowing(true, userId))
-		userAPI.unfollowUser(userId).then(response => {
-			if (response.data.resultCode === 0) {
-				dispatch(unfollowSuccsses(userId))
-			}
-			dispatch(toggleFollowing(false, userId))
-		})
+export const unfollow = userId => async dispatch => {
+	dispatch(toggleFollowing(true, userId))
+	const response = await userAPI.unfollowUser(userId)
+	if (response.data.resultCode === 0) {
+		dispatch(unfollowSuccsses(userId))
 	}
+	dispatch(toggleFollowing(false, userId))
 }
 
-export const follow = userId => {
-	return dispatch => {
-		dispatch(toggleFollowing(true, userId))
-		userAPI.followUser(userId).then(response => {
-			if (response.data.resultCode === 0) {
-				dispatch(followSuccsses(userId))
-			}
-			dispatch(toggleFollowing(false, userId))
-		})
+export const follow = userId => async dispatch => {
+	dispatch(toggleFollowing(true, userId))
+	const response = await userAPI.followUser(userId)
+	if (response.data.resultCode === 0) {
+		dispatch(followSuccsses(userId))
 	}
+	dispatch(toggleFollowing(false, userId))
 }
 
 export const getFriends = () => async dispatch => {
-	let response = await userAPI.getFriends()
+	const response = await userAPI.getFriends()
 	dispatch(setFriends(response.data.items))
 }
 

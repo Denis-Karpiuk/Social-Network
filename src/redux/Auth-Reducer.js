@@ -65,12 +65,10 @@ export const setUserAuthPhoto = (userPhoto, userId) => {
 
 export const getUserLoginData = () => async dispatch => {
 	const response = await authAPI.me()
-	console.log('auth')
 	if (response.data.resultCode === 0) {
 		let { id, email, login } = response.data.data
 		dispatch(setUserLoginData(id, email, login, true))
 		await dispatch(getProfile(id))
-		console.log('profile')
 	}
 }
 

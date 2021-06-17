@@ -1,22 +1,23 @@
 .paginator span {
-    padding: 4px;
+	padding: 4px;
 }
 .paginator {
-    text-align: center;
-
-    background-color: white;
-    padding: 10px;
-    margin-bottom: 5px;
-    border-radius: 10px;
-    cursor: pointer;
+	text-align: center;
+	background-color: white;
+	padding: 10px;
+	margin-bottom: 5px;
+	border-radius: 10px;
+	cursor: pointer;
 }
-.nextPages,
-.prevPages {
-    font-weight: bold;
+.paginator button {
+	font-weight: bold;
+	background-color: white;
+	border: none;
+	font-size: large;
+	cursor: pointer;
 }
-
 .activePage {
-    color: red;
-    font-weight: bold;
-    font-size: 19px;
+	color: red;
+	font-weight: bold;
+	font-size: 21px;
 }
