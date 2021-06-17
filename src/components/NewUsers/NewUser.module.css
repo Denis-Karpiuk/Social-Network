@@ -1,13 +1,13 @@
-.friend {
+.lastUser {
 	display: flex;
 	flex-direction: row;
 	padding-top: 10px;
 }
-.fiend__avatar {
-	width: 60px;
-	height: 60px;
+.lastUser__avatar {
+	width: 45px;
+	height: 45px;
 }
-.friend__name {
+.lastUser__name {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;

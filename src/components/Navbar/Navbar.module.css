@@ -3,5 +3,6 @@
 	flex-direction: column;
 	background-color: white;
 	position: fixed;
-	/* padding-right: 50px; */
+	border-radius: 5px;
+	width: 15%;
 }

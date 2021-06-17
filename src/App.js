@@ -10,6 +10,7 @@ import MessagesContainer from './components/Messages/Messages-Container'
 import Music_Container from './components/Music/Music-Container'
 import Navbar from './components/Navbar/Navbar'
 import NewsContainer from './components/News/News-Container'
+import NewUsersContainer from './components/NewUsers/NewUsersContainer'
 import PhotosContainer from './components/Photos/PhotosContainer'
 import ProfileContainer from './components/Profile/ProfileContainer'
 import UsersContainer from './components/Users/UsersContainer'
@@ -60,7 +61,9 @@ class App extends React.Component {
 								<Route path='/users' render={() => <UsersContainer />} />
 								<Route path='/video' render={() => <Video />} />
 							</div>
-							<div className='online'>{/* <FriendsOnlineContainer /> */}</div>
+							<div className='last-users'>
+								<NewUsersContainer />
+							</div>
 						</div>
 					</Suspense>
 				</div>

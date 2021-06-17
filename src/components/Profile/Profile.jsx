@@ -87,15 +87,20 @@ const Profile = ({
 					</div>
 				</div>
 			</div>
-			<div className={s.createPost}>
-				<TittleItem tittle={'Create Post'} />
-				<div className={s.createPost__item}>
-					<div className={s.createPost__avatar}>
-						<Icon photo={null} />
+			<div className={s.profile__posts}>
+				<div className={s.createPost}>
+					<TittleItem tittle={'Create Post'} />
+					<div className={s.createPost__item}>
+						<div className={s.createPost__avatar}>
+							<Icon photo={null} />
+						</div>
+						<div className={s.createPost__textarea}>
+							<PostReduxForm />
+						</div>
 					</div>
-					<div className={s.createPost__textarea}>
-						<PostReduxForm />
-					</div>
+				</div>
+				<div className={s.myPosts}>
+					<TittleItem tittle={'My Posts'} subtittle={'. . .'} />
 				</div>
 			</div>
 			<div className={s.friends}>
@@ -116,9 +121,6 @@ const Profile = ({
 						</div>
 					))}
 				</div>
-			</div>
-			<div className={s.myPosts}>
-				<TittleItem tittle={'My Posts'} subtittle={'. . .'} />
 			</div>
 		</div>
 	)

@@ -12,7 +12,7 @@ const Paginator = ({
 }) => {
 	let pagesCount = Math.ceil(totalCount / pageSize)
 	let pages = []
-	for (let i = 0; i < pagesCount; i++) pages.push(i)
+	for (let i = 0; i < pagesCount + 1; i++) pages.push(i)
 	let portionCount = pagesCount / portionSize
 	let portionNuber =
 		pageNumber / portionSize < 1 ? 1 : Math.ceil(pageNumber / portionSize)

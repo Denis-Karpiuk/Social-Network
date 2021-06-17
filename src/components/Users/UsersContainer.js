@@ -7,12 +7,12 @@ import {
 	unfollow,
 } from '../../redux/Users-Reducer'
 import {
-	getUsersSelector,
 	takeFollowingProgress,
 	takeIsFetching,
 	takePageNumber,
 	takePageSize,
 	takeTotalCount,
+	takeUsers,
 } from '../../redux/Users-Selectors'
 import Preloader from '../Common/Preloader/Preloader'
 import Users from './Users'
@@ -21,7 +21,6 @@ class UsersComponentContainer extends React.Component {
 	componentDidMount() {
 		this.props.getUsers(this.props.pageNumber, this.props.pageSize)
 	}
-
 	onPageNumber = pageNumber => {
 		this.props.activePage(pageNumber)
 		this.props.getUsers(pageNumber, this.props.pageSize)
@@ -58,7 +57,7 @@ class UsersComponentContainer extends React.Component {
 
 const mapStateToProps = state => {
 	return {
-		users: getUsersSelector(state),
+		users: takeUsers(state),
 		totalCount: takeTotalCount(state),
 		pageSize: takePageSize(state),
 		pageNumber: takePageNumber(state),

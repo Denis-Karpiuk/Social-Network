@@ -10,6 +10,6 @@ export const takeIsFetching = state => state.usersPage.isFetching
 export const takeFollowingProgress = state => state.usersPage.followingProgress
 export const takeFriends = state => state.usersPage.friends
 
-export const getUsersSelector = createSelector(takeUsers, users => {
-	return users.filter(user => user.id > 0)
+export const takeNewUsers = createSelector(takeUsers, users => {
+	return users.slice(0, 10)
 })
