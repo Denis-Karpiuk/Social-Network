@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import Icon from '../../Common/Icon/Icon'
+import NavIcon from '../../Common/NavIcon/NavIcon'
 import s from './User.module.css'
 
 const User = ({
@@ -21,7 +21,7 @@ const User = ({
 			<div className={s.user__info}>
 				<div className={s.user__avatar}>
 					<NavLink to={'/profile/' + userId}>
-						<Icon img={userPhoto} r={'50%'} />
+						<NavIcon img={userPhoto} r={'50%'} />
 					</NavLink>
 				</div>
 				<div className={s.user__name}>{userName}</div>

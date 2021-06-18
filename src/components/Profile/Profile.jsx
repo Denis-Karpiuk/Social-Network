@@ -1,7 +1,7 @@
 import React from 'react'
 import background from '../../assets/images/BackgroundsHeaders/profileBg.jpg'
-import Icon from '../Common/Icon/Icon'
 import LinkIcon from '../Common/LinkIcon/LinkIcon'
+import NavIcon from '../Common/NavIcon/NavIcon'
 import Preloader from '../Common/Preloader/Preloader'
 import TittleItem from '../Common/TittleItem/TittleItem'
 import Friend from './Friend/Friend'
@@ -42,7 +42,7 @@ const Profile = ({
 						)}
 					</div>
 					<div className={s.profile__avatar}>
-						<Icon img={profilePhoto} r='50%' />
+						<NavIcon img={profilePhoto} r='50%' />
 					</div>
 					<div className={s.profile__info}>
 						<div className={s.profile__name}>{profileName}</div>

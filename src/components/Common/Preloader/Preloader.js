@@ -5,7 +5,7 @@ import s from './Preloader.module.css'
 const Preloader = props => {
 	return (
 		<div role={'preloader'} className={s.preloader}>
-			<img className={s.little} src={react} />
+			<img src={react} />
 		</div>
 	)
 }

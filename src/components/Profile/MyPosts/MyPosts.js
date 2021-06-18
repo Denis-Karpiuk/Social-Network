@@ -1,7 +1,7 @@
 import React from 'react'
-import { Field, Form, reduxForm, reset } from 'redux-form'
+import { Field, Form, reduxForm } from 'redux-form'
+import NavIcon from '../../Common/NavIcon/NavIcon'
 import TittleItem from '../../Common/TittleItem/TittleItem'
-import Icon from '../../Common/Icon/Icon'
 import s from './MyPosts.module.css'
 import Post from './Post.js/Post'
 
@@ -11,7 +11,7 @@ const PostForm = ({ handleSubmit, reset }) => {
 			<Form onSubmit={handleSubmit}>
 				<div className={s.postForm__item}>
 					<div className={s.postForm__avatar}>
-						<Icon photo={null} />
+						<NavIcon photo={null} />
 					</div>
 					<div className={s.postForm__textarea}>
 						<Field

@@ -14,7 +14,7 @@ import {
 	takeAutorizedLogin,
 	takeIsAuthData,
 } from '../../redux/Auth-Selectors'
-import Icon from '../Common/Icon/Icon'
+import NavIcon from '../Common/NavIcon/NavIcon'
 import s from './Header.module.css'
 import Search from './Search/Search'
 
@@ -23,7 +23,7 @@ const Header = ({ isAuth, userAuthPhoto, login, logout }) => {
 		<div className={s.header}>
 			<div className={s.network}>
 				<div className={s.network__logotype}>
-					<Icon img={logo} r={'50%'} />
+					<NavIcon img={logo} r={'50%'} />
 				</div>
 				<div className={s.network__name}>
 					<p>React Network</p>
@@ -36,24 +36,26 @@ const Header = ({ isAuth, userAuthPhoto, login, logout }) => {
 				{isAuth ? (
 					<div className={s.user}>
 						<div className={s.user__avatar}>
-							<Icon img={!userAuthPhoto || userAuthPhoto.large} r='50%' />
+							<NavIcon
+								link={'profile'}
+								img={!userAuthPhoto || userAuthPhoto.large}
+								r='50%'
+							/>
 						</div>
 						<div className={s.user__name}>{login}</div>
 						<div className={s.user__notification}>
-							<Icon img={bell} />
+							<NavIcon link={'notifications'} img={bell} />
 						</div>
 						<div className={s.user__message}>
-							<Icon img={message} r={0} />
+							<NavIcon link={'messages'} img={message} r={0} />
 						</div>
 						<div className={s.logoutButton} onClick={logout}>
-							<Icon img={out} />
+							<NavIcon link={'login'} img={out} />
 						</div>
 					</div>
 				) : (
 					<div className={s.user__loguot}>
-						<NavLink to='/login'>
-							<Icon img={user} r={'0'} />
-						</NavLink>
+						<NavIcon link={'login'} img={user} r={'0'} />
 					</div>
 				)}
 			</div>

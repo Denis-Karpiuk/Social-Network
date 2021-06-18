@@ -6,7 +6,7 @@ import s from './NavItem.module.css'
 const NavItem = ({ link, img, name, location }) => {
 	return (
 		<div className={s.item}>
-			<NavLink to={`/${link}/`} activeClassName={s.active}>
+			<NavLink to={`/${link}`} activeClassName={s.active}>
 				<div className={s.item__icon}>
 					<Icon img={img} r={0} />
 				</div>
