@@ -13,10 +13,13 @@ import messages from '../../assets/images/iconsApp/messages.png'
 import star from '../../assets/images/iconsApp/star.png'
 import video from '../../assets/images/iconsApp/video-camera.png'
 import likes from '../../assets/images/iconsApp/heart.png'
+import { withRouter } from 'react-router-dom'
 
-const Navbar = props => {
+const Navbar = ({ location }) => {
+	let navbarStyle = s.navbar
+	location.pathname === '/login' && (navbarStyle = s.navbarLogin)
 	return (
-		<div className={s.navbar}>
+		<div className={navbarStyle}>
 			<NavItem link={'profile'} name={'Profile'} img={profile} />
 			<NavItem link={'users'} name={'Users'} img={users} />
 			<NavItem link={'news'} name={'News'} img={news} />
@@ -37,4 +40,4 @@ const Navbar = props => {
 	)
 }
 
-export default Navbar
+export default withRouter(Navbar)

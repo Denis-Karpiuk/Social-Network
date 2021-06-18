@@ -1,10 +1,11 @@
+import { logDOM } from '@testing-library/react'
 import React, { Suspense } from 'react'
 import { connect, Provider } from 'react-redux'
 import { Route } from 'react-router'
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter, withRouter } from 'react-router-dom'
+import { compose } from 'redux'
 import './App.css'
 import Preloader from './components/Common/Preloader/Preloader'
-import Friends from './components/Friends/Friends'
 import Groups from './components/Groups/Groups'
 import HeaderContainer from './components/Header/Header'
 import Likes from './components/Likes/Likes'
@@ -39,21 +40,29 @@ class App extends React.Component {
 		this.props.initializeApp()
 	}
 	render() {
+		const path = this.props.location.pathname
+		let bodyStyle
+		if (path === '/login') {
+			bodyStyle = 'loginBody'
+		} else {
+			bodyStyle = 'body'
+		}
 		if (!this.props.initialized) {
 			return <Preloader />
 		}
-
 		return (
 			<div className='app'>
 				<div>
 					<Suspense fallback={<div>load...</div>}>
-						<Route path='/login' render={() => <Login />} />
 						<HeaderContainer />
-						<div className='body'>
+						<div className={bodyStyle}>
 							<div className='navbar'>
 								<Navbar />
 							</div>
 							<div className='content'>
+								<div className='login'>
+									<Route path='/login' render={() => <Login />} />
+								</div>
 								<Route
 									path='/profile/:userId?'
 									render={() => <ProfileContainer />}
@@ -62,7 +71,6 @@ class App extends React.Component {
 								<Route path='/music' render={() => <Music_Container />} />
 								<Route path='/news' render={() => <NewsContainer />} />
 								<Route path='/messages' render={() => <MessagesContainer />} />
-								<Route path='/friends' render={() => <Friends />} />
 								<Route path='/photos' render={() => <PhotosContainer />} />
 								<Route path='/video' render={() => <Video />} />
 								<Route path='/notifications' render={() => <Notification />} />
@@ -81,7 +89,10 @@ class App extends React.Component {
 		)
 	}
 }
-const ContainerAPP = connect(mapStateToProps, { initializeApp })(App)
+const ContainerAPP = compose(
+	connect(mapStateToProps, { initializeApp }),
+	withRouter
+)(App)
 
 const MainApp = props => {
 	return (

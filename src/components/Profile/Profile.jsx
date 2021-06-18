@@ -40,7 +40,7 @@ const Profile = ({
 	profilePhoto,
 	contacts,
 }) => {
-	if (!profile || !friends) {
+	if (!profile) {
 		return <Preloader />
 	}
 	return (

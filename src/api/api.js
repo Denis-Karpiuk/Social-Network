@@ -21,8 +21,10 @@ export const userAPI = {
 	followUser(userId) {
 		return instance.post('follow/' + userId)
 	},
-	getFriends() {
-		return instance.get(`users?friend=${true}&count=${100}`)
+	getFriends(pageNumber = 1, pageSize = 21) {
+		return instance.get(
+			`users?friend=${true}&page=${pageNumber}&count=${pageSize}`
+		)
 	},
 }
 

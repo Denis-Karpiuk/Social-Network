@@ -1,14 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
-import { NavLink } from 'react-router-dom'
-import { takeLastUsers, takeNewUsers } from '../../redux/Users-Selectors'
+import { compose } from 'redux'
+import { withLoginPath } from '../../HOC/withLoginPath'
+import { takeIsAuthData } from '../../redux/Auth-Selectors'
+import { takeNewUsers } from '../../redux/Users-Selectors'
 import TittleItem from '../Common/TittleItem/TittleItem'
 import NavItem from '../Navbar/NavItem/NavItem'
-import LastUser from './NewUser'
 import s from './NewUsers.module.css'
 
-const NewUsers = ({ newUsers }) => {
-	const [newUser, setnewUsers] = useState(newUsers)
+const NewUsers = ({ newUsers, isAuth }) => {
+	const [newUser, setNewUsers] = useState(newUsers)
+	useEffect(() => {
+		setNewUsers(newUsers)
+	}, [isAuth])
 	return (
 		<div className={s.newUsers}>
 			<TittleItem
@@ -33,18 +37,13 @@ const NewUsers = ({ newUsers }) => {
 const mapStateToProps = state => {
 	return {
 		newUsers: takeNewUsers(state),
+		isAuth: takeIsAuthData(state),
 	}
 }
 
-const NewUsersContainer = connect(mapStateToProps, {})(NewUsers)
+const NewUsersContainer = compose(
+	connect(mapStateToProps, {}),
+	withLoginPath
+)(NewUsers)
 
 export default NewUsersContainer
-
-{
-	/* <LastUser
-						key={friend.id}
-						friendName={friend.name}
-						img={friend.avatar}
-						link={''}
-					/> */
-}

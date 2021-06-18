@@ -1,8 +1,15 @@
-.navbar {
+.navbar,
+.navbarLogin {
 	display: flex;
 	flex-direction: column;
-	background-color: white;
+	align-self: center;
 	position: fixed;
 	border-radius: 5px;
-	width: 15%;
+	width: 14.3%;
+	background-color: white;
+}
+
+.navbarLogin {
+	background-color: transparent;
+	margin-top: 85px;
 }

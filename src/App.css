@@ -3,7 +3,7 @@
 	grid-template-columns: 15% 70% 15%;
 	grid-template-rows: auto;
 	grid-template-areas: 'navbar content add';
-	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	/* font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; */
 }
 .app a {
 	text-decoration: none;
@@ -19,9 +19,18 @@
 }
 .content {
 	grid-area: content;
-	margin: 0 10px;
+	/* margin: 0 10px; */
 }
 
 .last-users {
 	grid-area: add;
+}
+
+.loginBody {
+	display: grid;
+	grid-template-areas: 'navbar login login';
+}
+
+.login {
+	grid-area: login;
 }

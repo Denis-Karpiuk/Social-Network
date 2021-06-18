@@ -122,9 +122,9 @@ export const setFriends = friends => {
 export const getUsers = (pageNumber, pageSize) => async dispatch => {
 	dispatch(fetching(true))
 	const response = await userAPI.getUsers(pageNumber, pageSize)
-	dispatch(fetching(false))
 	dispatch(setUsers(response.data.items))
 	dispatch(setTotalCount(response.data.totalCount))
+	dispatch(fetching(false))
 }
 
 export const unfollow = userId => async dispatch => {
