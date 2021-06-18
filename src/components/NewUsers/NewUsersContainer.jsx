@@ -25,7 +25,9 @@ const NewUsers = ({ newUsers, isAuth }) => {
 				{newUser.map(user => (
 					<NavItem
 						img={user.photos.large}
-						name={user.name}
+						name={
+							user.name.length > 10 ? user.name.slice(0, 10) + '...' : user.name
+						}
 						link={`profile/${user.id}`}
 					/>
 				))}

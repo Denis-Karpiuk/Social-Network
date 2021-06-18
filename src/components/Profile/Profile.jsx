@@ -1,5 +1,4 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
 import background from '../../assets/images/BackgroundsHeaders/profileBg.jpg'
 import Icon from '../Common/Icon/Icon'
 import LinkIcon from '../Common/LinkIcon/LinkIcon'
