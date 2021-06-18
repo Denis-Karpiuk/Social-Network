@@ -6,6 +6,7 @@ import { BrowserRouter, withRouter } from 'react-router-dom'
 import { compose } from 'redux'
 import './App.css'
 import Preloader from './components/Common/Preloader/Preloader'
+import Friends from './components/Friends/Friends'
 import Groups from './components/Groups/Groups'
 import HeaderContainer from './components/Header/Header'
 import Likes from './components/Likes/Likes'
@@ -41,8 +42,12 @@ class App extends React.Component {
 	}
 	render() {
 		const path = this.props.location.pathname
-		let bodyStyle = 'body'
-		path === '/login' && (bodyStyle = 'loginBody')
+		let bodyStyle = 'bodyApp'
+		let styleContent = 'content'
+		if (path === '/login') {
+			bodyStyle = 'loginBody'
+			styleContent = 'loginContent'
+		}
 
 		if (!this.props.initialized) {
 			return <Preloader />
@@ -56,7 +61,7 @@ class App extends React.Component {
 							<div className='navbar'>
 								<Navbar />
 							</div>
-							<div className='content'>
+							<div className={styleContent}>
 								<div className='login'>
 									<Route path='/login' render={() => <Login />} />
 								</div>
@@ -65,6 +70,7 @@ class App extends React.Component {
 									render={() => <ProfileContainer />}
 								/>
 								<Route path='/users' render={() => <UsersContainer />} />
+								<Route path='/friends' render={() => <Friends />} />
 								<Route path='/music' render={() => <Music_Container />} />
 								<Route path='/news' render={() => <NewsContainer />} />
 								<Route path='/messages' render={() => <MessagesContainer />} />

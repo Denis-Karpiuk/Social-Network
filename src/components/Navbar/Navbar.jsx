@@ -13,6 +13,7 @@ import messages from '../../assets/images/iconsApp/messages.png'
 import star from '../../assets/images/iconsApp/star.png'
 import video from '../../assets/images/iconsApp/video-camera.png'
 import likes from '../../assets/images/iconsApp/heart.png'
+import friends from '../../assets/images/iconsApp/collaboration.png'
 import { withRouter } from 'react-router-dom'
 
 const Navbar = ({ location }) => {
@@ -22,6 +23,7 @@ const Navbar = ({ location }) => {
 		<div className={navbarStyle}>
 			<NavItem link={'profile'} name={'Profile'} img={profile} />
 			<NavItem link={'users'} name={'Users'} img={users} />
+			<NavItem link={'friends'} name={'Friends'} img={friends} />
 			<NavItem link={'news'} name={'News'} img={news} />
 			<NavItem link={'messages'} name={'Messages'} img={messages} />
 			<NavItem link={'photos'} name={'Photos'} img={gallery} />
@@ -33,7 +35,6 @@ const Navbar = ({ location }) => {
 				name={'Notifications'}
 				img={notification}
 			/>
-			<NavItem link={'stars'} name={'Stars'} img={star} />
 			<NavItem link={'likes'} name={'Likes'} img={likes} />
 			<NavItem link={'settings'} name={'Settings'} img={setting} />
 		</div>

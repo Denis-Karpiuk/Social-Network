@@ -6,7 +6,7 @@ import logo from '../../assets/images/iconsApp/logoHeader.png'
 import message from '../../assets/images/iconsApp/mail.png'
 import bell from '../../assets/images/iconsApp/notification.png'
 import out from '../../assets/images/iconsApp/power-off.png'
-import user from '../../assets/images/iconsApp/user3.png'
+import user from '../../assets/images/iconsApp/login.png'
 import { withLoginPath } from '../../HOC/withLoginPath'
 import { logout } from '../../redux/Auth-Reducer'
 import {
