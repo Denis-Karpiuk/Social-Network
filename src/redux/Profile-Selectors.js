@@ -12,6 +12,10 @@ export const takeProfile = state => {
 	return state.profilePage.profile
 }
 
+export const takeMyPosts = state => {
+	return state.profilePage.myPosts
+}
+
 export const takeProfilePhoto = createSelector(takeProfile, profile => {
 	return !profile ? null : profile.photos.large
 })

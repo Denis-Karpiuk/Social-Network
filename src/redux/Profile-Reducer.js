@@ -5,12 +5,30 @@ const SET_PROFILE_USER = 'SET_PROFILE_USER'
 const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 const SET_STATUS = 'SET_STATUS'
 const UPDATE_STATUS = 'UPDATE_STATUS'
+const ADD_POSTS = 'PROFILE/ADD_POSTS'
 
 const initialState = {
 	profile: null,
 	isFetching: false,
 	followingProgress: false,
 	status: '',
+	myPosts: [
+		{
+			id: 1,
+			text: 'Hello World!!! ',
+			likes: 100,
+		},
+		{
+			id: 2,
+			text: 'I like this Life!!! ',
+			likes: 200,
+		},
+		{
+			id: 3,
+			text: 'Never give up!!! ',
+			likes: 10,
+		},
+	],
 }
 const profileReducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -36,6 +54,17 @@ const profileReducer = (state = initialState, action) => {
 			return {
 				...state,
 				status: action.status,
+			}
+		}
+		case ADD_POSTS: {
+			let post = {
+				id: state.myPosts.length + 1,
+				text: action.post,
+				likes: 0,
+			}
+			return {
+				...state,
+				myPosts: [...state.myPosts, post],
 			}
 		}
 		default:
@@ -69,6 +98,12 @@ const updateStatus = status => {
 	}
 }
 
+export const addPostProfile = post => {
+	return {
+		type: ADD_POSTS,
+		post,
+	}
+}
 export const getProfile = userId => async dispatch => {
 	dispatch(isFetching(true))
 	let response = await profileAPI.getProfile(userId)

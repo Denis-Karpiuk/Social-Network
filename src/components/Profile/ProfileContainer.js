@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import { compose } from 'redux'
@@ -8,21 +8,25 @@ import {
 	getProfile,
 	getStatus,
 	updateStatusProfile,
+	addPostProfile,
 } from '../../redux/Profile-Reducer'
 import {
 	takeContacts,
 	takeIsFetching,
+	takeMyPosts,
 	takeProfile,
-	takeProfileCountry,
 	takeProfileId,
 	takeProfileName,
 	takeProfilePhoto,
 	takeStatus,
 } from '../../redux/Profile-Selectors'
-import Preloader from '../Common/Preloader/Preloader'
-import Profile from './Profile'
 import { getFriends } from '../../redux/Users-Reducer'
 import { takeFriends } from '../../redux/Users-Selectors'
+import Preloader from '../Common/Preloader/Preloader'
+import Profile from './Profile'
+
+import { reset } from 'redux-form'
+
 class ClassProfileContainer extends React.PureComponent {
 	componentDidMount() {
 		let userId = this.props.match.params.userId
@@ -54,15 +58,18 @@ const mapStateToProps = state => {
 		autorizedUserId: takeAutorizedUserId(state),
 		friends: takeFriends(state),
 		contacts: takeContacts(state),
+		posts: takeMyPosts(state),
 	}
 }
 
 const ProfileContainer = compose(
 	connect(mapStateToProps, {
+		reset,
 		getProfile,
 		getStatus,
 		updateStatusProfile,
 		getFriends,
+		addPostProfile,
 	}),
 	withRouter,
 	withAuthRedirect

@@ -41,12 +41,9 @@ class App extends React.Component {
 	}
 	render() {
 		const path = this.props.location.pathname
-		let bodyStyle
-		if (path === '/login') {
-			bodyStyle = 'loginBody'
-		} else {
-			bodyStyle = 'body'
-		}
+		let bodyStyle = 'body'
+		path === '/login' && (bodyStyle = 'loginBody')
+
 		if (!this.props.initialized) {
 			return <Preloader />
 		}

@@ -1,0 +1,34 @@
+.post {
+	display: flex;
+	flex-direction: row;
+	border-bottom: 1px lightblue solid;
+	background-color: white;
+	padding-bottom: 20px;
+	margin-bottom: 5px;
+}
+
+.icon {
+	padding: 10px;
+	min-width: 60px;
+	min-height: 60px;
+}
+
+.textPost {
+	margin-left: 20px;
+	align-self: center;
+	text-align: center;
+	font-size: larger;
+}
+
+.likes {
+	padding-top: 5px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.likes__icon {
+	width: 15px;
+	height: 15px;
+	align-self: center;
+}

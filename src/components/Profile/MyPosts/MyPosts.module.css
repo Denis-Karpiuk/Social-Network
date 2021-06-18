@@ -1,0 +1,42 @@
+.createPosts {
+	background-color: white;
+}
+
+.postForm__item {
+	display: flex;
+	flex-direction: row;
+	padding: 10px;
+}
+.postForm__avatar {
+	width: 60px;
+	height: 60px;
+	margin-right: 20px;
+}
+.postForm__textarea {
+	width: 85%;
+	align-self: center;
+}
+.postForm__textarea textarea {
+	width: 99%;
+	outline: none;
+	border: none;
+	resize: none;
+	border-bottom: solid 1px lightgray;
+	padding-top: 20px;
+}
+.postForm__button {
+	text-align: center;
+	padding-bottom: 10px;
+}
+.postForm__button button {
+	height: 35px;
+	background-color: #50b5ff;
+	color: white;
+	border: 1px solid #50b5ff;
+	border-radius: 5px;
+}
+
+.tittle {
+	background-color: white;
+	margin-top: 10px;
+}

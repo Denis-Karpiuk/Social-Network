@@ -1,35 +1,13 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { Field, Form, reduxForm } from 'redux-form'
 import background from '../../assets/images/BackgroundsHeaders/profileBg.jpg'
-import { required } from '../../util/Validators'
 import Icon from '../Common/Icon/Icon'
 import LinkIcon from '../Common/LinkIcon/LinkIcon'
-
 import Preloader from '../Common/Preloader/Preloader'
 import TittleItem from '../Common/TittleItem/TittleItem'
+import MyPosts from './MyPosts/MyPosts'
 import s from './Profile.module.css'
 import ProfileStatus from './ProfileStatus/ProfileStatus'
-
-const PostForm = ({ handleSubmit }) => {
-	return (
-		<div className={s.postForm}>
-			<Form onSubmit={handleSubmit}>
-				<Field
-					name='post'
-					placeholder='Write something here...'
-					validate={[required]}
-					component='textarea'
-					type='textarea'
-				/>
-				<div className={s.postForm__button}>
-					<button>Create Post</button>
-				</div>
-			</Form>
-		</div>
-	)
-}
-const PostReduxForm = reduxForm({ form: 'post' })(PostForm)
 
 const Profile = ({
 	updateStatusProfile,
@@ -39,10 +17,14 @@ const Profile = ({
 	profile,
 	profilePhoto,
 	contacts,
+	posts,
+	addPostProfile,
+	reset,
 }) => {
 	if (!profile) {
 		return <Preloader />
 	}
+
 	return (
 		<div className={s.profile}>
 			<div className={s.profile__header}>
@@ -88,20 +70,12 @@ const Profile = ({
 				</div>
 			</div>
 			<div className={s.profile__posts}>
-				<div className={s.createPost}>
-					<TittleItem tittle={'Create Post'} />
-					<div className={s.createPost__item}>
-						<div className={s.createPost__avatar}>
-							<Icon photo={null} />
-						</div>
-						<div className={s.createPost__textarea}>
-							<PostReduxForm />
-						</div>
-					</div>
-				</div>
-				<div className={s.myPosts}>
-					<TittleItem tittle={'My Posts'} subtittle={'. . .'} />
-				</div>
+				<MyPosts
+					reset={reset}
+					addPostProfile={addPostProfile}
+					profilePhoto={profilePhoto}
+					posts={posts}
+				/>
 			</div>
 			<div className={s.friends}>
 				<TittleItem tittle={'Friends'} subtittle={'Add New'} link={'users'} />
