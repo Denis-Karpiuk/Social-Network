@@ -87,20 +87,10 @@
 .friends {
 	grid-area: friends;
 }
-.friendsList,
-.photos {
+.friendsList {
 	display: grid;
 	grid-template-columns: repeat(3, auto);
 	justify-content: space-around;
 	padding: 10px;
 	align-items: start;
-}
-.friend__avatar {
-	width: 75px;
-	height: 75px;
-	padding-bottom: 5px;
-}
-.friend__name {
-	padding-bottom: 10px;
-	font-style: italic;
 }

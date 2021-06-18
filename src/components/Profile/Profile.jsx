@@ -5,6 +5,7 @@ import Icon from '../Common/Icon/Icon'
 import LinkIcon from '../Common/LinkIcon/LinkIcon'
 import Preloader from '../Common/Preloader/Preloader'
 import TittleItem from '../Common/TittleItem/TittleItem'
+import Friend from './Friend/Friend'
 import MyPosts from './MyPosts/MyPosts'
 import s from './Profile.module.css'
 import ProfileStatus from './ProfileStatus/ProfileStatus'
@@ -82,16 +83,7 @@ const Profile = ({
 				<div className={s.friendsList}>
 					{friends.map(friend => (
 						<div key={friend.id} className={s.friend}>
-							<div className={s.friend__avatar}>
-								<NavLink to={'/profile/' + friend.id}>
-									<Icon img={friend.photos.large} r={'50%'}></Icon>
-								</NavLink>
-							</div>
-							<div className={s.friend__name}>
-								{friend.name.length > 10
-									? friend.name.slice(0, 10) + '...'
-									: friend.name}
-							</div>
+							<Friend friend={friend} />
 						</div>
 					))}
 				</div>

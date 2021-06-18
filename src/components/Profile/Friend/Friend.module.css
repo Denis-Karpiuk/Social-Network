@@ -1,0 +1,9 @@
+.friend__avatar {
+	width: 75px;
+	height: 75px;
+	padding-bottom: 5px;
+}
+.friend__name {
+	padding-bottom: 10px;
+	font-style: italic;
+}
