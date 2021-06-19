@@ -2,7 +2,7 @@ import { logDOM } from '@testing-library/react'
 import React, { Suspense } from 'react'
 import { connect, Provider } from 'react-redux'
 import { Route } from 'react-router'
-import { BrowserRouter, withRouter } from 'react-router-dom'
+import { BrowserRouter, HashRouter, withRouter } from 'react-router-dom'
 import { compose } from 'redux'
 import './App.css'
 import Preloader from './components/Common/Preloader/Preloader'
@@ -99,11 +99,11 @@ const ContainerAPP = compose(
 
 const MainApp = props => {
 	return (
-		<BrowserRouter>
+		<HashRouter>
 			<Provider store={store}>
 				<ContainerAPP />
 			</Provider>
-		</BrowserRouter>
+		</HashRouter>
 	)
 }
 export default MainApp
