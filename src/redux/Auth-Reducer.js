@@ -77,9 +77,9 @@ export const getUserLoginData = () => async dispatch => {
 export const login = (email, password, rememberMe) => async dispatch => {
 	dispatch(isFetching(true))
 	const response = await authAPI.login(email, password, rememberMe)
+	dispatch(isFetching(false))
 	if (response.data.resultCode === 0) {
 		dispatch(getUserLoginData())
-		dispatch(isFetching(false))
 	} else {
 		let message =
 			response.data.messages.length > 0

@@ -28,7 +28,7 @@ import Profile from './Profile'
 import { reset } from 'redux-form'
 
 class ClassProfileContainer extends React.PureComponent {
-	componentDidMount() {
+	refreshProfile() {
 		let userId = this.props.match.params.userId
 		if (!userId) {
 			userId = this.props.autorizedUserId
@@ -36,6 +36,16 @@ class ClassProfileContainer extends React.PureComponent {
 		this.props.getProfile(userId)
 		this.props.getStatus(userId)
 		this.props.getFriends()
+	}
+
+	componentDidMount() {
+		this.refreshProfile()
+	}
+
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		debugger
+		if (this.props.match.params.userId !== prevProps.match.params.userId)
+			this.refreshProfile()
 	}
 	render() {
 		if (this.props.isFetching) return <Preloader />

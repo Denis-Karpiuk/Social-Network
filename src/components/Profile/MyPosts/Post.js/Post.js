@@ -6,7 +6,7 @@ const Post = ({ likes, text, profilePhoto }) => {
 	return (
 		<div className={s.post}>
 			<div className={s.icon}>
-				<NavIcon img={profilePhoto} />
+				<NavIcon img={profilePhoto} r='50%' />
 				<div className={s.likes}>
 					<div className={s.likes__icon}>
 						<NavIcon img={like} />
