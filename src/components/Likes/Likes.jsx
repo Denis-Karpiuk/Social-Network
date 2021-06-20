@@ -2,11 +2,12 @@ import React from 'react'
 import HeaderPage from '../Common/HeaderPage/HeaderPage'
 import reactBg from '../../assets/images/iconsApp/heart.png'
 import s from './Likes.module.css'
+import Minion from '../Common/Minion/Minion'
 
 const Likes = props => {
 	return (
 		<div className={s.content}>
-			<HeaderPage img={reactBg} tittle={'in progress...'} height={'555px'} />
+			<Minion minion={'fly'} />
 		</div>
 	)
 }
