@@ -1,0 +1,73 @@
+.profileInfo__background {
+	background-color: white;
+}
+.profileInfo__background img {
+	max-width: 100%;
+}
+.profileInfo__data {
+	display: grid;
+	grid-template-columns: repeat(3, 33.3%);
+	padding: 20px 10px;
+	background-color: white;
+}
+.data__contacts {
+	display: flex;
+	flex-direction: row;
+	text-align: center;
+	margin: 0 15px;
+}
+.contact__item {
+	align-self: center;
+	height: 30px;
+	width: 30px;
+	margin-right: 9px;
+}
+
+.data__avatar {
+	width: 170px;
+	height: 170px;
+	position: absolute;
+	left: 44.5%;
+	top: 205px;
+}
+.data__name__status {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.data__name {
+	font-size: x-large;
+	font-weight: 600;
+}
+.data__status {
+	padding-top: 5px;
+}
+
+.data__statistics {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+.statistics__posts,
+.statistics__followers,
+.statistics__Friends {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	margin: 0px 10px;
+	padding-bottom: 5px;
+	font-style: italic;
+}
+.count {
+	align-items: center;
+}
+
+.addPhoto {
+	width: 100%;
+	position: absolute;
+	left: 0%;
+	top: 100px;
+	z-index: -1;
+}

@@ -3,90 +3,24 @@
 	grid-template-columns: 34% 65%;
 	grid-template-rows: repeat(3, auto);
 	grid-template-areas:
-		'header header'
+		'info info'
 		'friends posts'
 		'friends posts';
 	padding-bottom: 20px;
 	gap: 10px 10px;
 	align-items: start;
 }
-.profile__header {
-	grid-area: header;
-	height: 275px;
-}
-.header__background img {
-	max-width: 100%;
-}
-.header__background,
-.friends {
-	background-color: white;
-}
-.header__footer {
-	display: grid;
-	grid-template-columns: repeat(3, 33.3%);
-	padding: 20px 10px;
-	background-color: white;
-}
-.footer__contacts {
-	display: flex;
-	flex-direction: row;
-	text-align: center;
-	margin: 0 15px;
-}
-.link__item {
-	align-self: center;
-	height: 30px;
-	width: 30px;
-	margin-right: 9px;
-}
-.footer__statistic {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-}
-.statistic__posts,
-.statistic__followers,
-.statistic__following {
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	align-items: center;
-	margin: 0px 10px;
-	padding-bottom: 5px;
-	font-style: italic;
-}
-.count {
-	align-items: center;
-}
-.profile__avatar {
-	width: 200px;
-	height: 200px;
-	position: absolute;
-	left: 40.8%;
-	top: 82px;
-}
 .profile__info {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-}
-.profile__header {
-	position: relative;
-	margin-bottom: 95px;
-}
-.profile__name {
-	font-size: x-large;
-	font-weight: 600;
-}
-.profile__status {
-	padding-top: 5px;
+	grid-area: info;
 }
 .profile__posts {
 	grid-area: posts;
 }
 .friends {
 	grid-area: friends;
+	background-color: white;
 }
+
 .friendsList {
 	display: grid;
 	grid-template-columns: repeat(3, auto);

@@ -9,11 +9,13 @@ import {
 	getStatus,
 	updateStatusProfile,
 	addPostProfile,
+	updateProfilePhoto,
 } from '../../redux/Profile-Reducer'
 import {
 	takeContacts,
 	takeIsFetching,
 	takeMyPosts,
+	takeMyPostsCount,
 	takeProfile,
 	takeProfileId,
 	takeProfileName,
@@ -21,7 +23,7 @@ import {
 	takeStatus,
 } from '../../redux/Profile-Selectors'
 import { getFriends } from '../../redux/Users-Reducer'
-import { takeFriends } from '../../redux/Users-Selectors'
+import { takeFriends, takeFriendsCount } from '../../redux/Users-Selectors'
 import Preloader from '../Common/Preloader/Preloader'
 import Profile from './Profile'
 
@@ -42,8 +44,7 @@ class ClassProfileContainer extends React.PureComponent {
 		this.refreshProfile()
 	}
 
-	componentDidUpdate(prevProps, prevState, snapshot) {
-		debugger
+	componentDidUpdate(prevProps) {
 		if (this.props.match.params.userId !== prevProps.match.params.userId)
 			this.refreshProfile()
 	}
@@ -51,7 +52,7 @@ class ClassProfileContainer extends React.PureComponent {
 		if (this.props.isFetching) return <Preloader />
 		return (
 			<div>
-				<Profile {...this.props} />
+				<Profile isOwner={!this.props.match.params.userId} {...this.props} />
 			</div>
 		)
 	}
@@ -69,6 +70,8 @@ const mapStateToProps = state => {
 		friends: takeFriends(state),
 		contacts: takeContacts(state),
 		posts: takeMyPosts(state),
+		postsCount: takeMyPostsCount(state),
+		friendsCount: takeFriendsCount(state),
 	}
 }
 
@@ -80,6 +83,7 @@ const ProfileContainer = compose(
 		updateStatusProfile,
 		getFriends,
 		addPostProfile,
+		updateProfilePhoto,
 	}),
 	withRouter,
 	withAuthRedirect

@@ -3,10 +3,3 @@
 	text-align: center;
 	margin-left: 800px;
 }
-.preloader {
-	background: url(../../../assets/images/iconsApp/reactGif.gif);
-	background-position: center;
-	background-size: cover;
-	width: 100%;
-	height: 100vh;
-}

@@ -4,7 +4,6 @@ const instance = axios.create({
 	baseURL: 'https://social-network.samuraijs.com/api/1.0/',
 	withCredentials: true,
 	headers: { 'API-KEY': 'c956d4ff-5bca-4a92-be9b-c764ae068f1c' },
-	put: { 'CONTENT-TYPE': 'multipart/form-data' },
 })
 
 export const userAPI = {
@@ -50,7 +49,13 @@ export const profileAPI = {
 	updateStatus(status) {
 		return instance.put('profile/status', { status })
 	},
-	updatePhoto(formData) {
-		return instance.put('profile/photo', formData)
+	updatePhoto(file) {
+		let formData = new FormData()
+		formData.append('image', file)
+		return instance.put('profile/photo', formData, {
+			headers: {
+				'Content-Type': 'multipart/form-data',
+			},
+		})
 	},
 }

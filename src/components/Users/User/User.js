@@ -20,9 +20,7 @@ const User = ({
 			</div>
 			<div className={s.user__info}>
 				<div className={s.user__avatar}>
-					<NavLink to={'/profile/' + userId}>
-						<NavIcon img={userPhoto} r={'50%'} />
-					</NavLink>
+					<NavIcon link={'profile/' + userId} img={userPhoto} r={'50%'} />
 				</div>
 				<div className={s.user__name}>{userName}</div>
 			</div>

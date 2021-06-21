@@ -1,25 +1,18 @@
 import React from 'react'
-import background from '../../assets/images/BackgroundsHeaders/profileBg.jpg'
-import LinkIcon from '../Common/LinkIcon/LinkIcon'
-import NavIcon from '../Common/NavIcon/NavIcon'
 import Preloader from '../Common/Preloader/Preloader'
 import TittleItem from '../Common/TittleItem/TittleItem'
 import Friend from './Friend/Friend'
 import MyPosts from './MyPosts/MyPosts'
 import s from './Profile.module.css'
-import ProfileStatus from './ProfileStatus/ProfileStatus'
+import ProfileInfo from './ProfileInfo/ProfileInfo'
 
 const Profile = ({
-	updateStatusProfile,
-	status,
-	profileName,
 	friends,
 	profile,
-	profilePhoto,
-	contacts,
 	posts,
 	addPostProfile,
 	reset,
+	...props
 }) => {
 	if (!profile) {
 		return <Preloader />
@@ -27,53 +20,14 @@ const Profile = ({
 
 	return (
 		<div className={s.profile}>
-			<div className={s.profile__header}>
-				<div className={s.header__background}>
-					<img src={background} />
-				</div>
-				<div className={s.header__footer}>
-					<div className={s.footer__contacts}>
-						{Object.keys(contacts).map((key, index) =>
-							contacts[key] ? (
-								<div key={key} className={s.link__item}>
-									<LinkIcon img={key} link={contacts[key]} />
-								</div>
-							) : null
-						)}
-					</div>
-					<div className={s.profile__avatar}>
-						<NavIcon img={profilePhoto} r='50%' />
-					</div>
-					<div className={s.profile__info}>
-						<div className={s.profile__name}>{profileName}</div>
-						<div className={s.profile__status}>
-							<ProfileStatus
-								status={status}
-								updateStatus={updateStatusProfile}
-							/>
-						</div>
-					</div>
-					<div className={s.footer__statistic}>
-						<div className={s.statistic__posts}>
-							<div className={s.name}>Posts</div>
-							<div className={s.count}>100</div>
-						</div>
-						<div className={s.statistic__followers}>
-							<div className={s.name}>Followers</div>
-							<div className={s.count}>100</div>
-						</div>
-						<div className={s.statistic__following}>
-							<div className={s.name}>Following</div>
-							<div className={s.count}>100</div>
-						</div>
-					</div>
-				</div>
+			<div className={s.profile__info}>
+				<ProfileInfo {...props} />
 			</div>
 			<div className={s.profile__posts}>
 				<MyPosts
 					reset={reset}
 					addPostProfile={addPostProfile}
-					profilePhoto={profilePhoto}
+					profilePhoto={profile.profilePhoto}
 					posts={posts}
 				/>
 			</div>

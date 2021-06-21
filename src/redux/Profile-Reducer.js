@@ -1,3 +1,4 @@
+import { act } from 'react-dom/cjs/react-dom-test-utils.production.min'
 import { profileAPI } from '../api/api'
 import { setUserAuthPhoto } from './Auth-Reducer'
 
@@ -6,6 +7,7 @@ const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
 const SET_STATUS = 'SET_STATUS'
 const UPDATE_STATUS = 'UPDATE_STATUS'
 const ADD_POSTS = 'PROFILE/ADD_POSTS'
+const UPDATE_PHOTOS = 'PROFILE/UPDATE_PHOTOS'
 
 const initialState = {
 	profile: null,
@@ -67,6 +69,12 @@ const profileReducer = (state = initialState, action) => {
 				myPosts: [...state.myPosts, post],
 			}
 		}
+		case UPDATE_PHOTOS: {
+			return {
+				...state,
+				profile: { ...state.profile, photos: action.photos },
+			}
+		}
 		default:
 			return state
 	}
@@ -104,6 +112,13 @@ export const addPostProfile = post => {
 		post,
 	}
 }
+
+const updatePhoto = photos => {
+	return {
+		type: UPDATE_PHOTOS,
+		photos,
+	}
+}
 export const getProfile = userId => async dispatch => {
 	dispatch(isFetching(true))
 	let response = await profileAPI.getProfile(userId)
@@ -124,8 +139,10 @@ export const updateStatusProfile = status => async dispatch => {
 	}
 }
 
-export const updateProfilePhoto = FormData => async dispatch => {
-	const response = await profileAPI.updatePhoto(FormData)
-	console.log(response.data)
+export const updateProfilePhoto = file => async dispatch => {
+	const response = await profileAPI.updatePhoto(file)
+	if (response.data.resultCode === 0) {
+		dispatch(updatePhoto(response.data.data.photos))
+	}
 }
 export default profileReducer
