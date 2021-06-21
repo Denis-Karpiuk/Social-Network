@@ -1,15 +1,15 @@
 import like from '../../../../assets/images/iconsApp/like.png'
-import NavIcon from '../../../Common/NavIcon/NavIcon'
+import Icon from '../../../Common/Icon/Icon'
 import s from './Post.module.css'
 
 const Post = ({ likes, text, profilePhoto }) => {
 	return (
 		<div className={s.post}>
 			<div className={s.icon}>
-				<NavIcon img={profilePhoto} r='50%' />
+				<Icon img={profilePhoto} r='50%' />
 				<div className={s.likes}>
 					<div className={s.likes__icon}>
-						<NavIcon img={like} />
+						<Icon img={like} />
 					</div>
 					<div className={s.likes__count}>{likes}</div>
 				</div>

@@ -1,17 +1,17 @@
 import React from 'react'
 import { Field, Form, reduxForm } from 'redux-form'
-import NavIcon from '../../Common/NavIcon/NavIcon'
+import Icon from '../../Common/Icon/Icon'
 import TittleItem from '../../Common/TittleItem/TittleItem'
 import s from './MyPosts.module.css'
 import Post from './Post.js/Post'
 
-const PostForm = ({ handleSubmit, reset }) => {
+const PostForm = ({ handleSubmit, profilePhoto }) => {
 	return (
 		<div className={s.postForm}>
 			<Form onSubmit={handleSubmit}>
 				<div className={s.postForm__item}>
 					<div className={s.postForm__avatar}>
-						<NavIcon photo={null} />
+						<Icon img={profilePhoto} r='50%' />
 					</div>
 					<div className={s.postForm__textarea}>
 						<Field
@@ -41,7 +41,7 @@ const MyPosts = ({ posts, profilePhoto, addPostProfile, reset }) => {
 		<div className={s.myPosts}>
 			<div className={s.createPosts}>
 				<TittleItem tittle={'Create Post'} />
-				<PostReduxForm onSubmit={addPost} />
+				<PostReduxForm profilePhoto={profilePhoto} onSubmit={addPost} />
 			</div>
 			<div className={s.posts}>
 				<div className={s.tittle}>

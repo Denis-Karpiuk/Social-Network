@@ -12,6 +12,7 @@ const Profile = ({
 	posts,
 	addPostProfile,
 	reset,
+	profilePhoto,
 	...props
 }) => {
 	if (!profile) {
@@ -21,13 +22,13 @@ const Profile = ({
 	return (
 		<div className={s.profile}>
 			<div className={s.profile__info}>
-				<ProfileInfo {...props} />
+				<ProfileInfo profilePhoto={profilePhoto} {...props} />
 			</div>
 			<div className={s.profile__posts}>
 				<MyPosts
 					reset={reset}
 					addPostProfile={addPostProfile}
-					profilePhoto={profile.profilePhoto}
+					profilePhoto={profilePhoto}
 					posts={posts}
 				/>
 			</div>
