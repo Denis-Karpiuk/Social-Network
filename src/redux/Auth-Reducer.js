@@ -77,7 +77,6 @@ export const getUserLoginData = () => async dispatch => {
 export const login = (email, password, rememberMe) => async dispatch => {
 	dispatch(isFetching(true))
 	const response = await authAPI.login(email, password, rememberMe)
-	dispatch(isFetching(false))
 	if (response.data.resultCode === 0) {
 		dispatch(getUserLoginData())
 	} else {
@@ -86,11 +85,14 @@ export const login = (email, password, rememberMe) => async dispatch => {
 				? response.data.messages[0]
 				: 'some error'
 		dispatch(stopSubmit('login', { _error: message }))
+		dispatch(isFetching(false))
 	}
 }
 
 export const logout = () => async dispatch => {
+	dispatch(isFetching(true))
 	const response = await authAPI.logout()
+	dispatch(isFetching(false))
 	if (response.data.resultCode === 0) {
 		dispatch(setUserLoginData(null, null, null, false))
 	}

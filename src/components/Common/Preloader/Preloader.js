@@ -1,11 +1,10 @@
 import React from 'react'
-import react from '../../../assets/images/iconsApp/reactGif.gif'
-import s from './Preloader.module.css'
+import './Preloader.scss'
 
 const Preloader = props => {
 	return (
-		<div role={'preloader'} className={s.preloader}>
-			<img src={react} />
+		<div role={'preloader'} className='preloader'>
+			<div className='loader'></div>
 		</div>
 	)
 }

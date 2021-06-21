@@ -62,7 +62,9 @@ const LogIn = ({ isAuth, login, isFetching }) => {
 			<div className={s.loginForm}>
 				<LoginReduxForm onSubmit={onSubmit} />
 			</div>
-			<div className={s.welcome}>Welcome React Network</div>
+			<div className={s.welcome}>
+				<span>Welcome React Network</span>
+			</div>
 		</div>
 	)
 }

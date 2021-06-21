@@ -15,6 +15,7 @@
 	color: white;
 	font-size: 150px;
 	padding-left: 50px;
+	max-width: 100%;
 }
 .loginForm {
 	grid-area: form;
