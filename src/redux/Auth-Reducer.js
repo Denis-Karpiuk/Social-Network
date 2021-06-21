@@ -70,7 +70,6 @@ export const getUserLoginData = () => async dispatch => {
 		let { id, email, login } = response.data.data
 		dispatch(setUserLoginData(id, email, login, true))
 		await dispatch(getProfile(id))
-		await dispatch(getUsers())
 	}
 }
 

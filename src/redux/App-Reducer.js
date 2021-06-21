@@ -1,5 +1,6 @@
 import { getUserLoginData } from './Auth-Reducer'
 import { getProfile } from './Profile-Reducer'
+import { getUsers } from './Users-Reducer'
 
 const INITIALIZED_SUCSESS = 'INITIALIZED_SUCSESS'
 
@@ -28,6 +29,7 @@ const initializedSucsess = () => {
 
 export const initializeApp = () => async dispatch => {
 	await dispatch(getUserLoginData())
+	await dispatch(getUsers())
 	dispatch(initializedSucsess())
 }
 
