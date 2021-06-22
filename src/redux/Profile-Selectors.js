@@ -38,6 +38,10 @@ export const takeProfileId = createSelector(takeProfile, profile => {
 	return !profile ? null : profile.userId
 })
 
+export const takeAboutMe = createSelector(takeProfile, profile => {
+	return !profile ? null : profile.aboutMe
+})
+
 export const takeContacts = createSelector(takeProfile, function (profile) {
 	if (!profile) {
 		return null

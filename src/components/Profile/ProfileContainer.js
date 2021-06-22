@@ -12,6 +12,7 @@ import {
 	updateProfilePhoto,
 } from '../../redux/Profile-Reducer'
 import {
+	takeAboutMe,
 	takeContacts,
 	takeIsFetching,
 	takeMyPosts,
@@ -72,6 +73,7 @@ const mapStateToProps = state => {
 		posts: takeMyPosts(state),
 		postsCount: takeMyPostsCount(state),
 		friendsCount: takeFriendsCount(state),
+		aboutMe: takeAboutMe(state),
 	}
 }
 

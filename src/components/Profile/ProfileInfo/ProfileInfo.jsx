@@ -15,6 +15,7 @@ const ProfileInfo = ({
 	postsCount,
 	friendsCount,
 	isOwner,
+	aboutMe,
 }) => {
 	let savePhoto = e => {
 		if (e.target.files.length) {
@@ -65,7 +66,7 @@ const ProfileInfo = ({
 						/>
 					</div>
 				</div>
-				{isOwner && (
+				{isOwner ? (
 					<div className={s.data__statistics}>
 						<div className={s.statistics__posts}>
 							<div className={s.name}>Posts</div>
@@ -80,6 +81,8 @@ const ProfileInfo = ({
 							<div className={s.count}>0</div>
 						</div>
 					</div>
+				) : (
+					<div className={s.aboutMe}>{aboutMe}</div>
 				)}
 			</div>
 		</div>

@@ -4,6 +4,7 @@ import { Route } from 'react-router'
 import { HashRouter, withRouter } from 'react-router-dom'
 import { compose } from 'redux'
 import './App.css'
+import Preloader from './components/Common/Preloader/Preloader'
 import Groups from './components/Groups/Groups'
 import HeaderContainer from './components/Header/Header'
 import Likes from './components/Likes/Likes'
@@ -45,12 +46,18 @@ class App extends React.Component {
 		}
 
 		if (!this.props.initialized) {
-			// return <Preloader />
+			return <Preloader />
 		}
 		return (
 			<div className='app'>
 				<div>
-					<Suspense fallback={<div>load...</div>}>
+					<Suspense
+						fallback={
+							<div>
+								<Preloader />
+							</div>
+						}
+					>
 						<HeaderContainer />
 						<div className={bodyStyle}>
 							<div className='navbar'>
