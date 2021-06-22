@@ -8,8 +8,11 @@ import TittleItem from '../Common/TittleItem/TittleItem'
 import NavItem from '../Navbar/NavItem/NavItem'
 import s from './NewUsers.module.css'
 
-const NewUsers = ({ newUsers, isAuth }) => {
+const NewUsers = ({ newUsers }) => {
 	const [newUser, setNewUsers] = useState(newUsers)
+	useEffect(() => {
+		setNewUsers(newUsers)
+	}, [newUsers.length])
 	return (
 		<div className={s.newUsers}>
 			<TittleItem
