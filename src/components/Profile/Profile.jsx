@@ -37,7 +37,7 @@ const Profile = ({
 
 					<div className={s.friends}>
 						<TittleItem
-							tittle={'Friends'}
+							tittle={'Last add Friends'}
 							subtittle={'Add New'}
 							link={'users'}
 						/>

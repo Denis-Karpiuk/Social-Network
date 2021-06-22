@@ -7,7 +7,6 @@ const User = ({
 	userPhoto,
 	userName,
 	userId,
-	user,
 	followed,
 	followingProgress,
 	unfollow,

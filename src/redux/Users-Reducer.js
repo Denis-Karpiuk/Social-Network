@@ -160,9 +160,11 @@ export const follow = userId => async dispatch => {
 }
 
 export const getFriends = (pageNumber, pageSize) => async dispatch => {
+	dispatch(fetching(true))
 	const response = await userAPI.getFriends(pageNumber, pageSize)
 	dispatch(setFriends(response.data.items))
 	dispatch(setFriendsTotalCount(response.data.totalCount))
+	dispatch(fetching(false))
 }
 
 export default usersReducer

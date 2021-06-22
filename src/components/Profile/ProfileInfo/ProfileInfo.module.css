@@ -21,6 +21,7 @@
 	height: 30px;
 	width: 30px;
 	margin-right: 9px;
+	font-weight: 700;
 }
 
 .data__avatar {
@@ -74,4 +75,5 @@
 
 .aboutMe {
 	margin: auto;
+	font-weight: 700;
 }

@@ -5,6 +5,8 @@ import { HashRouter, withRouter } from 'react-router-dom'
 import { compose } from 'redux'
 import './App.css'
 import Preloader from './components/Common/Preloader/Preloader'
+import FriendsContainerF from './components/Friends/FriendsContainer'
+import FriendsContainer from './components/Friends/FriendsContainer'
 import Groups from './components/Groups/Groups'
 import HeaderContainer from './components/Header/Header'
 import Likes from './components/Likes/Likes'
@@ -72,7 +74,7 @@ class App extends React.Component {
 									render={() => <ProfileContainer />}
 								/>
 								<Route path='/users' render={() => <UsersContainer />} />
-								{/* <Route path='/friends' render={() => <FriendsContainer />} /> */}
+								<Route path='/friends' render={() => <FriendsContainerF />} />
 								<Route path='/music' render={() => <Music_Container />} />
 								<Route path='/news' render={() => <NewsContainer />} />
 								<Route path='/messages' render={() => <MessagesContainer />} />

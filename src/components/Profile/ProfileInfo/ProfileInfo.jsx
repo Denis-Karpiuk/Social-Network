@@ -82,7 +82,9 @@ const ProfileInfo = ({
 						</div>
 					</div>
 				) : (
-					<div className={s.aboutMe}>{aboutMe}</div>
+					<div className={s.aboutMe}>
+						{!aboutMe ? <span> - - - - - </span> : aboutMe}
+					</div>
 				)}
 			</div>
 		</div>

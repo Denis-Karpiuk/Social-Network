@@ -39,21 +39,14 @@ class UsersComponentContainer extends React.Component {
 		return (
 			<>
 				{this.props.isFetching ? (
-					<Preloader style={this.style} />
+					<Preloader />
 				) : (
 					<Users
-						tittle={tittle}
-						backgroundPage={backgroundPage}
-						backgroundUser={backgroundUser}
-						users={this.props.users}
-						pageNumber={this.props.pageNumber}
-						totalCount={this.props.totalCount}
-						pageSize={this.props.pageSize}
 						onPageNumber={this.onPageNumber}
-						follow={this.toFollow}
-						unfollow={this.toUnfollow}
-						isFetching={this.props.isFetching}
-						followingProgress={this.props.followingProgress}
+						backgroundPage={backgroundPage}
+						tittle={tittle}
+						backgroundUser={backgroundUser}
+						{...this.props}
 					/>
 				)}
 			</>
