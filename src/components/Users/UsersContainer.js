@@ -3,8 +3,8 @@ import { connect } from 'react-redux'
 import {
 	activePage,
 	follow,
-	getUsers,
 	unfollow,
+	getUsers,
 } from '../../redux/Users-Reducer'
 import {
 	takeFollowingProgress,
@@ -15,11 +15,14 @@ import {
 	takeUsers,
 } from '../../redux/Users-Selectors'
 import Preloader from '../Common/Preloader/Preloader'
-import Users from './Users'
+import Users from './Users/Users'
+import backgroundPage from '../../assets/images/BackgroundsHeaders/usersBg.jpg'
+import backgroundUser from '../../assets/images/BackgroundsHeaders/bg3.jpg'
+let tittle = 'Users'
 
 class UsersComponentContainer extends React.Component {
 	componentDidMount() {
-		this.props.getUsers(this.props.pageNumber, this.props.pageSize)
+		getUsers(this.props.pageNumber, this.props.pageSize)
 	}
 	onPageNumber = pageNumber => {
 		this.props.activePage(pageNumber)
@@ -39,6 +42,9 @@ class UsersComponentContainer extends React.Component {
 					<Preloader style={this.style} />
 				) : (
 					<Users
+						tittle={tittle}
+						backgroundPage={backgroundPage}
+						backgroundUser={backgroundUser}
 						users={this.props.users}
 						pageNumber={this.props.pageNumber}
 						totalCount={this.props.totalCount}
@@ -58,11 +64,11 @@ class UsersComponentContainer extends React.Component {
 const mapStateToProps = state => {
 	return {
 		users: takeUsers(state),
-		totalCount: takeTotalCount(state),
 		pageSize: takePageSize(state),
 		pageNumber: takePageNumber(state),
 		isFetching: takeIsFetching(state),
 		followingProgress: takeFollowingProgress(state),
+		totalCount: takeTotalCount(state),
 	}
 }
 

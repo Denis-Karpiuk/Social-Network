@@ -4,6 +4,7 @@ const FOLLOW = 'USERS/FOLLOW'
 const UNFOLLOW = 'USERS/UNFOLLOW'
 const SET_USERS = 'USERS/SET_USERS'
 const SET_TOTAL_COUNT = 'USERS/SET_TOTAL_COUNT'
+const SET_FRIENDS_TOTAL_COUNT = 'USERS/SET_FRIENDS_TOTAL_COUNT'
 const SET_ACTIVE_PAGE = 'USERS/SET_ACTIVE_PAGE'
 const FETCHING = 'USERS/FETCHING'
 const TOGGEL_FOLLOWING_PROGRESS = 'USERS/TOGGEL_FOLLOWING_PROGRESS'
@@ -17,6 +18,7 @@ let initialState = {
 	isFetching: false,
 	followingProgress: [],
 	friends: [],
+	friendsTotalCount: 0,
 }
 const usersReducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -86,6 +88,12 @@ const usersReducer = (state = initialState, action) => {
 				friends: action.friends,
 			}
 		}
+		case SET_FRIENDS_TOTAL_COUNT: {
+			return {
+				...state,
+				friendsTotalCount: action.totalCount,
+			}
+		}
 		default:
 			return state
 	}
@@ -118,6 +126,12 @@ export const setFriends = friends => {
 		friends,
 	}
 }
+export const setFriendsTotalCount = totalCount => {
+	return {
+		type: SET_FRIENDS_TOTAL_COUNT,
+		totalCount,
+	}
+}
 
 export const getUsers = (pageNumber, pageSize) => async dispatch => {
 	dispatch(fetching(true))
@@ -145,9 +159,10 @@ export const follow = userId => async dispatch => {
 	dispatch(toggleFollowing(false, userId))
 }
 
-export const getFriends = () => async dispatch => {
-	const response = await userAPI.getFriends()
+export const getFriends = (pageNumber, pageSize) => async dispatch => {
+	const response = await userAPI.getFriends(pageNumber, pageSize)
 	dispatch(setFriends(response.data.items))
+	dispatch(setFriendsTotalCount(response.data.totalCount))
 }
 
 export default usersReducer

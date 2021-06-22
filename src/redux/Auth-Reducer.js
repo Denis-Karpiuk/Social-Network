@@ -13,7 +13,6 @@ const initialState = {
 	userId: null,
 	email: null,
 	isFetching: false,
-	userAuthPhoto: null,
 }
 const authReducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -27,15 +26,6 @@ const authReducer = (state = initialState, action) => {
 			return {
 				...state,
 				isFetching: action.fetching,
-			}
-		}
-		case SET_USER_AUTH_PHOTO: {
-			return {
-				...state,
-				userAuthPhoto:
-					state.userId !== action.userId
-						? state.userAuthPhoto
-						: action.userPhoto,
 			}
 		}
 		default:
@@ -56,25 +46,18 @@ const setUserLoginData = (userId, email, login, isAuth) => {
 	}
 }
 
-export const setUserAuthPhoto = (userPhoto, userId) => {
-	return {
-		type: SET_USER_AUTH_PHOTO,
-		userPhoto,
-		userId,
-	}
-}
-
 export const getUserLoginData = () => async dispatch => {
+	dispatch(isFetching(true))
 	const response = await authAPI.me()
+	dispatch(isFetching(false))
 	if (response.data.resultCode === 0) {
 		let { id, email, login } = response.data.data
 		dispatch(setUserLoginData(id, email, login, true))
-		await dispatch(getProfile(id))
+		dispatch(getProfile(id))
 	}
 }
 
 export const login = (email, password, rememberMe) => async dispatch => {
-	dispatch(isFetching(true))
 	const response = await authAPI.login(email, password, rememberMe)
 	if (response.data.resultCode === 0) {
 		dispatch(getUserLoginData())
@@ -84,14 +67,11 @@ export const login = (email, password, rememberMe) => async dispatch => {
 				? response.data.messages[0]
 				: 'some error'
 		dispatch(stopSubmit('login', { _error: message }))
-		dispatch(isFetching(false))
 	}
 }
 
 export const logout = () => async dispatch => {
-	dispatch(isFetching(true))
 	const response = await authAPI.logout()
-	dispatch(isFetching(false))
 	if (response.data.resultCode === 0) {
 		dispatch(setUserLoginData(null, null, null, false))
 	}

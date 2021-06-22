@@ -58,23 +58,29 @@ const ProfileInfo = ({
 				<div className={s.data__name__status}>
 					<div className={s.data__name}>{profileName}</div>
 					<div className={s.data__status}>
-						<ProfileStatus status={status} updateStatus={updateStatusProfile} />
+						<ProfileStatus
+							isOwner={isOwner}
+							status={status}
+							updateStatus={updateStatusProfile}
+						/>
 					</div>
 				</div>
-				<div className={s.data__statistics}>
-					<div className={s.statistics__posts}>
-						<div className={s.name}>Posts</div>
-						<div className={s.count}>{postsCount}</div>
+				{isOwner && (
+					<div className={s.data__statistics}>
+						<div className={s.statistics__posts}>
+							<div className={s.name}>Posts</div>
+							<div className={s.count}>{postsCount}</div>
+						</div>
+						<div className={s.statistics__Friends}>
+							<div className={s.name}>Friends</div>
+							<div className={s.count}>{friendsCount}</div>
+						</div>
+						<div className={s.statistics__followers}>
+							<div className={s.name}>Followers</div>
+							<div className={s.count}>0</div>
+						</div>
 					</div>
-					<div className={s.statistics__Friends}>
-						<div className={s.name}>Friends</div>
-						<div className={s.count}>{friendsCount}</div>
-					</div>
-					<div className={s.statistics__followers}>
-						<div className={s.name}>Followers</div>
-						<div className={s.count}>0</div>
-					</div>
-				</div>
+				)}
 			</div>
 		</div>
 	)

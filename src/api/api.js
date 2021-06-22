@@ -3,7 +3,7 @@ import axios from 'axios'
 const instance = axios.create({
 	baseURL: 'https://social-network.samuraijs.com/api/1.0/',
 	withCredentials: true,
-	headers: { 'API-KEY': 'c956d4ff-5bca-4a92-be9b-c764ae068f1c' },
+	headers: { 'API-KEY': 'ec75192c-c1ce-4429-bbe4-19d032b0aab1' },
 })
 
 export const userAPI = {
@@ -11,7 +11,7 @@ export const userAPI = {
 		console.warn('Obsolete method. User profileApi')
 		return profileAPI.getProfile(userId)
 	},
-	getUsers(pageNumber = 1, pageSize = 10) {
+	getUsers(pageNumber = 1, pageSize = 100) {
 		return instance.get(`users?page=${pageNumber}&count=${pageSize}`)
 	},
 	unfollowUser(userId) {

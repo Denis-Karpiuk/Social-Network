@@ -11,9 +11,11 @@ export const takeStatus = state => {
 export const takeProfile = state => {
 	return state.profilePage.profile
 }
-
 export const takeMyPosts = state => {
 	return state.profilePage.myPosts
+}
+export const takeIsUpdatePhoto = state => {
+	return state.profilePage.isUpdatePhoto
 }
 
 export const takeMyPostsCount = createSelector(takeMyPosts, myPosts => {
@@ -22,6 +24,10 @@ export const takeMyPostsCount = createSelector(takeMyPosts, myPosts => {
 
 export const takeProfilePhoto = createSelector(takeProfile, profile => {
 	return !profile ? null : profile.photos.large
+})
+
+export const takeIsProfilePhoto = createSelector(takeProfile, profile => {
+	return !profile ? null : Object.keys(profile.photos).length
 })
 
 export const takeProfileName = createSelector(takeProfile, profile => {

@@ -1,12 +1,9 @@
-import { logDOM } from '@testing-library/react'
 import React, { Suspense } from 'react'
 import { connect, Provider } from 'react-redux'
 import { Route } from 'react-router'
-import { BrowserRouter, HashRouter, withRouter } from 'react-router-dom'
+import { HashRouter, withRouter } from 'react-router-dom'
 import { compose } from 'redux'
 import './App.css'
-import Preloader from './components/Common/Preloader/Preloader'
-import Friends from './components/Friends/Friends'
 import Groups from './components/Groups/Groups'
 import HeaderContainer from './components/Header/Header'
 import Likes from './components/Likes/Likes'
@@ -34,8 +31,6 @@ const mapStateToProps = state => {
 	}
 }
 
-//! МОРГАНИЕ ПРИ ЗАГРУЗКАХ, ПОЧЕМУ ПОПАДЮ НА СТРАНИЦУ ПРОФИЛЕ, ПОСЛЕ ВХОДА В ПРИЛОЖЕНИЕ, СДЕЛАТЬ РЕДИРЕКТ КОРРЕКТНЫМ
-
 class App extends React.Component {
 	componentDidMount() {
 		this.props.initializeApp()
@@ -50,7 +45,7 @@ class App extends React.Component {
 		}
 
 		if (!this.props.initialized) {
-			return <Preloader />
+			// return <Preloader />
 		}
 		return (
 			<div className='app'>
@@ -70,7 +65,7 @@ class App extends React.Component {
 									render={() => <ProfileContainer />}
 								/>
 								<Route path='/users' render={() => <UsersContainer />} />
-								<Route path='/friends' render={() => <Friends />} />
+								{/* <Route path='/friends' render={() => <FriendsContainer />} /> */}
 								<Route path='/music' render={() => <Music_Container />} />
 								<Route path='/news' render={() => <NewsContainer />} />
 								<Route path='/messages' render={() => <MessagesContainer />} />

@@ -52,7 +52,7 @@ const LoginForm = ({ handleSubmit, error }) => {
 const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm)
 
 const LogIn = ({ isAuth, login, isFetching }) => {
-	if (isAuth) return <Redirect to='/profile' />
+	if (isAuth) return <Redirect to='/' />
 	const onSubmit = formData => {
 		login(formData.email, formData.password, formData.rememberMe)
 	}
@@ -62,9 +62,7 @@ const LogIn = ({ isAuth, login, isFetching }) => {
 			<div className={s.loginForm}>
 				<LoginReduxForm onSubmit={onSubmit} />
 			</div>
-			<div className={s.welcome}>
-				<span>Welcome React Network</span>
-			</div>
+			<div className={s.welcome}>Welcome React Network</div>
 		</div>
 	)
 }

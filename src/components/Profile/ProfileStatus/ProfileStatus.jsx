@@ -31,7 +31,7 @@ class ProfileStatus extends React.Component {
 	render() {
 		return (
 			<div>
-				{this.state.editMode ? (
+				{this.state.editMode && this.props.isOwner ? (
 					<input
 						onBlur={this.deActiveEditMode}
 						autoFocus={true}

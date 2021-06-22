@@ -24,24 +24,33 @@ const Profile = ({
 			<div className={s.profile__info}>
 				<ProfileInfo profilePhoto={profilePhoto} {...props} />
 			</div>
-			<div className={s.profile__posts}>
-				<MyPosts
-					reset={reset}
-					addPostProfile={addPostProfile}
-					profilePhoto={profilePhoto}
-					posts={posts}
-				/>
-			</div>
-			<div className={s.friends}>
-				<TittleItem tittle={'Friends'} subtittle={'Add New'} link={'users'} />
-				<div className={s.friendsList}>
-					{friends.map(friend => (
-						<div key={friend.id} className={s.friend}>
-							<Friend friend={friend} />
+			{props.isOwner && (
+				<>
+					<div className={s.profile__posts}>
+						<MyPosts
+							reset={reset}
+							addPostProfile={addPostProfile}
+							profilePhoto={profilePhoto}
+							posts={posts}
+						/>
+					</div>
+
+					<div className={s.friends}>
+						<TittleItem
+							tittle={'Friends'}
+							subtittle={'Add New'}
+							link={'users'}
+						/>
+						<div className={s.friendsList}>
+							{friends.map(friend => (
+								<div key={friend.id} className={s.friend}>
+									<Friend friend={friend} />
+								</div>
+							))}
 						</div>
-					))}
-				</div>
-			</div>
+					</div>
+				</>
+			)}
 		</div>
 	)
 }

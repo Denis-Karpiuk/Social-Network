@@ -14,6 +14,7 @@ const initialState = {
 	isFetching: false,
 	followingProgress: false,
 	status: '',
+	isUpdatePhoto: [],
 	myPosts: [
 		{
 			id: 1,
@@ -73,6 +74,7 @@ const profileReducer = (state = initialState, action) => {
 			return {
 				...state,
 				profile: { ...state.profile, photos: action.photos },
+				isUpdatePhoto: [...state.isUpdatePhoto],
 			}
 		}
 		default:
@@ -123,7 +125,6 @@ export const getProfile = userId => async dispatch => {
 	dispatch(isFetching(true))
 	let response = await profileAPI.getProfile(userId)
 	dispatch(setProfile(response.data))
-	dispatch(setUserAuthPhoto(response.data.photos, response.data.userId))
 	dispatch(isFetching(false))
 }
 
@@ -140,7 +141,9 @@ export const updateStatusProfile = status => async dispatch => {
 }
 
 export const updateProfilePhoto = file => async dispatch => {
+	dispatch(isFetching(true))
 	const response = await profileAPI.updatePhoto(file)
+	dispatch(isFetching(false))
 	if (response.data.resultCode === 0) {
 		dispatch(updatePhoto(response.data.data.photos))
 	}
