@@ -16,6 +16,8 @@ import {
 	takeAboutMe,
 	takeContacts,
 	takeIsFetching,
+	takeLookingForAJob,
+	takeLookingForAJobDescription,
 	takeMyPosts,
 	takeMyPostsCount,
 	takeProfile,
@@ -23,9 +25,14 @@ import {
 	takeProfileName,
 	takeProfilePhoto,
 	takeStatus,
+	takeUserId,
 } from '../../redux/Profile-Selectors'
 import { getFriends } from '../../redux/Users-Reducer'
-import { takeFriends, takeFriendsCount } from '../../redux/Users-Selectors'
+import {
+	takeFriends,
+	takeFriendsCount,
+	takeLastFriends,
+} from '../../redux/Users-Selectors'
 import Preloader from '../Common/Preloader/Preloader'
 import Profile from './Profile'
 
@@ -67,12 +74,15 @@ const mapStateToProps = state => {
 		profileName: takeProfileName(state),
 		profileId: takeProfileId(state),
 		autorizedUserId: takeAutorizedUserId(state),
-		friends: takeFriends(state),
-		contacts: takeContacts(state),
+		friends: takeLastFriends(state),
 		posts: takeMyPosts(state),
 		postsCount: takeMyPostsCount(state),
 		friendsCount: takeFriendsCount(state),
 		aboutMe: takeAboutMe(state),
+		contacts: takeContacts(state),
+		lookingForAJob: takeLookingForAJob(state),
+		lookingForAJobDescription: takeLookingForAJobDescription(state),
+		userId: takeUserId(state),
 	}
 }
 

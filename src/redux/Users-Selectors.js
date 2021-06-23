@@ -13,6 +13,10 @@ export const takeFriendsCount = state => state.usersPage.friendsTotalCount
 export const takeIsSearchMode = state => state.usersPage.searchMode
 export const takeSearchUserName = state => state.usersPage.searchUserName
 
+export const takeLastFriends = createSelector(takeFriends, friends => {
+	return friends.reverse().slice(0, 12)
+})
+
 export const takeNewUsers = createSelector(takeUsers, users => {
 	return users.slice(0, 10)
 })

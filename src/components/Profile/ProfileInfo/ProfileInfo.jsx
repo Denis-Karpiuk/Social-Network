@@ -16,6 +16,9 @@ const ProfileInfo = ({
 	friendsCount,
 	isOwner,
 	aboutMe,
+	lookingForAJob,
+	lookingForAJobDescription,
+	userId,
 }) => {
 	let savePhoto = e => {
 		if (e.target.files.length) {
@@ -31,7 +34,6 @@ const ProfileInfo = ({
 			<div className={s.profileInfo__background}>
 				<img src={background} />
 			</div>
-
 			<div className={s.profileInfo__data}>
 				<div className={s.data__contacts}>
 					{Object.keys(contacts).map((key, index) =>
@@ -67,26 +69,34 @@ const ProfileInfo = ({
 						/>
 					</div>
 				</div>
-				{isOwner ? (
-					<div className={s.data__statistics}>
-						<div className={s.statistics__posts}>
-							<div className={s.name}>Posts</div>
-							<div className={s.count}>{postsCount}</div>
-						</div>
-						<div className={s.statistics__Friends}>
-							<div className={s.name}>Friends</div>
-							<div className={s.count}>{friendsCount}</div>
-						</div>
-						<div className={s.statistics__followers}>
-							<div className={s.name}>Followers</div>
-							<div className={s.count}>0</div>
-						</div>
+
+				<div className={s.data__statistics}>
+					<div className={s.statistics__posts}>
+						<div className={s.name}>Posts</div>
+						<div className={s.count}>{postsCount}</div>
 					</div>
-				) : (
-					<div className={s.aboutMe}>
-						{!aboutMe ? <span> not information</span> : aboutMe}
+					<div className={s.statistics__Friends}>
+						<div className={s.name}>Friends</div>
+						<div className={s.count}>{friendsCount}</div>
 					</div>
-				)}
+					<div className={s.statistics__followers}>
+						<div className={s.name}>Followers</div>
+						<div className={s.count}>0</div>
+					</div>
+				</div>
+
+				<div className={s.profile__data__jobs}>
+					<div className={s.jobs__looking}>
+						<b>Looking for a job :</b> {!lookingForAJob ? 'No' : 'Yes'}
+					</div>
+					<div className={s.jobs__looking__description}>
+						<b>My professionl skills :</b>
+						{lookingForAJobDescription}
+					</div>
+					<div className={s.userId}>
+						<b>About Me :</b> {aboutMe}
+					</div>
+				</div>
 			</div>
 		</div>
 	)

@@ -1,13 +1,10 @@
 import { createSelector } from 'reselect'
-
 export const takeIsFetching = state => {
 	return state.profilePage.isFetching
 }
-
 export const takeStatus = state => {
 	return state.profilePage.status
 }
-
 export const takeProfile = state => {
 	return state.profilePage.profile
 }
@@ -42,10 +39,34 @@ export const takeAboutMe = createSelector(takeProfile, profile => {
 	return !profile ? null : profile.aboutMe
 })
 
-export const takeContacts = createSelector(takeProfile, function (profile) {
+export const takeContacts = createSelector(takeProfile, profile => {
 	if (!profile) {
 		return null
 	} else {
 		return profile.contacts //obj
+	}
+})
+export const takeLookingForAJob = createSelector(takeProfile, profile => {
+	if (!profile) {
+		return null
+	} else {
+		return profile.lookingForAJob
+	}
+})
+export const takeLookingForAJobDescription = createSelector(
+	takeProfile,
+	profile => {
+		if (!profile) {
+			return null
+		} else {
+			return profile.lookingForAJobDescription
+		}
+	}
+)
+export const takeUserId = createSelector(takeProfile, profile => {
+	if (!profile) {
+		return null
+	} else {
+		return profile.userId
 	}
 })
