@@ -25,6 +25,11 @@ export const userAPI = {
 			`users?friend=${true}&page=${pageNumber}&count=${pageSize}`
 		)
 	},
+	getSearchUser(userName, pageNumber = 1, pageSize = 100) {
+		return instance.get(
+			`users?term=${userName}&page=${pageNumber}&count=${pageSize}`
+		)
+	},
 }
 
 export const authAPI = {

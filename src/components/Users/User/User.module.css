@@ -1,11 +1,10 @@
 .user {
 	display: grid;
 	grid-template-columns: auto;
-	grid-template-rows: 120px 1fr;
+	grid-template-rows: 90px 1fr;
 	background-color: white;
 	border-radius: 5px;
 	margin: 5px;
-	/* gap: 10px; */
 	padding-bottom: 30px;
 	box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.24);
 }
@@ -17,7 +16,6 @@
 .user__info {
 	display: flex;
 	margin-left: 30px;
-	padding-bottom: 15px;
 }
 .user__avatar {
 	width: 120px;
@@ -37,7 +35,7 @@
 	height: 35px;
 	border: none;
 	border-radius: 5px;
-	margin-left: 30px;
+	margin-left: 40px;
 }
 .follow {
 	background-color: #3399ff;

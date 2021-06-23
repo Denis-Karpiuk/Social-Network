@@ -23,13 +23,18 @@ const NewUsers = ({ newUsers }) => {
 			/>
 			<div className={s.lastUsers__List}>
 				{newUser.map(user => (
-					<NavItem
-						img={user.photos.large}
-						name={
-							user.name.length > 10 ? user.name.slice(0, 10) + '...' : user.name
-						}
-						link={`profile/${user.id}`}
-					/>
+					<div key={user.id} className={s.newUser}>
+						<NavItem
+							r='50%'
+							img={user.photos.large}
+							name={
+								user.name.length > 10
+									? user.name.slice(0, 10) + '...'
+									: user.name
+							}
+							link={`profile/${user.id}`}
+						/>
+					</div>
 				))}
 			</div>
 		</div>

@@ -2,14 +2,15 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router'
 import { compose } from 'redux'
+import { reset } from 'redux-form'
 import { withAuthRedirect } from '../../HOC/withAuthRedirect'
 import { takeAutorizedUserId } from '../../redux/Auth-Selectors'
 import {
+	addPostProfile,
 	getProfile,
 	getStatus,
-	updateStatusProfile,
-	addPostProfile,
 	updateProfilePhoto,
+	updateStatusProfile,
 } from '../../redux/Profile-Reducer'
 import {
 	takeAboutMe,
@@ -27,8 +28,6 @@ import { getFriends } from '../../redux/Users-Reducer'
 import { takeFriends, takeFriendsCount } from '../../redux/Users-Selectors'
 import Preloader from '../Common/Preloader/Preloader'
 import Profile from './Profile'
-
-import { reset } from 'redux-form'
 
 class ClassProfileContainer extends React.PureComponent {
 	refreshProfile() {

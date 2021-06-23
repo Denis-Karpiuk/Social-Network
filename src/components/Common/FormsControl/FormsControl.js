@@ -20,3 +20,12 @@ export const Input = ({ input, meta, ...props }) => {
 		</div>
 	)
 }
+export const InputSearch = ({ input, meta, ...props }) => {
+	let hasError = meta.touched && meta.error
+	return (
+		<div className={hasError ? s.error : s.input}>
+			<input type='search' required {...input} {...props} />
+			<div>{hasError && <span>{meta.error}</span>}</div>
+		</div>
+	)
+}

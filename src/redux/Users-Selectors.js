@@ -1,6 +1,6 @@
 import { createSelector } from 'reselect'
 
-export const takePageName = state => state.usersPage.pageName
+export const takeTittle = state => state.usersPage.tittle
 export const takeUsers = state => state.usersPage.users
 export const takeTotalCount = state => state.usersPage.totalCount
 export const takePageSize = state => state.usersPage.pageSize
@@ -10,6 +10,8 @@ export const takeIsFetching = state => state.usersPage.isFetching
 export const takeFollowingProgress = state => state.usersPage.followingProgress
 export const takeFriends = state => state.usersPage.friends
 export const takeFriendsCount = state => state.usersPage.friendsTotalCount
+export const takeIsSearchMode = state => state.usersPage.searchMode
+export const takeSearchUserName = state => state.usersPage.searchUserName
 
 export const takeNewUsers = createSelector(takeUsers, users => {
 	return users.slice(0, 10)

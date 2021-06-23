@@ -9,8 +9,10 @@ const SET_ACTIVE_PAGE = 'USERS/SET_ACTIVE_PAGE'
 const FETCHING = 'USERS/FETCHING'
 const TOGGEL_FOLLOWING_PROGRESS = 'USERS/TOGGEL_FOLLOWING_PROGRESS'
 const SET_FRIENDS = 'USERS/SET_FRIENDS'
+const TOGGEL_SEARCH_MODE = 'USERS/TOGGEL_SEARCH_MODE'
 
 let initialState = {
+	tittle: 'Users',
 	users: [],
 	pageSize: 100,
 	pageNumber: 1,
@@ -19,6 +21,8 @@ let initialState = {
 	followingProgress: [],
 	friends: [],
 	friendsTotalCount: 0,
+	searchMode: false,
+	searchUserName: '',
 }
 const usersReducer = (state = initialState, action) => {
 	switch (action.type) {
@@ -94,6 +98,13 @@ const usersReducer = (state = initialState, action) => {
 				friendsTotalCount: action.totalCount,
 			}
 		}
+		case TOGGEL_SEARCH_MODE: {
+			return {
+				...state,
+				searchMode: action.isSearchMode,
+				searchUserName: action.searchUserName,
+			}
+		}
 		default:
 			return state
 	}
@@ -132,10 +143,29 @@ export const setFriendsTotalCount = totalCount => {
 		totalCount,
 	}
 }
-
+const setSearchMode = (isSearchMode, searchUserName) => {
+	return {
+		type: TOGGEL_SEARCH_MODE,
+		isSearchMode,
+		searchUserName,
+	}
+}
 export const getUsers = (pageNumber, pageSize) => async dispatch => {
 	dispatch(fetching(true))
+	dispatch(setSearchMode(false, ''))
 	const response = await userAPI.getUsers(pageNumber, pageSize)
+	dispatch(setUsers(response.data.items))
+	dispatch(setTotalCount(response.data.totalCount))
+	dispatch(fetching(false))
+}
+export const getSearchUser = (
+	userName,
+	pageNumber,
+	pageSize
+) => async dispatch => {
+	dispatch(fetching(true))
+	dispatch(setSearchMode(true, userName))
+	const response = await userAPI.getSearchUser(userName, pageNumber, pageSize)
 	dispatch(setUsers(response.data.items))
 	dispatch(setTotalCount(response.data.totalCount))
 	dispatch(fetching(false))
@@ -160,11 +190,11 @@ export const follow = userId => async dispatch => {
 }
 
 export const getFriends = (pageNumber, pageSize) => async dispatch => {
-	dispatch(fetching(true))
-	const response = await userAPI.getFriends(pageNumber, pageSize)
+	// dispatch(fetching(true))
+	const response = await userAPI.getFriends(pageNumber, pageSize, true)
 	dispatch(setFriends(response.data.items))
 	dispatch(setFriendsTotalCount(response.data.totalCount))
-	dispatch(fetching(false))
+	// dispatch(fetching(false))
 }
 
 export default usersReducer

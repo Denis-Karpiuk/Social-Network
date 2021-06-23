@@ -5,14 +5,27 @@ import User from '../User/User'
 
 import s from './Users.module.css'
 
-const Users = props => {
+const Users = ({
+	isSearchMode,
+	tittle,
+	searchUserName,
+	totalCount,
+	...props
+}) => {
 	return (
 		<div className={s.users}>
 			<div className={s.users__header}>
-				<HeaderPage img={props.backgroundPage} tittle={props.tittle} />
+				<HeaderPage
+					img={props.backgroundPage}
+					tittle={!isSearchMode ? tittle : `${searchUserName} / ${totalCount}`}
+				/>
 			</div>
 			<div className={s.paginator}>
-				<Paginator {...props} />
+				<Paginator
+					searchUserName={searchUserName}
+					totalCount={totalCount}
+					{...props}
+				/>
 			</div>
 			<div className={s.users__list}>
 				{props.users.map(user => (

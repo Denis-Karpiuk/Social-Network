@@ -13,8 +13,7 @@ const FormMessages = props => {
 					<Field
 						name='message'
 						placeholder='enter your message'
-						validate={[required, maxLength15]}
-						component={Textarea}
+						component='textarea'
 					/>
 				</div>
 				<button>Отправить сообщение</button>
@@ -25,7 +24,11 @@ const FormMessages = props => {
 
 const FormReduxMessages = reduxForm({ form: 'messages' })(FormMessages)
 const Messages = props => {
-	let sendMessage = messageData => props.addMessage(messageData.message)
+	let sendMessage = messageData => {
+		props.addMessage(messageData.message)
+		props.reset('messages')
+		props.getSearchUser('Nikita')
+	}
 	return (
 		<div className={s.messagesPage}>
 			<div className={s.dialogs}>

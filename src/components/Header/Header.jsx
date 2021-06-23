@@ -16,7 +16,7 @@ import {
 } from '../../redux/Profile-Selectors'
 import NavIcon from '../Common/NavIcon/NavIcon'
 import s from './Header.module.css'
-import Search from './Search/Search'
+import SearchUser from './Search/Search'
 
 const Header = ({
 	isAuth,
@@ -41,7 +41,7 @@ const Header = ({
 				</div>
 			</div>
 			<div className={s.search}>
-				<Search />
+				<SearchUser />
 			</div>
 			<div className={s.userAuth}>
 				{isAuth ? (

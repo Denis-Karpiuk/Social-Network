@@ -48,11 +48,13 @@ const MyPosts = ({ posts, profilePhoto, addPostProfile, reset }) => {
 					<TittleItem tittle={'My Posts'} />
 				</div>
 				{posts.map(post => (
-					<Post
-						profilePhoto={profilePhoto}
-						text={post.text}
-						likes={post.likes}
-					/>
+					<div key={post.id} className={s.post}>
+						<Post
+							profilePhoto={profilePhoto}
+							text={post.text}
+							likes={post.likes}
+						/>
+					</div>
 				))}
 			</div>
 		</div>

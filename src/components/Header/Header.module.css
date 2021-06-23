@@ -1,6 +1,6 @@
 .header {
 	display: grid;
-	grid-template-columns: 15% 1fr auto;
+	grid-template-columns: 15% 63% 22%;
 	grid-template-rows: 75px;
 	grid-template-areas: 'network search  userAuth ';
 	align-items: center;
@@ -32,11 +32,8 @@
 }
 .search {
 	grid-area: search;
-	text-align: center;
-	/* border: 1px solid black; */
-}
-.search input {
-	max-width: 80%;
+	width: 800px;
+	margin: auto;
 }
 
 .userAuth {
