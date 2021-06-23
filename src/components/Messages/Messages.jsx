@@ -31,6 +31,7 @@ const Messages = props => {
 	}
 	return (
 		<div className={s.messagesPage}>
+			<div className={s.progress}>in progress right now...</div>
 			<div className={s.dialogs}>
 				{props.dialogs.map(user => (
 					<Dialogs key={user.id} id={user.id} name={user.name} />

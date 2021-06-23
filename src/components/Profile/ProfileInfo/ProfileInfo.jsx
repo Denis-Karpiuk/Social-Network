@@ -31,6 +31,7 @@ const ProfileInfo = ({
 			<div className={s.profileInfo__background}>
 				<img src={background} />
 			</div>
+
 			<div className={s.profileInfo__data}>
 				<div className={s.data__contacts}>
 					{Object.keys(contacts).map((key, index) =>
@@ -83,7 +84,7 @@ const ProfileInfo = ({
 					</div>
 				) : (
 					<div className={s.aboutMe}>
-						{!aboutMe ? <span> - - - - - </span> : aboutMe}
+						{!aboutMe ? <span> not information</span> : aboutMe}
 					</div>
 				)}
 			</div>

@@ -10,9 +10,9 @@ import s from './NewUsers.module.css'
 
 const NewUsers = ({ newUsers }) => {
 	const [newUser, setNewUsers] = useState(newUsers)
-	useEffect(() => {
-		setNewUsers(newUsers)
-	}, [newUsers.length])
+	// useEffect(() => {
+	// 	setNewUsers(newUsers)
+	// }, [])
 	return (
 		<div className={s.newUsers}>
 			<TittleItem
