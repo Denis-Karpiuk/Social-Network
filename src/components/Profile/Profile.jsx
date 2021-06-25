@@ -22,7 +22,7 @@ const Profile = ({
 	return (
 		<div className={s.profile}>
 			<div className={s.profile__info}>
-				<ProfileInfo profilePhoto={profilePhoto} {...props} />
+				<ProfileInfo profile={profile} profilePhoto={profilePhoto} {...props} />
 			</div>
 			{props.isOwner && (
 				<>

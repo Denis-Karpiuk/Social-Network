@@ -1,13 +1,15 @@
 import { act } from 'react-dom/cjs/react-dom-test-utils.production.min'
+import { stopSubmit } from 'redux-form'
 import { profileAPI } from '../api/api'
 import { setUserAuthPhoto } from './Auth-Reducer'
 
-const SET_PROFILE_USER = 'SET_PROFILE_USER'
-const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING'
-const SET_STATUS = 'SET_STATUS'
-const UPDATE_STATUS = 'UPDATE_STATUS'
-const ADD_POSTS = 'PROFILE/ADD_POSTS'
-const UPDATE_PHOTOS = 'PROFILE/UPDATE_PHOTOS'
+const SET_PROFILE_USER = 'PROFILE/SET_PROFILE_USER'
+const TOGGLE_IS_FETCHING = 'PROFILE/TOGGLE_IS_FETCHING'
+const SET_STATUS = 'PROFILE/SET_STATUS'
+const UPDATE_STATUS = 'PROFILE/UPDATE_STATUS'
+const ADD_POSTS = 'PROFILE/PROFILE/ADD_POSTS'
+const UPDATE_PHOTOS = 'PROFILE/PROFILE/UPDATE_PHOTOS'
+const TOGGLE_EDIT_MODE = 'PROFILE/TOGGLE_EDIT_MODE'
 
 const initialState = {
 	profile: null,
@@ -15,6 +17,7 @@ const initialState = {
 	followingProgress: false,
 	status: '',
 	isUpdatePhoto: [],
+	isEditMode: false,
 	myPosts: [
 		{
 			id: 1,
@@ -77,6 +80,12 @@ const profileReducer = (state = initialState, action) => {
 				isUpdatePhoto: [...state.isUpdatePhoto],
 			}
 		}
+		case TOGGLE_EDIT_MODE: {
+			return {
+				...state,
+				isEditMode: action.currentMode,
+			}
+		}
 		default:
 			return state
 	}
@@ -121,6 +130,14 @@ const updatePhoto = photos => {
 		photos,
 	}
 }
+
+export const toogleEditMode = currentMode => {
+	return {
+		type: TOGGLE_EDIT_MODE,
+		currentMode,
+	}
+}
+
 export const getProfile = userId => async dispatch => {
 	dispatch(isFetching(true))
 	let response = await profileAPI.getProfile(userId)
@@ -148,4 +165,21 @@ export const updateProfilePhoto = file => async dispatch => {
 		dispatch(updatePhoto(response.data.data.photos))
 	}
 }
+export const updateProfile = profile => async (dispatch, getState) => {
+	const userId = getState().auth.userId
+	dispatch(isFetching(true))
+	const response = await profileAPI.updateProfile(profile)
+	dispatch(isFetching(false))
+	if (response.data.resultCode === 0) {
+		dispatch(getProfile(userId))
+	} else {
+		let message =
+			response.data.messages.length > 0
+				? response.data.messages[0]
+				: 'some error'
+		dispatch(stopSubmit('AboutForm', { _error: message }))
+		return Promise.reject(response.data.messages[0])
+	}
+}
+
 export default profileReducer

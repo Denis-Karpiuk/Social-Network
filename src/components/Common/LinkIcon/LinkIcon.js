@@ -3,7 +3,7 @@ import icon from '../../../assets/images/iconsApp/export.png'
 import facebook from '../../../assets/images/iconsApp/facebook.png'
 import github from '../../../assets/images/iconsApp/github.png'
 import instagram from '../../../assets/images/iconsApp/instagram.png'
-import linkedin from '../../../assets/images/iconsApp/linkedin.png'
+import mainLink from '../../../assets/images/iconsApp/linkedin.png'
 import telegram from '../../../assets/images/iconsApp/telegram.png'
 import twitter from '../../../assets/images/iconsApp/twitter.png'
 import profilePhoto from '../../../assets/images/iconsApp/user1.png'
@@ -14,13 +14,13 @@ import s from './LinkIcon.module.css'
 let icons = {
 	github,
 	instagram,
-	linkedin,
 	youtube,
 	twitter,
 	facebook,
 	vk,
 	telegram,
 	profilePhoto,
+	mainLink,
 }
 const LinkIcon = ({ img, link }) => {
 	return (

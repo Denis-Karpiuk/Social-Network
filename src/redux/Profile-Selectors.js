@@ -15,6 +15,10 @@ export const takeIsUpdatePhoto = state => {
 	return state.profilePage.isUpdatePhoto
 }
 
+export const takeIsEditMode = state => {
+	return state.profilePage.isEditMode
+}
+
 export const takeMyPostsCount = createSelector(takeMyPosts, myPosts => {
 	return myPosts.length
 })

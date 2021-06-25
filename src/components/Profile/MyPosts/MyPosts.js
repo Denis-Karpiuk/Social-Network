@@ -1,5 +1,6 @@
 import React from 'react'
 import { Field, Form, reduxForm } from 'redux-form'
+import { required } from '../../../util/Validators'
 import Icon from '../../Common/Icon/Icon'
 import TittleItem from '../../Common/TittleItem/TittleItem'
 import s from './MyPosts.module.css'
@@ -17,6 +18,7 @@ const PostForm = ({ handleSubmit, profilePhoto }) => {
 						<Field
 							name='postText'
 							placeholder='Write something here...'
+							validate={[required]}
 							component='textarea'
 							type='textarea'
 						/>

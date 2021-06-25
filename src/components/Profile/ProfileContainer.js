@@ -11,10 +11,13 @@ import {
 	getStatus,
 	updateProfilePhoto,
 	updateStatusProfile,
+	toogleEditMode,
+	updateProfile,
 } from '../../redux/Profile-Reducer'
 import {
 	takeAboutMe,
 	takeContacts,
+	takeIsEditMode,
 	takeIsFetching,
 	takeLookingForAJob,
 	takeLookingForAJobDescription,
@@ -83,6 +86,7 @@ const mapStateToProps = state => {
 		lookingForAJob: takeLookingForAJob(state),
 		lookingForAJobDescription: takeLookingForAJobDescription(state),
 		userId: takeUserId(state),
+		editMode: takeIsEditMode(state),
 	}
 }
 
@@ -95,6 +99,8 @@ const ProfileContainer = compose(
 		getFriends,
 		addPostProfile,
 		updateProfilePhoto,
+		toogleEditMode,
+		updateProfile,
 	}),
 	withRouter,
 	withAuthRedirect

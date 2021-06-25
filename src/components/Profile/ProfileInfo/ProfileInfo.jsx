@@ -4,6 +4,8 @@ import LinkIcon from '../../Common/LinkIcon/LinkIcon'
 import Icon from '../../Common/Icon/Icon'
 import s from './ProfileInfo.module.css'
 import ProfileStatus from '../ProfileStatus/ProfileStatus'
+import AboutBlock from '../AboutBlock/AboutBlock'
+import AboutReduxForm from '../FormAbout/FormAbout'
 
 const ProfileInfo = ({
 	updateStatusProfile,
@@ -18,7 +20,10 @@ const ProfileInfo = ({
 	aboutMe,
 	lookingForAJob,
 	lookingForAJobDescription,
-	userId,
+	profile,
+	editMode,
+	toogleEditMode,
+	updateProfile,
 }) => {
 	let savePhoto = e => {
 		if (e.target.files.length) {
@@ -29,6 +34,12 @@ const ProfileInfo = ({
 		document.getElementById('files').click()
 	}
 
+	let onSubmit = formData => {
+		updateProfile(formData).then(() => toogleEditMode(false))
+	}
+	let onEditMode = () => {
+		toogleEditMode(true)
+	}
 	return (
 		<div className={s.profileInfo}>
 			<div className={s.profileInfo__background}>
@@ -79,23 +90,24 @@ const ProfileInfo = ({
 						<div className={s.name}>Friends</div>
 						<div className={s.count}>{friendsCount}</div>
 					</div>
-					<div className={s.statistics__followers}>
-						<div className={s.name}>Followers</div>
-						<div className={s.count}>0</div>
-					</div>
 				</div>
 
-				<div className={s.profile__data__jobs}>
-					<div className={s.jobs__looking}>
-						<b>Looking for a job :</b> {!lookingForAJob ? 'No' : 'Yes'}
-					</div>
-					<div className={s.jobs__looking__description}>
-						<b>My professionl skills :</b>
-						{lookingForAJobDescription}
-					</div>
-					<div className={s.userId}>
-						<b>About Me :</b> {aboutMe}
-					</div>
+				<div div className={s.profile__about}>
+					{editMode ? (
+						<AboutReduxForm
+							initialValues={profile}
+							onSubmit={onSubmit}
+							contacts={contacts}
+						/>
+					) : (
+						<AboutBlock
+							onEditMode={onEditMode}
+							isOwner={isOwner}
+							aboutMe={aboutMe}
+							lookingForAJob={lookingForAJob}
+							lookingForAJobDescription={lookingForAJobDescription}
+						/>
+					)}
 				</div>
 			</div>
 		</div>
