@@ -9,7 +9,7 @@ const SET_ACTIVE_PAGE = 'USERS/SET_ACTIVE_PAGE'
 const FETCHING = 'USERS/FETCHING'
 const TOGGEL_FOLLOWING_PROGRESS = 'USERS/TOGGEL_FOLLOWING_PROGRESS'
 const SET_FRIENDS = 'USERS/SET_FRIENDS'
-const TOGGEL_SEARCH_MODE = 'USERS/TOGGEL_SEARCH_MODE'
+const SET_SEARCH_USER_NAME = 'USERS/SET_SEARCH_USER_NAME'
 
 let initialState = {
 	tittle: 'Users',
@@ -21,7 +21,6 @@ let initialState = {
 	followingProgress: [],
 	friends: [],
 	friendsTotalCount: 0,
-	searchMode: false,
 	searchUserName: '',
 }
 const usersReducer = (state = initialState, action) => {
@@ -98,11 +97,12 @@ const usersReducer = (state = initialState, action) => {
 				friendsTotalCount: action.totalCount,
 			}
 		}
-		case TOGGEL_SEARCH_MODE: {
+		case SET_SEARCH_USER_NAME: {
+			debugger
 			return {
 				...state,
-				searchMode: action.isSearchMode,
 				searchUserName: action.searchUserName,
+				pageNumber: 1,
 			}
 		}
 		default:
@@ -143,29 +143,15 @@ export const setFriendsTotalCount = totalCount => {
 		totalCount,
 	}
 }
-const setSearchMode = (isSearchMode, searchUserName) => {
+export const setSearchUserName = searchUserName => {
 	return {
-		type: TOGGEL_SEARCH_MODE,
-		isSearchMode,
+		type: SET_SEARCH_USER_NAME,
 		searchUserName,
 	}
 }
-export const getUsers = (pageNumber, pageSize) => async dispatch => {
+export const getUsers = (pageNumber, userName, pageSize) => async dispatch => {
 	dispatch(fetching(true))
-	dispatch(setSearchMode(false, ''))
-	const response = await userAPI.getUsers(pageNumber, pageSize)
-	dispatch(setUsers(response.data.items))
-	dispatch(setTotalCount(response.data.totalCount))
-	dispatch(fetching(false))
-}
-export const getSearchUser = (
-	userName,
-	pageNumber,
-	pageSize
-) => async dispatch => {
-	dispatch(fetching(true))
-	dispatch(setSearchMode(true, userName))
-	const response = await userAPI.getSearchUser(userName, pageNumber, pageSize)
+	const response = await userAPI.getUsers(pageNumber, userName, pageSize)
 	dispatch(setUsers(response.data.items))
 	dispatch(setTotalCount(response.data.totalCount))
 	dispatch(fetching(false))
@@ -177,6 +163,7 @@ export const unfollow = userId => async dispatch => {
 	if (response.data.resultCode === 0) {
 		dispatch(unfollowSuccsses(userId))
 	}
+	dispatch(getFriends())
 	dispatch(toggleFollowing(false, userId))
 }
 
@@ -186,6 +173,7 @@ export const follow = userId => async dispatch => {
 	if (response.data.resultCode === 0) {
 		dispatch(followSuccsses(userId))
 	}
+	dispatch(getFriends())
 	dispatch(toggleFollowing(false, userId))
 }
 

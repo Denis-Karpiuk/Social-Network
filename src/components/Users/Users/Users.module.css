@@ -8,3 +8,21 @@
 	grid-template-columns: repeat(2, 50%);
 	grid-template-rows: auto;
 }
+.exitSearchMode {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+	font-size: x-large;
+	font-weight: 500;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.8);
+	cursor: pointer;
+	color: red;
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	top: 190px;
+	left: 60%;
+	z-index: 1;
+}

@@ -9,8 +9,8 @@ const User = ({
 	userId,
 	followed,
 	followingProgress,
-	unfollow,
-	follow,
+	toFollow,
+	toUnfollow,
 }) => {
 	return (
 		<div className={s.user}>
@@ -27,7 +27,7 @@ const User = ({
 				{followed ? (
 					<button
 						disabled={followingProgress.some(id => id === userId)}
-						onClick={() => unfollow(userId)}
+						onClick={() => toUnfollow(userId)}
 						className={s.unfollow}
 					>
 						unfollow
@@ -35,7 +35,7 @@ const User = ({
 				) : (
 					<button
 						disabled={followingProgress.some(id => id === userId)}
-						onClick={() => follow(userId)}
+						onClick={() => toFollow(userId)}
 						className={s.follow}
 					>
 						follow

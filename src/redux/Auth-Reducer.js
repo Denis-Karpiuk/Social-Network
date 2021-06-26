@@ -1,7 +1,6 @@
 import { stopSubmit } from 'redux-form'
 import { authAPI } from '../api/api'
 import { getProfile } from './Profile-Reducer'
-import { getUsers } from './Users-Reducer'
 
 const SET_USER_LOGIN_DATA = 'AUTH/SET_USER_LOGIN_DATA'
 const TOOGLE_FETCHING = 'AUTH/TOOGLE_FETCHING'

@@ -7,9 +7,9 @@ import backgroundPage from '../../assets/images/BackgroundsHeaders/usersBg.jpg'
 import {
 	activePage,
 	follow,
-	getSearchUser,
 	getUsers,
 	unfollow,
+	setSearchUserName,
 } from '../../redux/Users-Reducer'
 import {
 	takeFollowingProgress,
@@ -25,22 +25,31 @@ import {
 import Preloader from '../Common/Preloader/Preloader'
 import Users from './Users/Users'
 
-const UsersComponentContainer = props => {
-	let location = useLocation()
+const UsersComponentContainer = ({
+	getUsers,
+	follow,
+	unfollow,
+	isSearchMode,
+	pageSize,
+	searchUserName,
+	pageNumber,
+	setSearchUserName,
+	...props
+}) => {
 	useEffect(() => {
-		getUsers(props.pageNumber, props.pageSize)
-	}, [location])
+		getUsers(pageNumber, searchUserName, pageSize)
+	}, [searchUserName])
+
 	const onPageNumber = pageNumber => {
 		props.activePage(pageNumber)
-
-		props.getUsers(pageNumber, props.pageSize)
+		getUsers(pageNumber, searchUserName, pageSize)
 	}
 	const toUnfollow = userId => {
-		props.unfollow(userId)
+		unfollow(userId)
 	}
 
 	const toFollow = userId => {
-		props.follow(userId)
+		follow(userId)
 	}
 	return (
 		<>
@@ -48,6 +57,10 @@ const UsersComponentContainer = props => {
 				<Preloader />
 			) : (
 				<Users
+					setSearchUserName={setSearchUserName}
+					pageNumber={pageNumber}
+					pageSize={pageSize}
+					searchUserName={searchUserName}
 					toFollow={toFollow}
 					toUnfollow={toUnfollow}
 					onPageNumber={onPageNumber}
@@ -80,7 +93,7 @@ const UsersContainer = compose(
 		unfollow,
 		activePage,
 		getUsers,
-		getSearchUser,
+		setSearchUserName,
 	}),
 	withRouter
 )(UsersComponentContainer)

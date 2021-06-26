@@ -1,8 +1,9 @@
-import Messages from './Messages'
-import { addMessage } from '../../redux/messageReducer'
 import { connect } from 'react-redux'
+import { compose } from 'redux'
 import { reset } from 'redux-form'
-import { getSearchUser } from '../../redux/Users-Reducer'
+import { withAuthRedirect } from '../../HOC/withAuthRedirect'
+import { addMessage } from '../../redux/messageReducer'
+import Messages from './Messages'
 
 let mapStateToProps = state => {
 	return {
@@ -10,10 +11,12 @@ let mapStateToProps = state => {
 		messages: state.messagesPage.messages,
 	}
 }
-const MessagesContainer = connect(mapStateToProps, {
-	addMessage,
-	reset,
-	getSearchUser,
-})(Messages)
+const MessagesContainer = compose(
+	connect(mapStateToProps, {
+		addMessage,
+		reset,
+	}),
+	withAuthRedirect
+)(Messages)
 
 export default MessagesContainer

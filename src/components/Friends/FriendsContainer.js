@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
+import { compose } from 'redux'
 import backgroundPage from '../../assets/images/BackgroundsHeaders/bg3.jpg'
 import backgroundUser from '../../assets/images/BackgroundsHeaders/friendsBg.jpg'
+import { withAuthRedirect } from '../../HOC/withAuthRedirect'
 import {
 	activePage,
 	follow,
@@ -24,7 +26,7 @@ const FriendsContainer = ({ pageSize, ...props }) => {
 	const [pageNumber, setPageNumber] = useState(1)
 	useEffect(() => {
 		props.getFriends(pageNumber, pageSize)
-	}, [pageNumber, pageSize, props.followingProgress])
+	}, [pageNumber, pageSize, props.totalCount])
 
 	const onPageNumber = pageNumber => {
 		setPageNumber(pageNumber)
@@ -68,10 +70,13 @@ const mapStateToProps = state => {
 	}
 }
 
-const FriendsContainerF = connect(mapStateToProps, {
-	follow,
-	unfollow,
-	activePage,
-	getFriends,
-})(FriendsContainer)
+const FriendsContainerF = compose(
+	connect(mapStateToProps, {
+		follow,
+		unfollow,
+		activePage,
+		getFriends,
+	}),
+	withAuthRedirect
+)(FriendsContainer)
 export default FriendsContainerF

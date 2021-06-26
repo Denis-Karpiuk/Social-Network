@@ -2,7 +2,6 @@ import React from 'react'
 import HeaderPage from '../../Common/HeaderPage/HeaderPage'
 import Paginator from '../../Common/Paginator/Paginator'
 import User from '../User/User'
-
 import s from './Users.module.css'
 
 const Users = ({
@@ -10,14 +9,28 @@ const Users = ({
 	tittle,
 	searchUserName,
 	totalCount,
+	setSearchUserName,
 	...props
 }) => {
 	return (
 		<div className={s.users}>
 			<div className={s.users__header}>
+				{searchUserName && (
+					<div
+						onClick={() => {
+							setSearchUserName('')
+						}}
+						className={s.exitSearchMode}
+					>
+						CLEAR
+					</div>
+				)}
+
 				<HeaderPage
 					img={props.backgroundPage}
-					tittle={!isSearchMode ? tittle : `${searchUserName} / ${totalCount}`}
+					tittle={
+						!searchUserName ? tittle : `${searchUserName} / ${totalCount}`
+					}
 				/>
 			</div>
 			<div className={s.paginator}>

@@ -1,10 +1,8 @@
 import { connect } from 'react-redux'
 import { Field, Form, reduxForm, reset } from 'redux-form'
 import search from '../../../assets/images/iconsApp/search.png'
-import { getSearchUser } from '../../../redux/Users-Reducer'
+import { setSearchUserName } from '../../../redux/Users-Reducer'
 import { required } from '../../../util/Validators'
-import { InputSearch } from '../../Common/FormsControl/FormsControl'
-import Icon from '../../Common/Icon/Icon'
 import NavIcon from '../../Common/NavIcon/NavIcon'
 import s from './Search.module.css'
 
@@ -29,10 +27,9 @@ const SearchUsersForm = ({ handleSubmit, search, reset, ...props }) => {
 }
 const SearchReduxForm = reduxForm({ form: 'searchUsers' })(SearchUsersForm)
 
-const SearchUser = ({ reset, ...props }) => {
+const SearchUser = ({ reset, setSearchUserName, ...props }) => {
 	const onSearch = data => {
-		props.getSearchUser(data.name)
-
+		setSearchUserName(data.name)
 		reset('searchUsers')
 	}
 	return (
@@ -42,4 +39,4 @@ const SearchUser = ({ reset, ...props }) => {
 	)
 }
 
-export default connect(null, { getSearchUser, reset })(SearchUser)
+export default connect(null, { setSearchUserName, reset })(SearchUser)

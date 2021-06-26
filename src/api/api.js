@@ -11,8 +11,10 @@ export const userAPI = {
 		console.warn('Obsolete method. User profileApi')
 		return profileAPI.getProfile(userId)
 	},
-	getUsers(pageNumber = 1, pageSize = 100) {
-		return instance.get(`users?page=${pageNumber}&count=${pageSize}`)
+	getUsers(pageNumber = 1, userName = '', pageSize = 100) {
+		return instance.get(
+			`users?page=${pageNumber}&term=${userName}&count=${pageSize}`
+		)
 	},
 	unfollowUser(userId) {
 		return instance.delete('follow/' + userId)
@@ -23,11 +25,6 @@ export const userAPI = {
 	getFriends(pageNumber = 1, pageSize = 100) {
 		return instance.get(
 			`users?friend=${true}&page=${pageNumber}&count=${pageSize}`
-		)
-	},
-	getSearchUser(userName, pageNumber = 1, pageSize = 100) {
-		return instance.get(
-			`users?term=${userName}&page=${pageNumber}&count=${pageSize}`
 		)
 	},
 }

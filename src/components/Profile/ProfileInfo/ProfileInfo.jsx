@@ -92,7 +92,7 @@ const ProfileInfo = ({
 					</div>
 				</div>
 
-				<div div className={s.profile__about}>
+				<div className={s.profile__about}>
 					{editMode ? (
 						<AboutReduxForm
 							initialValues={profile}
