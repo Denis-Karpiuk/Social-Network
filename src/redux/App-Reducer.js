@@ -1,5 +1,4 @@
 import { getUserLoginData } from './Auth-Reducer'
-import { getProfile } from './Profile-Reducer'
 import { getUsers } from './Users-Reducer'
 
 const INITIALIZED_SUCSESS = 'INITIALIZED_SUCSESS'

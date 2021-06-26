@@ -26,13 +26,9 @@ const ProfileInfo = ({
 	updateProfile,
 }) => {
 	let savePhoto = e => {
-		if (e.target.files.length) {
-			updateProfilePhoto(e.target.files[0])
-		}
+		if (e.target.files.length) updateProfilePhoto(e.target.files[0])
 	}
-	let onClickPhoto = () => {
-		document.getElementById('files').click()
-	}
+	let onClickPhoto = () => document.getElementById('files').click()
 
 	let onSubmit = formData => {
 		updateProfile(formData).then(() => toogleEditMode(false))
@@ -80,17 +76,18 @@ const ProfileInfo = ({
 						/>
 					</div>
 				</div>
-
-				<div className={s.data__statistics}>
-					<div className={s.statistics__posts}>
-						<div className={s.name}>Posts</div>
-						<div className={s.count}>{postsCount}</div>
+				{isOwner && (
+					<div className={s.data__statistics}>
+						<div className={s.statistics__posts}>
+							<div className={s.name}>Posts</div>
+							<div className={s.count}>{postsCount}</div>
+						</div>
+						<div className={s.statistics__Friends}>
+							<div className={s.name}>Friends</div>
+							<div className={s.count}>{friendsCount}</div>
+						</div>
 					</div>
-					<div className={s.statistics__Friends}>
-						<div className={s.name}>Friends</div>
-						<div className={s.count}>{friendsCount}</div>
-					</div>
-				</div>
+				)}
 
 				<div className={s.profile__about}>
 					{editMode ? (

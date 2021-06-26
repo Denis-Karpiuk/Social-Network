@@ -57,8 +57,6 @@ class ClassProfileContainer extends React.PureComponent {
 	componentDidUpdate(prevProps) {
 		if (this.props.match.params.userId !== prevProps.match.params.userId)
 			this.refreshProfile()
-		// if (this.props.friendsCount !== prevProps.friendsCount)
-		// 	this.props.getFriends()
 	}
 	render() {
 		if (this.props.isFetching) return <Preloader />
