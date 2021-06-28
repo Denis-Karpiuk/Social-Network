@@ -2,17 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { withLoginPath } from '../../HOC/withLoginPath'
-import { takeIsAuthData } from '../../redux/Auth-Selectors'
-import { takeNewUsers } from '../../redux/Users-Selectors'
+import { takeIsAuth, takeIsAuthData } from '../../redux/Auth-Selectors'
+import { takeNewUsers, takeTotalCount } from '../../redux/Users-Selectors'
 import TittleItem from '../Common/TittleItem/TittleItem'
 import NavItem from '../Navbar/NavItem/NavItem'
 import s from './NewUsers.module.css'
 
-const NewUsers = ({ newUsers }) => {
+const NewUsers = ({ newUsers, countUsers }) => {
 	const [newUser, setNewUsers] = useState(newUsers)
-	// useEffect(() => {
-	// 	setNewUsers(newUsers)
-	// }, [])
+	useEffect(() => {
+		setNewUsers(newUsers)
+	}, [countUsers])
 	return (
 		<div className={s.newUsers}>
 			<TittleItem
@@ -44,7 +44,8 @@ const NewUsers = ({ newUsers }) => {
 const mapStateToProps = state => {
 	return {
 		newUsers: takeNewUsers(state),
-		isAuth: takeIsAuthData(state),
+		isAuth: takeIsAuth(state),
+		countUsers: takeTotalCount(state),
 	}
 }
 

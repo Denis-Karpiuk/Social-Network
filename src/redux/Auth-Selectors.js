@@ -6,7 +6,13 @@ export const takeAutorizedLogin = state => {
 	return state.auth.login
 }
 
-export const takeIsAuthData = state => {
+export const takeIsAuth = state => {
 	return state.auth.isAuth
 }
-export const takeAuthUserPhoto = state => state.auth.userAuthPhoto
+export const takeIsFetching = state => {
+	return state.auth.isFetching
+}
+
+export const takeCaptchaURL = state => {
+	return state.auth.captchaURL
+}

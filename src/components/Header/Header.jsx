@@ -5,10 +5,14 @@ import user from '../../assets/images/iconsApp/login.png'
 import logo from '../../assets/images/iconsApp/logoHeader.png'
 import message from '../../assets/images/iconsApp/mail.png'
 import bell from '../../assets/images/iconsApp/notification.png'
-import out from '../../assets/images/iconsApp/power-off.png'
+import out from '../../assets/images/iconsApp/exit.png'
 import { withLoginPath } from '../../HOC/withLoginPath'
 import { logout } from '../../redux/Auth-Reducer'
-import { takeAutorizedLogin, takeIsAuthData } from '../../redux/Auth-Selectors'
+import {
+	takeAutorizedLogin,
+	takeIsAuth,
+	takeIsAuthData,
+} from '../../redux/Auth-Selectors'
 import {
 	takeIsProfilePhoto,
 	takeIsUpdatePhoto,
@@ -71,7 +75,7 @@ const Header = ({
 }
 const mapStateToProps = state => {
 	return {
-		isAuth: takeIsAuthData(state),
+		isAuth: takeIsAuth(state),
 		login: takeAutorizedLogin(state),
 		userAuthPhoto: takeProfilePhoto(state),
 		takeIsProfilePhoto: takeIsProfilePhoto(state),

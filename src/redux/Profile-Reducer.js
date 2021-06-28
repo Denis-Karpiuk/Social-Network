@@ -2,6 +2,7 @@ import { act } from 'react-dom/cjs/react-dom-test-utils.production.min'
 import { stopSubmit } from 'redux-form'
 import { profileAPI } from '../api/api'
 import { setUserAuthPhoto } from './Auth-Reducer'
+import { getUsers } from './Users-Reducer'
 
 const SET_PROFILE_USER = 'PROFILE/SET_PROFILE_USER'
 const TOGGLE_IS_FETCHING = 'PROFILE/TOGGLE_IS_FETCHING'
@@ -142,6 +143,7 @@ export const getProfile = userId => async dispatch => {
 	dispatch(isFetching(true))
 	let response = await profileAPI.getProfile(userId)
 	dispatch(setProfile(response.data))
+	dispatch(getUsers(1, '', 10))
 	dispatch(isFetching(false))
 }
 

@@ -1,5 +1,6 @@
 .profileInfo__background {
 	background-color: white;
+	/* position: relative; */
 }
 .profileInfo__background img {
 	max-width: 100%;
@@ -30,7 +31,7 @@
 	height: 170px;
 	position: absolute;
 	left: 44.5%;
-	top: 205px;
+	top: 20%;
 }
 .data__name__status {
 	display: flex;

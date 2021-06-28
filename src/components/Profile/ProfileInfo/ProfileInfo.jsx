@@ -40,17 +40,6 @@ const ProfileInfo = ({
 		<div className={s.profileInfo}>
 			<div className={s.profileInfo__background}>
 				<img src={background} />
-			</div>
-			<div className={s.profileInfo__data}>
-				<div className={s.data__contacts}>
-					{Object.keys(contacts).map((key, index) =>
-						contacts[key] ? (
-							<div key={key} className={s.contact__item}>
-								<LinkIcon img={key} link={contacts[key]} />
-							</div>
-						) : null
-					)}
-				</div>
 				{isOwner ? (
 					<div className={s.data__avatar} onDoubleClick={onClickPhoto}>
 						<Icon img={profilePhoto} r='50%' />
@@ -66,6 +55,18 @@ const ProfileInfo = ({
 						<Icon img={profilePhoto} r='50%' />
 					</div>
 				)}
+			</div>
+			<div className={s.profileInfo__data}>
+				<div className={s.data__contacts}>
+					{Object.keys(contacts).map((key, index) =>
+						contacts[key] ? (
+							<div key={key} className={s.contact__item}>
+								<LinkIcon img={key} link={contacts[key]} />
+							</div>
+						) : null
+					)}
+				</div>
+
 				<div className={s.data__name__status}>
 					<div className={s.data__name}>{profileName}</div>
 					<div className={s.data__status}>

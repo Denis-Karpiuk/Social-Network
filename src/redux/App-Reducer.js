@@ -28,7 +28,6 @@ const initializedSucsess = () => {
 
 export const initializeApp = () => async dispatch => {
 	await dispatch(getUserLoginData())
-	await dispatch(getUsers(1, 10))
 	dispatch(initializedSucsess())
 }
 

@@ -3,12 +3,17 @@ import { connect } from 'react-redux'
 import { Redirect } from 'react-router'
 import { Field, reduxForm } from 'redux-form'
 import { login } from '../../redux/Auth-Reducer'
+import {
+	takeCaptchaURL,
+	takeIsAuth,
+	takeIsFetching,
+} from '../../redux/Auth-Selectors'
 import { required } from '../../util/Validators'
 import { Input } from '../Common/FormsControl/FormsControl'
 import Preloader from '../Common/Preloader/Preloader'
 import s from './LogIn.module.css'
 
-const LoginForm = ({ handleSubmit, error }) => {
+const LoginForm = ({ handleSubmit, error, captchaURL }) => {
 	return (
 		<div className={s.form}>
 			<form onSubmit={handleSubmit}>
@@ -41,6 +46,14 @@ const LoginForm = ({ handleSubmit, error }) => {
 					<Field name='rememberMe' component={Input} type='checkbox' />
 					<div>Remember Me</div>
 				</div>
+				{captchaURL && (
+					<div className={s.captcha}>
+						<div className={s.captchaImg}>
+							<img src={captchaURL} />
+						</div>
+						<Field name='captcha' component={Input} validate={[required]} />
+					</div>
+				)}
 				{error && <div className={s.form__serverError}> {error}</div>}
 				<div className={s.form__button}>
 					<button>Sign in</button>
@@ -51,16 +64,21 @@ const LoginForm = ({ handleSubmit, error }) => {
 }
 const LoginReduxForm = reduxForm({ form: 'login' })(LoginForm)
 
-const LogIn = ({ isAuth, login, isFetching }) => {
+const LogIn = ({ isAuth, login, isFetching, captchaURL }) => {
 	if (isAuth) return <Redirect to='/' />
 	const onSubmit = formData => {
-		login(formData.email, formData.password, formData.rememberMe)
+		login(
+			formData.email,
+			formData.password,
+			formData.rememberMe,
+			formData.captcha
+		)
 	}
 	if (isFetching) return <Preloader />
 	return (
 		<div className={s.loginPage}>
 			<div className={s.loginForm}>
-				<LoginReduxForm onSubmit={onSubmit} />
+				<LoginReduxForm captchaURL={captchaURL} onSubmit={onSubmit} />
 			</div>
 			<div className={s.welcome}>Welcome React Network</div>
 		</div>
@@ -68,8 +86,9 @@ const LogIn = ({ isAuth, login, isFetching }) => {
 }
 const mapStateToProps = state => {
 	return {
-		isAuth: state.auth.isAuth,
-		isFetching: state.auth.isFetching,
+		isAuth: takeIsAuth(state),
+		isFetching: takeIsFetching(state),
+		captchaURL: takeCaptchaURL(state),
 	}
 }
 const LoginContainer = connect(mapStateToProps, { login })(LogIn)

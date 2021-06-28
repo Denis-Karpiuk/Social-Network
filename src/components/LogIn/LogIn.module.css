@@ -19,12 +19,12 @@
 }
 .loginForm {
 	grid-area: form;
-	padding: 30px 40px;
+	padding: 15px 40px;
 	background: rgba(255, 255, 255, 1);
 	color: #1084dd;
 }
 .form__instruction {
-	padding-bottom: 30px;
+	/* padding-bottom: 10px; */
 }
 .form input,
 .form__button button {
@@ -52,4 +52,11 @@
 }
 .form__serverError {
 	border: solid red 2px;
+	border-radius: 10px;
+	color: red;
+	font-weight: bold;
+	text-align: center;
+	padding: 5px;
+	width: 100%;
+	font-size: large;
 }

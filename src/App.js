@@ -1,7 +1,12 @@
 import React, { Suspense } from 'react'
 import { connect, Provider } from 'react-redux'
-import { Route } from 'react-router'
-import { HashRouter, withRouter } from 'react-router-dom'
+import { Route, Switch } from 'react-router'
+import {
+	BrowserRouter,
+	HashRouter,
+	withRouter,
+	Redirect,
+} from 'react-router-dom'
 import { compose } from 'redux'
 import './App.css'
 import Preloader from './components/Common/Preloader/Preloader'
@@ -68,12 +73,16 @@ class App extends React.Component {
 								<div className='login'>
 									<Route path='/login' render={() => <Login />} />
 								</div>
+								{/* <Switch> */}
+								<Route
+									exact
+									path='/'
+									render={() => <Redirect to='/profile' />}
+								/>
 								<Route
 									path='/profile/:userId?'
 									render={() => <ProfileContainer />}
 								/>
-
-								<Route exact path='/' render={() => <ProfileContainer />} />
 								<Route path='/users' render={() => <UsersContainer />} />
 								<Route path='/search' render={() => <UsersContainer />} />
 								<Route path='/friends' render={() => <FriendsContainerF />} />
@@ -87,6 +96,8 @@ class App extends React.Component {
 								<Route path='/likes' render={() => <Likes />} />
 								<Route path='/groups' render={() => <Groups />} />
 								<Route path='/settings' render={() => <Settings />} />
+								{/* <Route path='/*' render={() => <div>404 NOT FOUND</div>} /> */}
+								{/* </Switch> */}
 							</div>
 							<div className='last-users'>
 								<NewUsersContainer />
