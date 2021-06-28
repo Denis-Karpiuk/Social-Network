@@ -4,6 +4,10 @@ import { withRouter } from 'react-router'
 import { compose } from 'redux'
 import { reset } from 'redux-form'
 import { withAuthRedirect } from '../../HOC/withAuthRedirect'
+import {
+	takeIsRequestError,
+	takeRequestError,
+} from '../../redux/App-Selecotors'
 import { takeAutorizedUserId } from '../../redux/Auth-Selectors'
 import {
 	addPostProfile,
@@ -37,6 +41,7 @@ import {
 	takeLastFriends,
 } from '../../redux/Users-Selectors'
 import Preloader from '../Common/Preloader/Preloader'
+import RequestError from '../Common/RequestError/RequestError'
 import Profile from './Profile'
 
 class ClassProfileContainer extends React.PureComponent {
@@ -62,6 +67,9 @@ class ClassProfileContainer extends React.PureComponent {
 		if (this.props.isFetching) return <Preloader />
 		return (
 			<div>
+				{this.props.requestError && (
+					<RequestError requestError={this.props.requestError} />
+				)}
 				<Profile isOwner={!this.props.match.params.userId} {...this.props} />
 			</div>
 		)
@@ -87,6 +95,7 @@ const mapStateToProps = state => {
 		lookingForAJobDescription: takeLookingForAJobDescription(state),
 		userId: takeUserId(state),
 		editMode: takeIsEditMode(state),
+		requestError: takeRequestError(state),
 	}
 }
 

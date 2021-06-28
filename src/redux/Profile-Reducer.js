@@ -1,6 +1,7 @@
 import { act } from 'react-dom/cjs/react-dom-test-utils.production.min'
 import { stopSubmit } from 'redux-form'
 import { profileAPI } from '../api/api'
+import { setRequestError } from './App-Reducer'
 import { setUserAuthPhoto } from './Auth-Reducer'
 import { getUsers } from './Users-Reducer'
 
@@ -160,11 +161,16 @@ export const updateStatusProfile = status => async dispatch => {
 }
 
 export const updateProfilePhoto = file => async dispatch => {
-	dispatch(isFetching(true))
-	const response = await profileAPI.updatePhoto(file)
-	dispatch(isFetching(false))
-	if (response.data.resultCode === 0) {
-		dispatch(updatePhoto(response.data.data.photos))
+	try {
+		dispatch(isFetching(true))
+		const response = await profileAPI.updatePhoto(file)
+		dispatch(isFetching(false))
+		if (response.data.resultCode === 0) {
+			dispatch(updatePhoto(response.data.data.photos))
+		}
+	} catch (error) {
+		let id = await dispatch(showReqestError(error.message))
+		dispatch(isFetching(false))
 	}
 }
 export const updateProfile = profile => async (dispatch, getState) => {
@@ -184,4 +190,8 @@ export const updateProfile = profile => async (dispatch, getState) => {
 	}
 }
 
+const showReqestError = error => async dispatch => {
+	dispatch(setRequestError(error))
+	setTimeout(() => dispatch(setRequestError(null)), 3000)
+}
 export default profileReducer

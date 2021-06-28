@@ -1,0 +1,21 @@
+.error {
+	position: absolute;
+	top: 200px;
+	left: 32%;
+	z-index: 1;
+	background-color: white;
+	border-radius: 20px;
+	border: solid 1px lightgray;
+	padding: 20px;
+	font-weight: 500;
+	font-size: xx-large;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	color: red;
+	height: 250px;
+}
+
+.errorText {
+	margin: auto;
+}

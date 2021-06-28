@@ -98,7 +98,6 @@ const usersReducer = (state = initialState, action) => {
 			}
 		}
 		case SET_SEARCH_USER_NAME: {
-			debugger
 			return {
 				...state,
 				searchUserName: action.searchUserName,

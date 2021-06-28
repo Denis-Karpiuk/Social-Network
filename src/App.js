@@ -41,6 +41,10 @@ const mapStateToProps = state => {
 class App extends React.Component {
 	componentDidMount() {
 		this.props.initializeApp()
+		window.addEventListener('unhandledrejection', function (e) {
+			console.log(e)
+			alert(e.reason)
+		})
 	}
 	render() {
 		const path = this.props.location.pathname
@@ -73,31 +77,37 @@ class App extends React.Component {
 								<div className='login'>
 									<Route path='/login' render={() => <Login />} />
 								</div>
-								{/* <Switch> */}
-								<Route
-									exact
-									path='/'
-									render={() => <Redirect to='/profile' />}
-								/>
-								<Route
-									path='/profile/:userId?'
-									render={() => <ProfileContainer />}
-								/>
-								<Route path='/users' render={() => <UsersContainer />} />
-								<Route path='/search' render={() => <UsersContainer />} />
-								<Route path='/friends' render={() => <FriendsContainerF />} />
-								<Route path='/music' render={() => <Music_Container />} />
-								<Route path='/news' render={() => <NewsContainer />} />
-								<Route path='/messages' render={() => <MessagesContainer />} />
-								<Route path='/photos' render={() => <PhotosContainer />} />
-								<Route path='/video' render={() => <Video />} />
-								<Route path='/notifications' render={() => <Notification />} />
-								<Route path='/stars' render={() => <Stars />} />
-								<Route path='/likes' render={() => <Likes />} />
-								<Route path='/groups' render={() => <Groups />} />
-								<Route path='/settings' render={() => <Settings />} />
-								{/* <Route path='/*' render={() => <div>404 NOT FOUND</div>} /> */}
-								{/* </Switch> */}
+								<Switch>
+									{/* <Route path='/*' render={() => <div>404 NOT FOUND</div>} /> */}
+									<Route
+										exact
+										path='/'
+										render={() => <Redirect to='/profile' />}
+									/>
+									<Route
+										path='/profile/:userId?'
+										render={() => <ProfileContainer />}
+									/>
+									<Route path='/users' render={() => <UsersContainer />} />
+									<Route path='/search' render={() => <UsersContainer />} />
+									<Route path='/friends' render={() => <FriendsContainerF />} />
+									<Route path='/music' render={() => <Music_Container />} />
+									<Route path='/news' render={() => <NewsContainer />} />
+									<Route
+										path='/messages'
+										render={() => <MessagesContainer />}
+									/>
+									<Route path='/photos' render={() => <PhotosContainer />} />
+									<Route path='/video' render={() => <Video />} />
+									<Route
+										path='/notifications'
+										render={() => <Notification />}
+									/>
+									<Route path='/stars' render={() => <Stars />} />
+									<Route path='/likes' render={() => <Likes />} />
+									<Route path='/groups' render={() => <Groups />} />
+									<Route path='/settings' render={() => <Settings />} />
+								</Switch>
 							</div>
 							<div className='last-users'>
 								<NewUsersContainer />
