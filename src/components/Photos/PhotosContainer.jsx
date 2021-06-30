@@ -2,7 +2,7 @@ import Photos from './Photos'
 import {
 	addPhotoActionCreate,
 	createAlbumActionCreate,
-} from '../../redux/photoReducer'
+} from '../../redux/PhotoReducer'
 import { connect } from 'react-redux'
 
 let mapStateToProps = state => {

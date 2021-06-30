@@ -1,12 +1,7 @@
 import React, { Suspense } from 'react'
 import { connect, Provider } from 'react-redux'
 import { Route, Switch } from 'react-router'
-import {
-	BrowserRouter,
-	HashRouter,
-	withRouter,
-	Redirect,
-} from 'react-router-dom'
+import { HashRouter, Redirect, withRouter } from 'react-router-dom'
 import { compose } from 'redux'
 import './App.css'
 import Preloader from './components/Common/Preloader/Preloader'
@@ -23,11 +18,10 @@ import Notification from './components/Notification/Notification'
 import PhotosContainer from './components/Photos/PhotosContainer'
 import ProfileContainer from './components/Profile/ProfileContainer'
 import Settings from './components/Settings/Settings'
-import Stars from './components/Stars/Stars'
 import UsersContainer from './components/Users/UsersContainer'
 import Video from './components/Video/Video'
 import { initializeApp } from './redux/App-Reducer'
-import store from './redux/redux-store'
+import store from './redux/Redux-Store'
 
 const Login = React.lazy(() => import('./components/LogIn/LogIn'))
 
@@ -41,10 +35,6 @@ const mapStateToProps = state => {
 class App extends React.Component {
 	componentDidMount() {
 		this.props.initializeApp()
-		window.addEventListener('unhandledrejection', function (e) {
-			console.log(e)
-			alert(e.reason)
-		})
 	}
 	render() {
 		const path = this.props.location.pathname
@@ -103,7 +93,7 @@ class App extends React.Component {
 										path='/notifications'
 										render={() => <Notification />}
 									/>
-									<Route path='/stars' render={() => <Stars />} />
+
 									<Route path='/likes' render={() => <Likes />} />
 									<Route path='/groups' render={() => <Groups />} />
 									<Route path='/settings' render={() => <Settings />} />

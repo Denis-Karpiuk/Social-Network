@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { compose } from 'redux'
 import { reset } from 'redux-form'
 import { withAuthRedirect } from '../../HOC/withAuthRedirect'
-import { addMessage } from '../../redux/messageReducer'
+import { addMessage } from '../../redux/Messages-Reducer'
 import Messages from './Messages'
 
 let mapStateToProps = state => {

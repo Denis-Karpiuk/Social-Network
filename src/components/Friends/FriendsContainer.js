@@ -18,7 +18,7 @@ import {
 	takePageSize,
 } from '../../redux/Users-Selectors'
 import Preloader from '../Common/Preloader/Preloader'
-import Friends from '../Users/Users/Users'
+import Users from '../Users/Users/Users'
 
 let tittle = 'Friends'
 
@@ -44,7 +44,7 @@ const FriendsContainer = ({ pageSize, ...props }) => {
 			{props.isFetching ? (
 				<Preloader />
 			) : (
-				<Friends
+				<Users
 					pageNumber={pageNumber}
 					pageSize={pageSize}
 					onPageNumber={onPageNumber}

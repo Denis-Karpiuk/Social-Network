@@ -27,7 +27,6 @@ const Messages = props => {
 	let sendMessage = messageData => {
 		props.addMessage(messageData.message)
 		props.reset('messages')
-		props.getSearchUser('Nikita')
 	}
 	return (
 		<div className={s.messagesPage}>
