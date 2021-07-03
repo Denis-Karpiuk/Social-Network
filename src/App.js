@@ -12,7 +12,7 @@ import Likes from './components/Likes/Likes'
 import MessagesContainer from './components/Messages/Messages-Container'
 import Music_Container from './components/Music/Music-Container'
 import Navbar from './components/Navbar/Navbar'
-import NewsContainer from './components/News/News-Container'
+import News from './components/News/News'
 import NewUsersContainer from './components/NewUsers/NewUsersContainer'
 import Notification from './components/Notification/Notification'
 import PhotosContainer from './components/Photos/PhotosContainer'
@@ -82,7 +82,7 @@ class App extends React.Component {
 									<Route path='/search' render={() => <UsersContainer />} />
 									<Route path='/friends' render={() => <FriendsContainerF />} />
 									<Route path='/music' render={() => <Music_Container />} />
-									<Route path='/news' render={() => <NewsContainer />} />
+									<Route path='/news' render={() => <News />} />
 									<Route
 										path='/messages'
 										render={() => <MessagesContainer />}

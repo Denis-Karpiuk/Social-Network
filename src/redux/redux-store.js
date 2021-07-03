@@ -4,7 +4,6 @@ import thunMiddleWare from 'redux-thunk'
 import appReducer from './App-Reducer'
 import authReducer from './Auth-Reducer'
 import messageReduce from './Messages-Reducer'
-import musicReducer from './Music-Recucer'
 import newsReducer from './NewsReducer'
 import photoReducer from './PhotoReducer'
 import profileReducer from './Profile-Reducer'
@@ -17,7 +16,6 @@ let reducers = combineReducers({
 	newsPage: newsReducer,
 	photosPage: photoReducer,
 	usersPage: usersReducer,
-	musicPage: musicReducer,
 	auth: authReducer,
 	form: formReducer,
 })

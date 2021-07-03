@@ -11,11 +11,7 @@ class News extends React.Component {
 				<HeaderPage img={newsBg} tittle={'News'} />
 				<div className={s.news_items}>
 					<Time />
-					<div className={s.news__text}>
-						{this.props.newsTexts.map(news => (
-							<div key={news}>{news}</div>
-						))}
-					</div>
+					<div className={s.news__text}>in progress...</div>
 				</div>
 			</div>
 		)

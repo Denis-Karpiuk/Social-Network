@@ -1,8 +1,6 @@
-import { act } from 'react-dom/cjs/react-dom-test-utils.production.min'
 import { stopSubmit } from 'redux-form'
 import { profileAPI } from '../api/api'
 import { setRequestError } from './App-Reducer'
-import { setUserAuthPhoto } from './Auth-Reducer'
 import { getUsers } from './Users-Reducer'
 
 const SET_PROFILE_USER = 'PROFILE/SET_PROFILE_USER'
@@ -13,11 +11,16 @@ const ADD_POSTS = 'PROFILE/PROFILE/ADD_POSTS'
 const UPDATE_PHOTOS = 'PROFILE/PROFILE/UPDATE_PHOTOS'
 const TOGGLE_EDIT_MODE = 'PROFILE/TOGGLE_EDIT_MODE'
 
+type PostType = {
+	id: number
+	text: string
+	likes: number
+}
 const initialState = {
-	profile: null,
+	profile: null as any | null,
 	isFetching: false,
 	followingProgress: false,
-	status: '',
+	status: null as string | null,
 	isUpdatePhoto: [],
 	isEditMode: false,
 	myPosts: [
@@ -36,9 +39,11 @@ const initialState = {
 			text: 'Never give up!!! ',
 			likes: 10,
 		},
-	],
+	] as Array<PostType>,
 }
-const profileReducer = (state = initialState, action) => {
+type InitialStateType = typeof initialState
+
+const profileReducer = (state = initialState, action: any) => {
 	switch (action.type) {
 		case SET_PROFILE_USER: {
 			return {
@@ -92,55 +97,89 @@ const profileReducer = (state = initialState, action) => {
 			return state
 	}
 }
-export const setProfile = profile => {
+
+type SetProfileActionCreaterType = {
+	type: typeof SET_PROFILE_USER
+	profile: any
+}
+export const setProfile = (profile: any): SetProfileActionCreaterType => {
 	return {
 		type: SET_PROFILE_USER,
 		profile,
 	}
 }
-const isFetching = fetching => {
+
+type IsFetchingActionCreateType = {
+	type: typeof TOGGLE_IS_FETCHING
+	fetching: boolean
+}
+const isFetching = (fetching: boolean): IsFetchingActionCreateType => {
 	return {
 		type: TOGGLE_IS_FETCHING,
 		fetching,
 	}
 }
 
-const setStatus = status => {
+type SetStatusActionCreatorType = {
+	type: typeof SET_STATUS
+	status: string
+}
+const setStatus = (status: string): SetStatusActionCreatorType => {
 	return {
 		type: SET_STATUS,
 		status,
 	}
 }
 
-const updateStatus = status => {
+type UpdateStatusActionCreatorType = {
+	type: typeof UPDATE_STATUS
+	status: string
+}
+const updateStatus = (status: string): UpdateStatusActionCreatorType => {
 	return {
 		type: UPDATE_STATUS,
 		status,
 	}
 }
 
-export const addPostProfile = post => {
+type AddPostProfileActionCreatorType = {
+	type: typeof ADD_POSTS
+	post: string
+}
+export const addPostProfile = (
+	post: string
+): AddPostProfileActionCreatorType => {
 	return {
 		type: ADD_POSTS,
 		post,
 	}
 }
 
-const updatePhoto = photos => {
+type UpdatePhotoActionCreatorType = {
+	type: typeof UPDATE_PHOTOS
+	photos: any
+}
+const updatePhoto = (photos: any): UpdatePhotoActionCreatorType => {
 	return {
 		type: UPDATE_PHOTOS,
 		photos,
 	}
 }
 
-export const toogleEditMode = currentMode => {
+type ToogleEditModeActionCreatorType = {
+	type: typeof TOGGLE_EDIT_MODE
+	currentMode: boolean
+}
+export const toogleEditMode = (
+	currentMode: boolean
+): ToogleEditModeActionCreatorType => {
 	return {
 		type: TOGGLE_EDIT_MODE,
 		currentMode,
 	}
 }
 
-export const getProfile = userId => async dispatch => {
+export const getProfile = (userId: number) => async (dispatch: any) => {
 	dispatch(isFetching(true))
 	let response = await profileAPI.getProfile(userId)
 	dispatch(setProfile(response.data))
@@ -148,19 +187,21 @@ export const getProfile = userId => async dispatch => {
 	dispatch(isFetching(false))
 }
 
-export const getStatus = userId => async dispatch => {
+export const getStatus = (userId: number) => async (dispatch: any) => {
 	let response = await profileAPI.getStatus(userId)
 	dispatch(setStatus(response.data))
 }
 
-export const updateStatusProfile = status => async dispatch => {
+export const updateStatusProfile = (status: string) => async (
+	dispatch: any
+) => {
 	let response = await profileAPI.updateStatus(status)
 	if (response.data.resultCode === 0) {
 		dispatch(updateStatus(status))
 	}
 }
 
-export const updateProfilePhoto = file => async dispatch => {
+export const updateProfilePhoto = (file: any) => async (dispatch: any) => {
 	try {
 		dispatch(isFetching(true))
 		const response = await profileAPI.updatePhoto(file)
@@ -173,7 +214,10 @@ export const updateProfilePhoto = file => async dispatch => {
 		dispatch(isFetching(false))
 	}
 }
-export const updateProfile = profile => async (dispatch, getState) => {
+export const updateProfile = (profile: any) => async (
+	dispatch: any,
+	getState: any
+) => {
 	const userId = getState().auth.userId
 	dispatch(isFetching(true))
 	const response = await profileAPI.updateProfile(profile)
@@ -190,7 +234,7 @@ export const updateProfile = profile => async (dispatch, getState) => {
 	}
 }
 
-const showReqestError = error => async dispatch => {
+const showReqestError = (error: any) => async (dispatch: any) => {
 	dispatch(setRequestError(error))
 	setTimeout(() => dispatch(setRequestError(null)), 3000)
 }
