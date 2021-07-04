@@ -1,6 +1,16 @@
-import { NavLink } from 'react-router-dom'
 import NavIcon from '../../Common/NavIcon/NavIcon'
 import s from './User.module.css'
+
+type UserType = {
+	img: string
+	userPhoto: string | null
+	userName: string
+	userId: number | null
+	followed: boolean
+	followingProgress: Array<number>
+	toFollow: (userId: number | null) => void
+	toUnfollow: (userId: number | null) => void
+}
 
 const User = ({
 	img,
@@ -11,7 +21,7 @@ const User = ({
 	followingProgress,
 	toFollow,
 	toUnfollow,
-}) => {
+}: UserType) => {
 	return (
 		<div className={s.user}>
 			<div className={s.user__background}>

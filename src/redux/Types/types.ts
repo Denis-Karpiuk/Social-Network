@@ -28,10 +28,10 @@ export type PostType = {
 	likes: number
 }
 export type UserType = {
-	name: 'Shubert'
+	name: string
 	id: number | null
 	photos: PhotosType
 	status: null | string
 	followed: boolean
 }
-export type Nullable<T> = T | null;
+export type Nullable<T> = T | null

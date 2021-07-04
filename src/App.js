@@ -10,9 +10,9 @@ import Groups from './components/Groups/Groups'
 import HeaderContainer from './components/Header/Header'
 import Likes from './components/Likes/Likes'
 import MessagesContainer from './components/Messages/Messages-Container'
-import Music_Container from './components/Music/Music-Container'
 import Navbar from './components/Navbar/Navbar'
 import News from './components/News/News'
+import Music from './components/Music/Music'
 import NewUsersContainer from './components/NewUsers/NewUsersContainer'
 import Notification from './components/Notification/Notification'
 import PhotosContainer from './components/Photos/PhotosContainer'
@@ -22,7 +22,7 @@ import UsersContainer from './components/Users/UsersContainer'
 import Video from './components/Video/Video'
 import { initializeApp } from './redux/App-Reducer'
 import store from './redux/Redux-Store'
-
+import cn from 'classnames'
 const Login = React.lazy(() => import('./components/LogIn/LogIn'))
 
 const mapStateToProps = state => {
@@ -37,6 +37,7 @@ class App extends React.Component {
 		this.props.initializeApp()
 	}
 	render() {
+		// const path = this.props.location.pathname === '/login' //! сделать стили с применением classnames
 		const path = this.props.location.pathname
 		let bodyStyle = 'bodyApp'
 		let styleContent = 'content'
@@ -81,7 +82,7 @@ class App extends React.Component {
 									<Route path='/users' render={() => <UsersContainer />} />
 									<Route path='/search' render={() => <UsersContainer />} />
 									<Route path='/friends' render={() => <FriendsContainerF />} />
-									<Route path='/music' render={() => <Music_Container />} />
+									<Route path='/music' render={() => <Music />} />
 									<Route path='/news' render={() => <News />} />
 									<Route
 										path='/messages'

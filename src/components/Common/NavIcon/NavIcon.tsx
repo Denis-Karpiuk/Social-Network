@@ -3,7 +3,13 @@ import { NavLink } from 'react-router-dom'
 import icon from '../../../assets/images/iconsApp/user4.png'
 import s from './NavIcon.module.css'
 
-const NavIcon = ({ img, link, r = 0 }) => {
+type NavIconType = {
+	img: string | null
+	link: string
+	r: string
+}
+
+const NavIcon = ({ img, link, r = '0' }: NavIconType) => {
 	let style = {
 		borderRadius: r,
 	}

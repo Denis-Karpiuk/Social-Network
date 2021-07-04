@@ -16,7 +16,6 @@
 .navbar {
 	grid-area: navbar;
 	margin-top: 85px;
-	/* margin-right: 10px; */
 }
 .content {
 	grid-area: content;

@@ -1,6 +1,13 @@
-import { logDOM } from '@testing-library/react'
-import React, { useState } from 'react'
+import React from 'react'
 import s from './Paginator.module.css'
+
+type PropsType = {
+	pageSize: number
+	pageNumber: number
+	totalCount: number
+	portionSize?: number
+	onPageNumber: (page: number) => void
+}
 
 const Paginator = ({
 	pageSize,
@@ -8,8 +15,7 @@ const Paginator = ({
 	totalCount,
 	portionSize = 10,
 	onPageNumber,
-	...props
-}) => {
+}: PropsType) => {
 	let pagesCount = Math.ceil(totalCount / pageSize)
 	let pages = []
 	for (let i = 0; i < pagesCount + 1; i++) pages.push(i)
@@ -33,7 +39,7 @@ const Paginator = ({
 				.map(p => (
 					<span
 						key={p}
-						className={pageNumber === p ? s.activePage : null}
+						className={pageNumber === p ? s.activePage : ''}
 						onClick={() => onPageNumber(p)}
 					>
 						{p}
