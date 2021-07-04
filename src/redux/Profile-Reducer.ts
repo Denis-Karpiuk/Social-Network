@@ -1,3 +1,4 @@
+import { ProfileType, PostType, PhotosType } from './Types/types'
 import { stopSubmit } from 'redux-form'
 import { profileAPI } from '../api/api'
 import { setRequestError } from './App-Reducer'
@@ -11,13 +12,8 @@ const ADD_POSTS = 'PROFILE/PROFILE/ADD_POSTS'
 const UPDATE_PHOTOS = 'PROFILE/PROFILE/UPDATE_PHOTOS'
 const TOGGLE_EDIT_MODE = 'PROFILE/TOGGLE_EDIT_MODE'
 
-type PostType = {
-	id: number
-	text: string
-	likes: number
-}
 const initialState = {
-	profile: null as any | null,
+	profile: null as ProfileType | null,
 	isFetching: false,
 	followingProgress: false,
 	status: null as string | null,
@@ -41,9 +37,12 @@ const initialState = {
 		},
 	] as Array<PostType>,
 }
-type InitialStateType = typeof initialState
+export type InitialStateType = typeof initialState
 
-const profileReducer = (state = initialState, action: any) => {
+const profileReducer = (
+	state = initialState,
+	action: any
+): InitialStateType => {
 	switch (action.type) {
 		case SET_PROFILE_USER: {
 			return {
@@ -83,7 +82,7 @@ const profileReducer = (state = initialState, action: any) => {
 		case UPDATE_PHOTOS: {
 			return {
 				...state,
-				profile: { ...state.profile, photos: action.photos },
+				profile: { ...state.profile, photos: action.photos } as ProfileType,
 				isUpdatePhoto: [...state.isUpdatePhoto],
 			}
 		}
@@ -102,7 +101,9 @@ type SetProfileActionCreaterType = {
 	type: typeof SET_PROFILE_USER
 	profile: any
 }
-export const setProfile = (profile: any): SetProfileActionCreaterType => {
+export const setProfile = (
+	profile: ProfileType
+): SetProfileActionCreaterType => {
 	return {
 		type: SET_PROFILE_USER,
 		profile,
@@ -157,9 +158,9 @@ export const addPostProfile = (
 
 type UpdatePhotoActionCreatorType = {
 	type: typeof UPDATE_PHOTOS
-	photos: any
+	photos: PhotosType
 }
-const updatePhoto = (photos: any): UpdatePhotoActionCreatorType => {
+const updatePhoto = (photos: PhotosType): UpdatePhotoActionCreatorType => {
 	return {
 		type: UPDATE_PHOTOS,
 		photos,

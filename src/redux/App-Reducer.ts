@@ -13,7 +13,7 @@ const initialState: InitialStateType = {
 	requestError: null,
 }
 
-const appReducer = (state = initialState, action: any) => {
+const appReducer = (state = initialState, action: any): InitialStateType => {
 	switch (action.type) {
 		case INITIALIZED_SUCSESS: {
 			return {

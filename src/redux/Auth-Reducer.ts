@@ -1,3 +1,4 @@
+import { Nullable } from './Types/types'
 import { stopSubmit } from 'redux-form'
 import { authAPI, securityAPI } from '../api/api'
 import { getProfile } from './Profile-Reducer'
@@ -12,16 +13,17 @@ const initialState = {
 	userId: null as number | null,
 	email: null as string | null,
 	isFetching: false,
-	captchaURL: null as any | null,
+	captchaURL: null as string | null,
 }
 type InitialStateType = typeof initialState
 
-const authReducer = (state = initialState, action: any) => {
+const authReducer = (state = initialState, action: any): InitialStateType => {
 	switch (action.type) {
 		case SET_USER_LOGIN_DATA: {
 			return {
 				...state,
 				...action.payload,
+				userIDD: 'numbers', //! ждём пока упадёт ошибка- должна была упасть, но пока почемуто не падает.
 			}
 		}
 		case TOOGLE_FETCHING: {
@@ -33,7 +35,7 @@ const authReducer = (state = initialState, action: any) => {
 		case SET_CAPTCHA_URL: {
 			return {
 				...state,
-				captchaURL: action.url,
+				captchaURL: action.captchaURL,
 			}
 		}
 		default:
@@ -52,9 +54,9 @@ const isFetching = (fetching: boolean): IsFetchingActionCreater => {
 	}
 }
 type PayLoadType = {
-	userId: null | number
-	email: null | string
-	login: null | string
+	userId: Nullable<number>
+	email: Nullable<string>
+	login: Nullable<string>
 	isAuth: boolean
 }
 type SetUserLoginDataActionCreater = {
@@ -62,9 +64,9 @@ type SetUserLoginDataActionCreater = {
 	payload: PayLoadType
 }
 const setUserLoginData = (
-	userId: number | null,
-	email: string | null,
-	login: string | null,
+	userId: Nullable<number>,
+	email: Nullable<string>,
+	login: Nullable<string>,
 	isAuth: boolean
 ): SetUserLoginDataActionCreater => {
 	return {
@@ -74,12 +76,12 @@ const setUserLoginData = (
 }
 type SetCaptchaURLType = {
 	type: typeof SET_CAPTCHA_URL
-	url: null | string
+	captchaURL: null | string
 }
-const setCaptchaURL = (url: string): SetCaptchaURLType => {
+const setCaptchaURL = (captchaURL: string): SetCaptchaURLType => {
 	return {
 		type: SET_CAPTCHA_URL,
-		url,
+		captchaURL,
 	}
 }
 export const getUserLoginData = () => async (dispatch: any) => {
