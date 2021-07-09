@@ -1,6 +1,6 @@
 # Social-Netwok
 
-## **Технологии:**
+## **Technologies:**
 
 **UI:**
 
