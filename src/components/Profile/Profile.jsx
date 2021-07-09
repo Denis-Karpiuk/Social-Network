@@ -17,6 +17,8 @@ const Profile = ({
 }) => {
 	if (!profile) {
 		return <Preloader />
+	} else if (!profile) {
+		return <Preloader />
 	}
 
 	return (

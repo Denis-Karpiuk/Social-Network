@@ -13,7 +13,7 @@ import {
 } from '../../redux/Users-Reducer'
 import {
 	takeFollowingProgress,
-	takeIsFetching,
+	takeIsFetchingUsers,
 	takeIsSearchMode,
 	takePageNumber,
 	takePageSize,
@@ -78,7 +78,7 @@ const mapStateToProps = state => {
 		users: takeUsers(state),
 		pageSize: takePageSize(state),
 		pageNumber: takePageNumber(state),
-		isFetching: takeIsFetching(state),
+		isFetching: takeIsFetchingUsers(state),
 		followingProgress: takeFollowingProgress(state),
 		totalCount: takeTotalCount(state),
 		tittle: takeTittle(state),

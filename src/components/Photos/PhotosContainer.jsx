@@ -9,8 +9,6 @@ let mapStateToProps = state => {
 	return {
 		albums: state.photosPage.albums,
 		photos: state.photosPage.photos,
-		sumPhotos: state.photosPage.sumPhotos(),
-		sumAlbums: state.photosPage.sumAlbums(),
 	}
 }
 let mapDispatchToProps = dispatch => {

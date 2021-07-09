@@ -1,6 +1,9 @@
+.profileInfo__data {
+	height: 150px;
+}
 .profileInfo__background {
 	background-color: white;
-	/* position: relative; */
+	height: 250px;
 }
 .profileInfo__background img {
 	max-width: 100%;
@@ -12,11 +15,10 @@
 	padding: 20px 10px;
 	background-color: white;
 }
-.data__contacts {
+.profileInfo__contacts {
 	display: flex;
 	flex-direction: row;
 	text-align: center;
-	/* margin: auto; */
 }
 .contact__item {
 	align-self: center;
@@ -26,36 +28,38 @@
 	font-weight: 700;
 }
 
-.data__avatar {
+.profileInfo__avatar {
 	width: 170px;
 	height: 170px;
 	position: absolute;
 	left: 44.5%;
 	top: 20%;
+	cursor: pointer;
 }
-.data__name__status {
+.profileInfo__name__status {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
-.data__name {
+.profileInfo__name {
 	font-size: x-large;
 	font-weight: 600;
 }
-.data__status {
+.profileInfo__status {
 	padding-top: 5px;
 	font-size: large;
+	cursor: pointer;
 }
 
-.data__statistics {
+.profileInfo__statistics {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 }
-.statistics__posts,
-.statistics__followers,
-.statistics__Friends {
+.profileInfo__posts,
+.profileInfo__followers,
+.profileInfo_Friends {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
@@ -63,6 +67,7 @@
 	margin: 0px 10px;
 	padding-bottom: 5px;
 	font-style: italic;
+	font-weight: 500;
 }
 .count {
 	align-items: center;
@@ -76,7 +81,6 @@
 	z-index: -1;
 }
 
-.aboutMe {
-	margin: auto;
+.profile__about {
 	font-weight: 700;
 }

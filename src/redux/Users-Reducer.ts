@@ -1,5 +1,5 @@
 import { userAPI } from '../api/api'
-import { PhotosType, UserType } from './Types/types'
+import { UserType } from './Types/types'
 
 const FOLLOW = 'USERS/FOLLOW'
 const UNFOLLOW = 'USERS/UNFOLLOW'
@@ -230,11 +230,13 @@ export const follow = (userId: number) => async (dispatch: any) => {
 export const getFriends = (pageNumber: number, pageSize: number) => async (
 	dispatch: any
 ) => {
-	// dispatch(fetching(true))
+	dispatch(fetching(true))
 	const response = await userAPI.getFriends(pageNumber, pageSize)
 	dispatch(setFriends(response.data.items))
 	dispatch(setFriendsTotalCount(response.data.totalCount))
-	// dispatch(fetching(false))
+
+	dispatch(fetching(false))
+	return Promise.resolve(true)
 }
 
 export default usersReducer

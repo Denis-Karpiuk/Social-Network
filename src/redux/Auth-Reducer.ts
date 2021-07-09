@@ -1,7 +1,8 @@
-import { Nullable } from './Types/types'
 import { stopSubmit } from 'redux-form'
 import { authAPI, securityAPI } from '../api/api'
 import { getProfile } from './Profile-Reducer'
+import { Nullable } from './Types/types'
+import { getUsers } from './Users-Reducer'
 
 const SET_USER_LOGIN_DATA = 'AUTH/SET_USER_LOGIN_DATA'
 const TOOGLE_FETCHING = 'AUTH/TOOGLE_FETCHING'
@@ -90,8 +91,9 @@ export const getUserLoginData = () => async (dispatch: any) => {
 	dispatch(isFetching(false))
 	if (response.data.resultCode === 0) {
 		let { id, email, login } = response.data.data
-		dispatch(setUserLoginData(id, email, login, true))
-		dispatch(getProfile(id))
+		await dispatch(setUserLoginData(id, email, login, true))
+		await dispatch(getProfile(id))
+		await dispatch(getUsers(1, '', 10))
 	}
 }
 

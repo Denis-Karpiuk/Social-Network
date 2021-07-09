@@ -41,7 +41,7 @@ const ProfileInfo = ({
 			<div className={s.profileInfo__background}>
 				<img src={background} />
 				{isOwner ? (
-					<div className={s.data__avatar} onDoubleClick={onClickPhoto}>
+					<div className={s.profileInfo__avatar} onDoubleClick={onClickPhoto}>
 						<Icon img={profilePhoto} r='50%' />
 						<input
 							className={s.addPhoto}
@@ -51,13 +51,13 @@ const ProfileInfo = ({
 						/>
 					</div>
 				) : (
-					<div className={s.data__avatar}>
+					<div className={s.profileInfo__avatar}>
 						<Icon img={profilePhoto} r='50%' />
 					</div>
 				)}
 			</div>
 			<div className={s.profileInfo__data}>
-				<div className={s.data__contacts}>
+				<div className={s.profileInfo__contacts}>
 					{Object.keys(contacts).map((key, index) =>
 						contacts[key] ? (
 							<div key={key} className={s.contact__item}>
@@ -67,9 +67,9 @@ const ProfileInfo = ({
 					)}
 				</div>
 
-				<div className={s.data__name__status}>
-					<div className={s.data__name}>{profileName}</div>
-					<div className={s.data__status}>
+				<div className={s.profileInfo__name__status}>
+					<div className={s.profileInfo__name}>{profileName}</div>
+					<div className={s.profileInfo__status}>
 						<ProfileStatus
 							isOwner={isOwner}
 							status={status}
@@ -78,12 +78,12 @@ const ProfileInfo = ({
 					</div>
 				</div>
 				{isOwner && (
-					<div className={s.data__statistics}>
-						<div className={s.statistics__posts}>
+					<div className={s.profileInfo__statistics}>
+						<div className={s.profileInfo__posts}>
 							<div className={s.name}>Posts</div>
 							<div className={s.count}>{postsCount}</div>
 						</div>
-						<div className={s.statistics__Friends}>
+						<div className={s.profileInfo_Friends}>
 							<div className={s.name}>Friends</div>
 							<div className={s.count}>{friendsCount}</div>
 						</div>

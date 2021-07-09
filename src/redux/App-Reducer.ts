@@ -54,7 +54,6 @@ export const setRequestError = (error: any): SetRequestErrorActionCreater => {
 
 export const initializeApp = () => async (dispatch: any) => {
 	const promise = await dispatch(getUserLoginData())
-	Promise.all([promise])
 	dispatch(initializedSucsess())
 }
 

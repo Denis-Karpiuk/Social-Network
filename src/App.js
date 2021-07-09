@@ -10,9 +10,9 @@ import Groups from './components/Groups/Groups'
 import HeaderContainer from './components/Header/Header'
 import Likes from './components/Likes/Likes'
 import MessagesContainer from './components/Messages/Messages-Container'
+import Music from './components/Music/Music'
 import Navbar from './components/Navbar/Navbar'
 import News from './components/News/News'
-import Music from './components/Music/Music'
 import NewUsersContainer from './components/NewUsers/NewUsersContainer'
 import Notification from './components/Notification/Notification'
 import PhotosContainer from './components/Photos/PhotosContainer'
@@ -21,14 +21,15 @@ import Settings from './components/Settings/Settings'
 import UsersContainer from './components/Users/UsersContainer'
 import Video from './components/Video/Video'
 import { initializeApp } from './redux/App-Reducer'
+import { takeIsFetching } from './redux/Profile-Selectors'
 import store from './redux/Redux-Store'
-import cn from 'classnames'
 const Login = React.lazy(() => import('./components/LogIn/LogIn'))
 
 const mapStateToProps = state => {
 	return {
 		initialized: state.app.initialized,
 		isAuth: state.auth.isAuth, //? нефакт что будет нужна такая проверка
+		isFetchingProfile: takeIsFetching(state),
 	}
 }
 

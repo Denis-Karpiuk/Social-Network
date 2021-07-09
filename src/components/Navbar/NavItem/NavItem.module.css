@@ -12,6 +12,11 @@
 .item__icon {
 	width: 30px;
 	height: 30px;
-	padding: 10px 0px;
-	padding-right: 30px;
+	padding: 10px 15px;
+}
+.item a:hover {
+	background: #30afe2;
+	border-radius: 10px;
+	color: white;
+	font-size: large;
 }

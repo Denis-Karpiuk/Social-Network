@@ -23,9 +23,7 @@
 	background: rgba(255, 255, 255, 1);
 	color: #1084dd;
 }
-.form__instruction {
-	/* padding-bottom: 10px; */
-}
+
 .form input,
 .form__button button {
 	margin: 10px 0px;
@@ -44,11 +42,13 @@
 .form__checkbox input {
 	width: 30px;
 	margin-right: 20px;
+	cursor: pointer;
 }
 .form__button button {
 	background-color: #1084dd;
 	color: white;
 	font-size: large;
+	cursor: pointer;
 }
 .form__serverError {
 	border: solid red 2px;

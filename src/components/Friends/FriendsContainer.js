@@ -15,6 +15,7 @@ import {
 	takeFriends,
 	takeFriendsCount,
 	takeIsFetching,
+	takeIsFetchingUsers,
 	takePageSize,
 } from '../../redux/Users-Selectors'
 import Preloader from '../Common/Preloader/Preloader'
@@ -64,7 +65,7 @@ const mapStateToProps = state => {
 	return {
 		users: takeFriends(state),
 		pageSize: takePageSize(state),
-		isFetching: takeIsFetching(state),
+		isFetching: takeIsFetchingUsers(state),
 		followingProgress: takeFollowingProgress(state),
 		totalCount: takeFriendsCount(state),
 	}

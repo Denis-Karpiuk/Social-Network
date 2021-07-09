@@ -2,7 +2,7 @@ import { ProfileType, PostType, PhotosType } from './Types/types'
 import { stopSubmit } from 'redux-form'
 import { profileAPI } from '../api/api'
 import { setRequestError } from './App-Reducer'
-import { getUsers } from './Users-Reducer'
+import { getFriends, getUsers } from './Users-Reducer'
 
 const SET_PROFILE_USER = 'PROFILE/SET_PROFILE_USER'
 const TOGGLE_IS_FETCHING = 'PROFILE/TOGGLE_IS_FETCHING'
@@ -184,7 +184,8 @@ export const getProfile = (userId: number) => async (dispatch: any) => {
 	dispatch(isFetching(true))
 	let response = await profileAPI.getProfile(userId)
 	dispatch(setProfile(response.data))
-	dispatch(getUsers(1, '', 10))
+	await dispatch(getUsers(1, '', 10))
+	await dispatch(getFriends(1, 12))
 	dispatch(isFetching(false))
 }
 
