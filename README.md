@@ -1,5 +1,9 @@
 # Social-Netwok
 
+![Alt Text](https://github.com/Denis-Karpiuk/Social-Network/blob/master/src/assets/images/01.-Social-Network-React-for-gif.gif)
+ <br> 
+ **You can visit this social network: 
+
 ## **Technologies:**
 
 **UI:**
